@@ -1,11 +1,12 @@
 import React, { Component } from "react";
-//import "./App.css";
+import "./App.css";
 import Header from "./Header/Header.js";
 import Explore from "./Explore/Explore.js";
 import Experiences from "./Experiences/Experiences";
 import Homes from "./Homes/Homes.js";
 import Popular from "./Popular/Popular.js";
 import Featured from "./Featured/Featured.js";
+import Footer from "./Footer/Footer.js";
 import styled from "styled-components";
 
 const MainContainer = styled.div`
@@ -24,6 +25,7 @@ class App extends Component {
         <Homes />
         <Popular />
         <Featured />
+        <Footer />
       </MainContainer>
     );
   }

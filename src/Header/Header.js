@@ -16,13 +16,13 @@ const Input = styled.input.attrs({
   font-size: 24px;
 `;
 
-const row = styled.div`
+const Row = styled.div`
   display: flex;
   flex-wrap: wrap;
 `;
-const col1 = styled.div`flex-basis: 10%;`;
-const col5 = styled.div`flex-basis: 33%;`;
-const col6 = styled.div`
+const Col1 = styled.div`flex-basis: 10%;`;
+const Col5 = styled.div`flex-basis: 33%;`;
+const Col6 = styled.div`
   justify-content: flex-end;
   display: flex;
   list-style: none;
@@ -34,14 +34,14 @@ export default function() {
     <div className="main">
       <div className="headerContainer">
         <header className="App-header">
-          <row className="rowHeader">
-            <col1 className="col-1">
+          <Row className="rowHeader">
+            <Col1 className="col-1">
               <img src={logo} className="App-logo" alt="logo" />
-            </col1>
-            <col5 className="col-5">
+            </Col1>
+            <Col5 className="col-5">
               <Input className="inputContainer" />
-            </col5>
-            <col6>
+            </Col5>
+            <Col6>
               <ul className="col-6">
                 <li>
                   <a href="#">Become a host</a>
@@ -56,8 +56,8 @@ export default function() {
                   <a href="#">Log In</a>
                 </li>
               </ul>
-            </col6>
-          </row>
+            </Col6>
+          </Row>
         </header>
       </div>
     </div>
