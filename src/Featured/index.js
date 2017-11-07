@@ -6,6 +6,7 @@ import feauture3 from "./feauture3.png";
 import feauture4 from "./feauture4.png";
 import feauture5 from "./feauture5.png";
 import feauture6 from "./feauture6.png";
+import nextPage from ".././next.svg";
 
 const Row = styled.div`display: flex;`;
 const Col1 = styled.div`
@@ -19,7 +20,10 @@ const Title = styled.h2`
   color: rgba(56, 56, 56, 1);
   margin-top: 50px;
 `;
-
+const NextPage = styled.img`
+  margin-left: -30px;
+  margin-top: -60px;
+`;
 export default function() {
   return (
     <div className="futuredDestenationContainer">
@@ -49,6 +53,7 @@ export default function() {
           <img src={feauture6} alt="" />
           <p>Los Angeles</p>
         </Col1>
+        <NextPage src={nextPage} alt="" />
       </Row>
     </div>
   );

@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import "./App.css";
-import Header from "./Header/Header.js";
-import Explore from "./Explore/Explore.js";
-import Experiences from "./Experiences/Experiences";
-import Homes from "./Homes/Homes.js";
-import Popular from "./Popular/Popular.js";
-import Featured from "./Featured/Featured.js";
-import Footer from "./Footer/Footer.js";
+import Header from "./Header";
+import Explore from "./Explore";
+import Experiences from "./Experiences";
+import Homes from "./Homes";
+import Popular from "./Popular";
+import Featured from "./Featured";
+import Footer from "./Footer";
 import styled from "styled-components";
 
 const MainContainer = styled.div`

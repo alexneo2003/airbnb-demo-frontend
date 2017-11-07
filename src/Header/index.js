@@ -3,6 +3,10 @@ import logo from "./logo.svg";
 import search from "./search.svg";
 import styled from "styled-components";
 
+const Header = styled.header`
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(72, 72, 72, 0.2);
+`;
 const Input = styled.input.attrs({
   placeholder: 'Try "Miami"',
   type: "text"
@@ -13,7 +17,6 @@ const Input = styled.input.attrs({
   padding: 0.5em;
   margin: 0.5em;
   padding-left: 50px;
-  border-width: 1px solid #000;
   border-radius: 4px;
   width: 392px;
   font-size: 24px;
@@ -44,6 +47,7 @@ const Ul = styled.ul`
   text-decoration: none;
   padding: 0;
   padding: 15px;
+  color: rgba(56, 56, 56, 1);
 `;
 const Li = styled.li`
   display: flex;
@@ -58,16 +62,16 @@ export default function() {
   return (
     <div className="main">
       <div className="headerContainer">
-        <header className="App-header">
-          <Row className="rowHeader">
-            <Col1 className="col-1">
+        <Header>
+          <Row>
+            <Col1>
               <ImgLogo src={logo} alt="logo" />
             </Col1>
-            <Col5 className="col-5">
-              <Input className="inputContainer" />
+            <Col5>
+              <Input />
             </Col5>
             <Col6>
-              <Ul className="col-6">
+              <Ul>
                 <Li>
                   <A href="#">Become a host</A>
                 </Li>
@@ -83,7 +87,7 @@ export default function() {
               </Ul>
             </Col6>
           </Row>
-        </header>
+        </Header>
       </div>
     </div>
   );

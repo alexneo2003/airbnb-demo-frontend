@@ -4,6 +4,9 @@ import popularReservations1 from "./popular-reservations1.png";
 import popularReservations2 from "./popular-reservations2.png";
 import popularReservations3 from "./popular-reservations3.png";
 import popularReservations4 from "./popular-reservations4.png";
+import PopularCard from "./Card";
+import nextPage from ".././next.svg";
+
 const Row = styled.div`display: flex;`;
 const Col1 = styled.div`
   padding-left: 8px;
@@ -14,6 +17,7 @@ const Col1 = styled.div`
 const PopularTitle = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
 `;
 
 const Title = styled.h2`
@@ -25,6 +29,10 @@ const SeeAll = styled.p`
   padding-top: 20px;
   font-size: 14px;
 `;
+const NextPage = styled.img`
+  margin-left: -30px;
+  margin-top: -70px;
+`;
 export default function() {
   return (
     <div className="popularContainer">
@@ -32,23 +40,40 @@ export default function() {
         <Title>Popular reservations around the world</Title>
         <SeeAll>See all ></SeeAll>
       </PopularTitle>
-      <Row className="rowPopulare">
-        <Col1 className="card">
-          <img src={popularReservations1} alt=""/>
-          <p>$80 La Salentina, see, nature & relax</p>
+      <Row>
+        <Col1>
+          <PopularCard
+            imgSrc={popularReservations1}
+            type={"SPEAKEASY"}
+            title={"Chumley's"}
+            price="$60"
+          />
         </Col1>
-        <Col1 className="card">
-          <img src={popularReservations2} alt=""/>
-          <p>$82 Your private 3 bedr. riad and exclusive</p>
+        <Col1>
+          <PopularCard
+            imgSrc={popularReservations2}
+            type={"KOREAN GASTROPUB"}
+            title={"Hanjan"}
+            price="$50"
+          />
         </Col1>
-        <Col1 className="card">
-          <img src={popularReservations3} alt=""/>
-          <p>$200 Dreamy Tropical Tree House</p>
+        <Col1>
+          <PopularCard
+            imgSrc={popularReservations3}
+            type={"GERMAN AMERICAN"}
+            title={"Prime meats"}
+            price="$55"
+          />
         </Col1>
-        <Col1 className="card">
-          <img src={popularReservations4} alt=""/>
-          <p>$200 Dreamy Tropical Tree House</p>
+        <Col1>
+          <PopularCard
+            imgSrc={popularReservations4}
+            type={"FINE SEAFOOD"}
+            title={"Seaprice"}
+            price="$70"
+          />
         </Col1>
+        <NextPage src={nextPage} alt="" />
       </Row>
     </div>
   );
