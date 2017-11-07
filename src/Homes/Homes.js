@@ -10,12 +10,15 @@ const Col1 = styled.div`
   flex-basis: 25%;
   box-sizing: border-box;
 `;
-const HomesTitle = styled.p`
+const HomesTitle = styled.div`
   display: flex;
   justify-content: space-between;
 `;
 
-const Title = styled.h2`color: rgba(56, 56, 56, 1);`;
+const Title = styled.h2`
+  color: rgba(56, 56, 56, 1);
+  margin-top: 50px;
+`;
 const SeeAll = styled.p`
   align: right;
   padding-top: 20px;

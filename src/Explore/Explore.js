@@ -17,14 +17,17 @@ const Col1 = styled.div`
 const Card = styled.div`
   display: flex;
   border: 1px solid rgba(72, 72, 72, 0.2);
+  align-items: center;
   border-radius: 4px;
 `;
-const Title = styled.h2`color: rgba(56, 56, 56, 1);`;
+const Title = styled.h2`
+  color: rgba(56, 56, 56, 1);
+  margin-top: 50px;
+  font-family: CircularBold;
+`;
 const Text = styled.p`
-  text-align: center;
-  margin-left: 20px;
-  margin-top: 30px;
   font-weight: bold;
+  margin-left: 25px;
   color: rgba(56, 56, 56, 1);
 `;
 

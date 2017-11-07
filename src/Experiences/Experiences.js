@@ -4,6 +4,7 @@ import experience1 from "./experience1.png";
 import experience2 from "./experience2.png";
 import experience3 from "./experience3.png";
 import experience4 from "./experience4.png";
+
 const Row = styled.div`display: flex;`;
 const Col1 = styled.div`
   padding-left: 8px;
@@ -24,8 +25,11 @@ const Text = styled.p`
   font-weight: bold;
   color: rgba(56, 56, 56, 1);
 `;
-const Title = styled.h2`color: rgba(56, 56, 56, 1);`;
-const ExpTitle = styled.p`
+const Title = styled.h2`
+  color: rgba(56, 56, 56, 1);
+  margin-top: 50px;
+`;
+const ExpTitle = styled.div`
   display: flex;
   justify-content: space-between;
 `;

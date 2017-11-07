@@ -15,7 +15,10 @@ const Col1 = styled.div`
   box-sizing: border-box;
 `;
 
-const Title = styled.h2`color: rgba(56, 56, 56, 1);`;
+const Title = styled.h2`
+  color: rgba(56, 56, 56, 1);
+  margin-top: 50px;
+`;
 
 export default function() {
   return (
