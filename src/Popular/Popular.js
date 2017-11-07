@@ -34,19 +34,19 @@ export default function() {
       </PopularTitle>
       <Row className="rowPopulare">
         <Col1 className="card">
-          <img src={popularReservations1} />
+          <img src={popularReservations1} alt=""/>
           <p>$80 La Salentina, see, nature & relax</p>
         </Col1>
         <Col1 className="card">
-          <img src={popularReservations2} />
+          <img src={popularReservations2} alt=""/>
           <p>$82 Your private 3 bedr. riad and exclusive</p>
         </Col1>
         <Col1 className="card">
-          <img src={popularReservations3} />
+          <img src={popularReservations3} alt=""/>
           <p>$200 Dreamy Tropical Tree House</p>
         </Col1>
         <Col1 className="card">
-          <img src={popularReservations4} />
+          <img src={popularReservations4} alt=""/>
           <p>$200 Dreamy Tropical Tree House</p>
         </Col1>
       </Row>

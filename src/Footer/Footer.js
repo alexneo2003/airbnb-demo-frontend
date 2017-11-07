@@ -15,12 +15,6 @@ const Select = styled.select.attrs({})`width=229px;
 height=48px;
 `;
 
-const Title = styled.h2`color: rgba(56, 56, 56, 1);`;
-const SeeAll = styled.p`
-  align: right;
-  padding-top: 20px;
-  font-size: 14px;
-`;
 export default function() {
   return (
     <div className="footerContainer">

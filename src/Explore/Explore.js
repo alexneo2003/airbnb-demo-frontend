@@ -38,19 +38,19 @@ export default function() {
       <Row className="rowExplore">
         <Col1 className="col1">
           <Card>
-            <img src={explore1} />
+            <img src={explore1} alt="" />
             <Text>Homes</Text>
           </Card>
         </Col1>
         <Col1 className="col2">
           <Card>
-            <img src={explore2} />
+            <img src={explore2} alt="" />
             <Text>Experience</Text>
           </Card>
         </Col1>
         <Col1 className="col3">
           <Card>
-            <img src={explore3} />
+            <img src={explore3} alt="" />
             <Text>Restaurants</Text>
           </Card>
         </Col1>

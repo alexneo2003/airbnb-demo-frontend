@@ -33,15 +33,15 @@ export default function() {
       </HomesTitle>
       <Row className="rowHomes">
         <Col1 className="card">
-          <img src={homes1} />
+          <img src={homes1} alt="" />
           <p>$80 La Salentina, see, nature & relax</p>
         </Col1>
         <Col1 className="card">
-          <img src={homes2} />
+          <img src={homes2} alt="" />
           <p>$82 Your private 3 bedr. riad and exclusive</p>
         </Col1>
         <Col1 className="card">
-          <img src={homes3} />
+          <img src={homes3} alt="" />
           <p>$200 Dreamy Tropical Tree House</p>
         </Col1>
       </Row>

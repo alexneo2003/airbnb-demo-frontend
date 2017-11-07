@@ -26,27 +26,27 @@ export default function() {
       <Title>Featured destination</Title>
       <Row className="rowFeaturedDestenation">
         <Col1 className="card">
-          <img src={feauture1} />
+          <img src={feauture1} alt="" />
           <p>Paris</p>
         </Col1>
         <Col1 className="card">
-          <img src={feauture2} />
+          <img src={feauture2} alt="" />
           <p>Miami</p>
         </Col1>
         <Col1 className="card">
-          <img src={feauture3} />
+          <img src={feauture3} alt="" />
           <p>Tokio</p>
         </Col1>
         <Col1 className="card">
-          <img src={feauture4} />
+          <img src={feauture4} alt="" />
           <p>Cape town</p>
         </Col1>
         <Col1 className="card">
-          <img src={feauture5} />
+          <img src={feauture5} alt="" />
           <p>Seoul</p>
         </Col1>
         <Col1 className="card">
-          <img src={feauture6} />
+          <img src={feauture6} alt="" />
           <p>Los Angeles</p>
         </Col1>
       </Row>
