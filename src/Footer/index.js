@@ -39,7 +39,11 @@ const Nav = styled.div`
   justify-content: space-between;
   aling-items: center;
 `;
-const DivLogo = styled.div`display: flex;`;
+const DivLogo = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 130px;
+`;
 const DivMenu = styled.div`
   display: flex;
   justify-content: space-between;
