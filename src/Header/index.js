@@ -29,7 +29,7 @@ const Row = styled.div`
   align-items: center;
   flex-wrap: wrap;
   margin-top: 20px;
-  margit-bottom: 20px;
+  margin-bottom: 20px;
 `;
 const Col1 = styled.div`flex-basis: 8.3333%;`;
 const Col5 = styled.div`flex-basis: 58.3333%;`;

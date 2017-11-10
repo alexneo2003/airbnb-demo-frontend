@@ -4,8 +4,8 @@ import experience1 from "./experience1.png";
 import experience2 from "./experience2.png";
 import experience3 from "./experience3.png";
 import experience4 from "./experience4.png";
-import ExperiencesCard from "./Card";
-import nextPage from ".././next.svg";
+import Card from "./Card";
+import nextPage from "./next.svg";
 
 const Row = styled.div`display: flex;`;
 const Col1 = styled.div`
@@ -38,42 +38,42 @@ const NextPage = styled.img`
 `;
 export default function() {
   return (
-    <div className="experiencesContainer">
+    <div>
       <ExpTitle>
         <Title>Experiences</Title>
         <SeeAll>See all ></SeeAll>
       </ExpTitle>
-      <Row className="rowExperiences">
-        <Col1 className="card">
-          <ExperiencesCard
+      <Row>
+        <Col1>
+          <Card
             imgSrc={experience1}
-            price={"$29"}
+            price={29}
             title="Forest therapy"
-            revCount="44"
+            reviewCount={44}
           />
         </Col1>
-        <Col1 className="card">
-          <ExperiencesCard
+        <Col1>
+          <Card
             imgSrc={experience2}
-            price={"$69"}
+            price={69}
             title="Whale watching"
-            revCount="46"
+            reviewCount={46}
           />
         </Col1>
-        <Col1 className="card">
-          <ExperiencesCard
+        <Col1>
+          <Card
             imgSrc={experience3}
-            price={"$69"}
+            price={69}
             title="Table Mountain Summit, Cable Car Down"
-            revCount="44"
+            reviewCount={44}
           />
         </Col1>
-        <Col1 className="card">
-          <ExperiencesCard
+        <Col1>
+          <Card
             imgSrc={experience4}
-            price={"$50"}
+            price={50}
             title="Salsa night"
-            revCount="44"
+            reviewCount={44}
           />
         </Col1>
         <NextPage src={nextPage} alt="" />

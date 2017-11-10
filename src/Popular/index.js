@@ -4,8 +4,8 @@ import popularReservations1 from "./popular-reservations1.png";
 import popularReservations2 from "./popular-reservations2.png";
 import popularReservations3 from "./popular-reservations3.png";
 import popularReservations4 from "./popular-reservations4.png";
-import PopularCard from "./Card";
-import nextPage from ".././next.svg";
+import Card from "./Card";
+import nextPage from "./next.svg";
 
 const Row = styled.div`display: flex;`;
 const Col1 = styled.div`
@@ -35,42 +35,42 @@ const NextPage = styled.img`
 `;
 export default function() {
   return (
-    <div className="popularContainer">
+    <div>
       <PopularTitle>
         <Title>Popular reservations around the world</Title>
         <SeeAll>See all ></SeeAll>
       </PopularTitle>
       <Row>
         <Col1>
-          <PopularCard
+          <Card
             imgSrc={popularReservations1}
             type={"SPEAKEASY"}
             title={"Chumley's"}
-            price="$60"
+            price={60}
           />
         </Col1>
         <Col1>
-          <PopularCard
+          <Card
             imgSrc={popularReservations2}
             type={"KOREAN GASTROPUB"}
             title={"Hanjan"}
-            price="$50"
+            price={50}
           />
         </Col1>
         <Col1>
-          <PopularCard
+          <Card
             imgSrc={popularReservations3}
             type={"GERMAN AMERICAN"}
             title={"Prime meats"}
-            price="$55"
+            price={55}
           />
         </Col1>
         <Col1>
-          <PopularCard
+          <Card
             imgSrc={popularReservations4}
             type={"FINE SEAFOOD"}
             title={"Seaprice"}
-            price="$70"
+            price={70}
           />
         </Col1>
         <NextPage src={nextPage} alt="" />

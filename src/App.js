@@ -9,7 +9,7 @@ import Featured from "./Featured";
 import Footer from "./Footer";
 import styled from "styled-components";
 
-const MainContainer = styled.div`
+const Main = styled.div`
   width: 962px;
   margin-left: auto;
   margin-right: auto;
@@ -18,7 +18,7 @@ const MainContainer = styled.div`
 class App extends Component {
   render() {
     return (
-      <MainContainer className="App">
+      <Main className="App">
         <Header />
         <Explore />
         <Experiences />
@@ -26,7 +26,7 @@ class App extends Component {
         <Popular />
         <Featured />
         <Footer />
-      </MainContainer>
+      </Main>
     );
   }
 }

@@ -2,8 +2,9 @@ import React from "react";
 import styled from "styled-components";
 import logo from "./logo.svg";
 import fb from "./facebook.svg";
-import insta from "./instagram.svg";
+import instagram from "./instagram.svg";
 import tw from "./twitter.svg";
+import arrow from "./arrow-down.svg";
 
 const Row = styled.div`
   display: flex;
@@ -15,8 +16,18 @@ const Col1 = styled.div`
   flex-basis: 25%;
   box-sizing: border-box;
 `;
-const Select = styled.select.attrs({})`width=229px;
-height=48px;
+const Select = styled.select`
+  background-image: url(${arrow});
+  background-repeat: no-repeat;
+  background-position: calc(100% - 15px) calc(1em + 2px),
+    calc(100% - 15px) calc(1em + 2px), 100% 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin-top: 15px;
+  padding: 15px;
+  width: 80%;
+  border-radius: 4px;
 `;
 const Title = styled.p`
   font-size: 15px;
@@ -37,7 +48,7 @@ const Border = styled.footer`
 const Nav = styled.div`
   display: flex;
   justify-content: space-between;
-  aling-items: center;
+  align-items: center;
 `;
 const DivLogo = styled.div`
   display: flex;
@@ -52,17 +63,17 @@ const DivMenu = styled.div`
 
 export default function() {
   return (
-    <div className="footerContainer">
-      <Row className="rowFooter">
+    <div>
+      <Row>
         <Col1>
           <Select>
             <option>English</option>
             <option>Russian</option>
           </Select>
           <Select>
-            <option>Unated States Dollar</option>
+            <option>United States Dollar</option>
             <option>Russian Ruble</option>
-            <option>Ukrainian Hrivna</option>
+            <option>Ukrainian Hryvna</option>
           </Select>
         </Col1>
         <Col1>
@@ -82,7 +93,7 @@ export default function() {
           <TextItems>Airbnb Citizen</TextItems>
           <TextItems>Business Travel</TextItems>
           <TextItems>Guidebooks</TextItems>
-          <TextItems>Airbnbmag</TextItems>
+          <TextItems>Airbnb Mag</TextItems>
         </Col1>
         <Col1>
           <Title>Hosting</Title>
@@ -110,7 +121,7 @@ export default function() {
             <img src={tw} alt="" />
           </a>
           <a href="#">
-            <img src={insta} alt="" />
+            <img src={instagram} alt="" />
           </a>
         </DivMenu>
       </Nav>

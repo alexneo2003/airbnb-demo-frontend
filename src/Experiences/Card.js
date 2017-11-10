@@ -2,39 +2,36 @@ import React from "react";
 import styled from "styled-components";
 import star from "./star.svg";
 
-export const CardItem = styled.div`align-items: center;`;
+export const Card = styled.div`align-items: center;`;
 const CardTitle = styled.div`
   display: flex;
   height: 30px;
-  align-items: center;
 `;
-const StarReviews = styled.div`display: flex;`;
-const StarRewievItem = styled.img`
+const Reviews = styled.div`display: flex;`;
+const ReviewStar = styled.img`
   margin: 2px;
   align-items: center;
 `;
-const TextReviews = styled.div`
+const ReviewText = styled.div`
   display: flex;
   margin: 5px;
 `;
 export default function ExperiencesCard(props) {
   return (
-    <CardItem>
+    <Card>
       <img src={props.imgSrc} alt="" />
       <CardTitle>
-        <p>
-          <strong>{props.price}</strong>
-          {props.title}
-        </p>
+        <strong>${props.price}</strong>
+        {props.title}
       </CardTitle>
-      <StarReviews>
-        <StarRewievItem src={star} alt="star" />
-        <StarRewievItem src={star} alt="star" />
-        <StarRewievItem src={star} alt="star" />
-        <StarRewievItem src={star} alt="star" />
-        <StarRewievItem src={star} alt="star" />
-        <TextReviews>{props.revCount} reviews</TextReviews>
-      </StarReviews>
-    </CardItem>
+      <Reviews>
+        <ReviewStar src={star} alt="star" />
+        <ReviewStar src={star} alt="star" />
+        <ReviewStar src={star} alt="star" />
+        <ReviewStar src={star} alt="star" />
+        <ReviewStar src={star} alt="star" />
+        <ReviewText>{props.reviewCount} reviews</ReviewText>
+      </Reviews>
+    </Card>
   );
 }
