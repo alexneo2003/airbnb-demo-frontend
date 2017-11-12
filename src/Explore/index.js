@@ -4,58 +4,79 @@ import explore1 from "./explore1.png";
 import explore2 from "./explore2.png";
 import explore3 from "./explore3.png";
 import "../App.css";
+import { Row, Col } from "../styled";
 
-const Container = styled.div`heignt: 130px;`;
-
-const Row = styled.div`display: flex;`;
-const Col1 = styled.div`
-  padding-left: 8px;
-  padding-right: 8px;
-  flex-basis: 33.3333%;
-  box-sizing: border-box;
-`;
-
-const Card = styled.div`
+const Card = styled.button`
+  background-color: transparent;
+  width: 100%;
   display: flex;
+  padding: 0px;
+  position: relative;
   border: 1px solid rgba(72, 72, 72, 0.2);
-  align-items: center;
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.06);
+  text-align: left;
   border-radius: 4px;
+  flex-direction: column;
+  @media (min-width: 576px) {
+    flex-direction: row;
+    align-items: left;
+  }
 `;
 const Title = styled.h2`
   color: rgba(56, 56, 56, 1);
   margin-top: 50px;
-  font-family: CircularBold;
 `;
-const Text = styled.p`
-  font-weight: bold;
-  margin-left: 25px;
+const Img = styled.div`
+  background-image: url(${props => props.imgSrc});
+  background-repeat: no-repeat;
+  display: table-cell;
+  vertical-align: top;
+  width: 96px;
+  height: 72px;
+  horizontal-align: left;
+`;
+const CardText = styled.p`
+  display: table-cell;
+  vertical-align: middle;
+  font-family: CircularBold;
+  color: #383838;
+  padding-top: 10px;
+  padding-left: 10px;
+  font-size: 12px;
   color: rgba(56, 56, 56, 1);
+  @media (min-width: 576px) {
+    margin-left: 0px;
+    font-size: 17px;
+    padding-top: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 `;
 
 export default function() {
   return (
-    <Container className="exploreContainer">
+    <div>
       <Title>Explore Airbnb</Title>
-      <Row className="rowExplore">
-        <Col1 className="col1">
+      <Row>
+        <Col xs="6" sm="5" md="4">
           <Card>
-            <img src={explore1} alt="" />
-            <Text>Homes</Text>
+            <Img imgSrc={explore1} alt="" />
+            <CardText>Homes</CardText>
           </Card>
-        </Col1>
-        <Col1 className="col2">
+        </Col>
+        <Col xs="6" sm="5" md="4">
           <Card>
-            <img src={explore2} alt="" />
-            <Text>Experience</Text>
+            <Img imgSrc={explore2} alt="" />
+            <CardText>Experience</CardText>
           </Card>
-        </Col1>
-        <Col1 className="col3">
+        </Col>
+        <Col xs="6" sm="5" md="4">
           <Card>
-            <img src={explore3} alt="" />
-            <Text>Restaurants</Text>
+            <Img imgSrc={explore3} alt="" />
+            <CardText>Restaurants</CardText>
           </Card>
-        </Col1>
+        </Col>
       </Row>
-    </Container>
+    </div>
   );
 }

@@ -5,76 +5,61 @@ import popularReservations2 from "./popular-reservations2.png";
 import popularReservations3 from "./popular-reservations3.png";
 import popularReservations4 from "./popular-reservations4.png";
 import Card from "./Card";
-import nextPage from "./next.svg";
+import { A, Row, Col, NextPage } from "../styled";
 
-const Row = styled.div`display: flex;`;
-const Col1 = styled.div`
-  padding-left: 8px;
-  padding-right: 8px;
-  flex-basis: 25%;
-  box-sizing: border-box;
-`;
 const PopularTitle = styled.div`
   display: flex;
+  color: #383838;
   justify-content: space-between;
   align-items: center;
+  margin-top: 25px;
 `;
 
-const Title = styled.h2`
-  color: rgba(56, 56, 56, 1);
-  margin-top: 50px;
-`;
-const SeeAll = styled.p`
-  align: right;
-  padding-top: 20px;
-  font-size: 14px;
-`;
-const NextPage = styled.img`
-  margin-left: -30px;
-  margin-top: -70px;
-`;
+const Title = styled.h2`color: rgba(56, 56, 56, 1);`;
+
+const PopularDiv = styled.div`position: relative;`;
 export default function() {
   return (
-    <div>
+    <PopularDiv>
       <PopularTitle>
         <Title>Popular reservations around the world</Title>
-        <SeeAll>See all ></SeeAll>
+        <A href="#">See all ></A>
       </PopularTitle>
       <Row>
-        <Col1>
+        <Col xs="6" sm="4" md="3">
           <Card
             imgSrc={popularReservations1}
             type={"SPEAKEASY"}
             title={"Chumley's"}
             price={60}
           />
-        </Col1>
-        <Col1>
+        </Col>
+        <Col xs="6" sm="4" md="3">
           <Card
             imgSrc={popularReservations2}
             type={"KOREAN GASTROPUB"}
             title={"Hanjan"}
             price={50}
           />
-        </Col1>
-        <Col1>
+        </Col>
+        <Col xs="6" sm="4" md="3">
           <Card
             imgSrc={popularReservations3}
             type={"GERMAN AMERICAN"}
             title={"Prime meats"}
             price={55}
           />
-        </Col1>
-        <Col1>
+        </Col>
+        <Col xs="6" sm="4" md="3">
           <Card
             imgSrc={popularReservations4}
             type={"FINE SEAFOOD"}
             title={"Seaprice"}
             price={70}
           />
-        </Col1>
-        <NextPage src={nextPage} alt="" />
+        </Col>
       </Row>
-    </div>
+      <NextPage />
+    </PopularDiv>
   );
 }

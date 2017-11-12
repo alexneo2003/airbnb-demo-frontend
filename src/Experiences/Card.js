@@ -1,28 +1,27 @@
 import React from "react";
 import styled from "styled-components";
-import star from "./star.svg";
+import star from "../img/star.svg";
 
-export const Card = styled.div`align-items: center;`;
-const CardTitle = styled.div`
+import { Price, Reviews, ReviewStar, ReviewText } from "../styled";
+
+const Card = styled.div``;
+const CardTitle = styled.p`
   display: flex;
-  height: 30px;
+  white-space: pre-line;
+  font-size: 13px;
+  color: #383838;
+  @media (min-width: 576px) {
+    font-size: 15px;
+  }
 `;
-const Reviews = styled.div`display: flex;`;
-const ReviewStar = styled.img`
-  margin: 2px;
-  align-items: center;
-`;
-const ReviewText = styled.div`
-  display: flex;
-  margin: 5px;
-`;
+
+const Img = styled.img`width: auto;`;
 export default function ExperiencesCard(props) {
   return (
     <Card>
-      <img src={props.imgSrc} alt="" />
+      <Img src={props.imgSrc} alt="" />
       <CardTitle>
-        <strong>${props.price}</strong>
-        {props.title}
+        <Price>${props.price}</Price> {props.title}
       </CardTitle>
       <Reviews>
         <ReviewStar src={star} alt="star" />
