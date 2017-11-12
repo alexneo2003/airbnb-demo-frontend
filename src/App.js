@@ -7,18 +7,12 @@ import Homes from "./Homes";
 import Popular from "./Popular";
 import Featured from "./Featured";
 import Footer from "./Footer";
-import styled from "styled-components";
-
-const Main = styled.div`
-  width: 962px;
-  margin-left: auto;
-  margin-right: auto;
-`;
+import { Main } from "./styled";
 
 class App extends Component {
   render() {
     return (
-      <Main className="App">
+      <Main>
         <Header />
         <Explore />
         <Experiences />
