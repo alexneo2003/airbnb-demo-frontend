@@ -5,8 +5,8 @@ import star from "../img/star.svg";
 import { Price, Reviews, ReviewStar, ReviewText } from "../styled";
 
 const Card = styled.div``;
-const CardTitle = styled.p`
-  display: flex;
+const CardTitle = styled.div`
+  display: block;
   white-space: pre-line;
   font-size: 13px;
   color: #383838;
