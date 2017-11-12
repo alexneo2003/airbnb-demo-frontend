@@ -12,6 +12,8 @@ export const Main = styled.div`
   font-family: "Circular", Helvetica Neue, Helvetica, Arial, sans-serif;
   margin-left: auto;
   margin-right: auto;
+  padding-left: 8px;
+  padding-right: 8px;
   width: auto;
 
   @media (min-width: 768px) {
