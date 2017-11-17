@@ -2,17 +2,37 @@ import React from "react";
 import styled from "styled-components";
 
 export const Card = styled.div`line-height: 0.8;`;
-const Type = styled.p`font-size: 10px;`;
-const CardTitle = styled.div`font-size: 18px;`;
+const Type = styled.p`
+  font-size: 8px;
+  color: #383838;
+  font-family: CircularBold;
+  @media (min-width: 576px) {
+    font-size: 10px;
+  }
+`;
+const CardTitle = styled.div`
+  font-size: 14px;
+  color: #383838;
+  font-family: CircularBold;
+  @media (min-width: 576px) {
+    font-size: 18px;
+  }
+`;
 
 const Price = styled.p`
-  font-size: 18px;
   margin-top: 10px;
+  font-size: 12px;
+  color: #383838;
+  font-family: CircularLight;
+  @media (min-width: 576px) {
+    font-size: 18px;
+  }
 `;
+const Img = styled.img`width: auto;`;
 export default function PopularCard(props) {
   return (
     <Card>
-      <img src={props.imgSrc} alt="" />
+      <Img src={props.imgSrc} alt="" />
 
       <Type>{props.type}</Type>
 

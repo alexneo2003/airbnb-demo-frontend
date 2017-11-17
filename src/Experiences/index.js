@@ -5,79 +5,59 @@ import experience2 from "./experience2.png";
 import experience3 from "./experience3.png";
 import experience4 from "./experience4.png";
 import Card from "./Card";
-import nextPage from "./next.svg";
+import { A, Row, Col, NextPage } from "../styled";
 
-const Row = styled.div`display: flex;`;
-const Col1 = styled.div`
-  padding-left: 8px;
-  padding-right: 8px;
-  flex-basis: 25%;
-  box-sizing: border-box;
-`;
-
-const Title = styled.h2`
-  color: rgba(56, 56, 56, 1);
-  margin-top: 50px;
-`;
+const Title = styled.h2`color: rgba(56, 56, 56, 1);`;
 const ExpTitle = styled.div`
   display: flex;
   justify-content: space-between;
-
   align-items: center;
+  margin-top: 20px;
 `;
 
-const SeeAll = styled.p`
-  align: right;
-  padding-top: 20px;
-  font-size: 14px;
-`;
-
-const NextPage = styled.img`
-  margin-left: -30px;
-  margin-top: -60px;
-`;
+const ExperiencesDiv = styled.div`position: relative;`;
 export default function() {
   return (
-    <div>
+    <ExperiencesDiv>
       <ExpTitle>
         <Title>Experiences</Title>
-        <SeeAll>See all ></SeeAll>
+        <A href="#">See all ></A>
       </ExpTitle>
       <Row>
-        <Col1>
+        <Col xs="6" sm="4" md="3">
           <Card
             imgSrc={experience1}
             price={29}
             title="Forest therapy"
             reviewCount={44}
           />
-        </Col1>
-        <Col1>
+        </Col>
+        <Col xs="6" sm="4" md="3">
           <Card
             imgSrc={experience2}
             price={69}
             title="Whale watching"
             reviewCount={46}
           />
-        </Col1>
-        <Col1>
+        </Col>
+        <Col xs="6" sm="4" md="3">
           <Card
             imgSrc={experience3}
             price={69}
             title="Table Mountain Summit, Cable Car Down"
             reviewCount={44}
           />
-        </Col1>
-        <Col1>
+        </Col>
+        <Col xs="6" sm="4" md="3">
           <Card
             imgSrc={experience4}
             price={50}
             title="Salsa night"
             reviewCount={44}
           />
-        </Col1>
-        <NextPage src={nextPage} alt="" />
+        </Col>
       </Row>
-    </div>
+      <NextPage />
+    </ExperiencesDiv>
   );
 }

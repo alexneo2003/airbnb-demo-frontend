@@ -1,10 +1,14 @@
 import React from "react";
 import logo from "./logo.svg";
 import search from "./search.svg";
+import dropdown from "./drop.svg";
 import styled from "styled-components";
+import { A, Row, Col } from "../styled";
 
-const HeaderFlex = styled.div`
+const Header = styled.div`
+  padding-top: 10px;
   padding-bottom: 10px;
+  align-items: center;
   border-bottom: 1px solid rgba(72, 72, 72, 0.2);
 `;
 const Input = styled.input.attrs({
@@ -13,54 +17,73 @@ const Input = styled.input.attrs({
 })`
   background-image: url(${search});
   background-repeat: no-repeat;
-  background-position: 15px;
+  background-position: 10px;
   padding: 0.5em;
-  margin: 0.5em;
-  padding-left: 50px;
+  margin-top: 8px;
+  padding-left: 35px;
   border-radius: 4px;
-  width: 392px;
-  font-size: 24px;
-`;
-
-const ImgLogo = styled.img`align-items: center;`;
-
-const Row = styled.div`
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  margin-top: 20px;
-  margin-bottom: 20px;
-`;
-const Col1 = styled.div`flex-basis: 8.3333%;`;
-const Col5 = styled.div`flex-basis: 58.3333%;`;
-const Col6 = styled.div`
-  display: flex;
-  flex-basis: 33.3333%;
-  justify-content: space-between;
-`;
-
-const A = styled.a`
-  color: #383838;
-  text-decoration: none;
+  border: 1px solid rgba(72, 72, 72, 0.2);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: auto;
   font-size: 14px;
+  color: #383838;
+  @media (min-width: 576px) {
+    font-size: 16px;
+    width: 350px;
+  }
 `;
+
+const CenterLogo = styled.div`margin-top: 8px;`;
+
+const ImgLogo = styled.a`
+  position: relative;
+  &:after {
+    visibility: visible;
+    position: absolute;
+    content: "";
+    background: url(${dropdown}) no-repeat 5px;
+    width: 20px;
+    height: 15px;
+    bottom: 40%;
+    right: -20px;
+  }
+  @media (min-width: 992px) {
+    &:after {
+      visibility: hidden;
+    }
+  }
+`;
+
+const HeaderCol4 = styled(Col)`
+  display: none;
+  @media (min-width: 992px) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+`;
+
 export default function() {
   return (
-    <HeaderFlex>
+    <Header>
       <Row>
-        <Col1>
-          <ImgLogo src={logo} alt="logo" />
-        </Col1>
-        <Col5>
+        <Col xs="2" sm="1" md="1">
+          <CenterLogo>
+            <ImgLogo>
+              <img src={logo} alt="logo" />
+            </ImgLogo>
+          </CenterLogo>
+        </Col>
+        <Col xs="10" sm="7" md="7">
           <Input />
-        </Col5>
-        <Col6>
+        </Col>
+        <HeaderCol4 xs="6" sm="4" md="4">
           <A href="#">Become a host</A>
           <A href="#">Help</A>
           <A href="#">Sign Up</A>
           <A href="#">Log In</A>
-        </Col6>
+        </HeaderCol4>
       </Row>
-    </HeaderFlex>
+    </Header>
   );
 }

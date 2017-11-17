@@ -5,67 +5,105 @@ import fb from "./facebook.svg";
 import instagram from "./instagram.svg";
 import tw from "./twitter.svg";
 import arrow from "./arrow-down.svg";
+import { A, Row, Col } from "../styled";
 
-const Row = styled.div`
-  display: flex;
-  margin-top: 50px;
-`;
-const Col1 = styled.div`
-  padding-left: 8px;
-  padding-right: 8px;
-  flex-basis: 25%;
-  box-sizing: border-box;
-`;
+const Footer = styled.div`margin-top: 25px;`;
 const Select = styled.select`
   background-image: url(${arrow});
   background-repeat: no-repeat;
   background-position: calc(100% - 15px) calc(1em + 2px),
     calc(100% - 15px) calc(1em + 2px), 100% 0;
-  -webkit-appearance: none;
-  -moz-appearance: none;
   appearance: none;
+  &::-ms-expand {
+    display: none;
+  }
   margin-top: 15px;
   padding: 15px;
-  width: 80%;
+  width: 100%;
   border-radius: 4px;
+  font-size: 12px;
+  color: #383838;
+  @media (min-width: 576px) {
+    font-size: 15px;
+    width: 80%;
+  }
+  @media (min-width: 768px) {
+    font-size: 18px;
+  }
 `;
 const Title = styled.p`
-  font-size: 15px;
-  font-weight: 600;
+  font-size: 12px;
   color: #383838;
+  font-family: CircularBold;
+  @media (min-width: 992px) {
+    font-size: 15px;
+  }
 `;
-const TextItems = styled.p`
-  font-size: 15px;
+const TextMenuItems = styled.p`
+  font-size: 12px;
   color: #383838;
-  line-height: 0.8;
+  font-family: Circular;
+  @media (min-width: 992px) {
+    font-size: 15px;
+  }
+`;
+const ColSelect = styled(Col)`
+  width: 100%;
+  display: flex;
+  @media (min-width: 576px) {
+    width: auto;
+    display: inline;
+  }
+`;
+const ColMobile = styled(Col)`
+  display: none;
+  @media (min-width: 576px) {
+    display: block;
+  }
 `;
 
 const Border = styled.footer`
-  border-bottom: 1px solid rgba(151, 151, 151, 1);
+  border-bottom: 1px solid rgba(72, 72, 72, 0.2);
   margin-top: 50px;
 `;
 
-const Nav = styled.div`
+const FooterColLogo = styled(Col)`
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
-const DivLogo = styled.div`
-  display: flex;
-  justify-content: space-between;
-  width: 130px;
-`;
-const DivMenu = styled.div`
-  display: flex;
-  justify-content: space-between;
-  width: 350px;
+  justify-content: flex-start;
 `;
 
+const FooterColMenu = styled(Col)`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
+const RowMobile = styled(Row)`
+  display: block;
+  @media (min-width: 576px) {
+    display: flex;
+  }
+`;
+
+const CopyrightMenu = styled.p`
+  font-size: 12px;
+  color: #383838;
+  font-family: Circular;
+  @media (min-width: 992px) {
+    font-size: 15px;
+  }
+`;
+
+const FooterAMenu = styled(A)`
+  font-size: 12px;
+  @media (min-width: 992px) {
+    font-size: 15px;
+  }
+`;
 export default function() {
   return (
-    <div>
+    <Footer>
       <Row>
-        <Col1>
+        <ColSelect xs="12" sm="4">
           <Select>
             <option>English</option>
             <option>Russian</option>
@@ -75,56 +113,56 @@ export default function() {
             <option>Russian Ruble</option>
             <option>Ukrainian Hryvna</option>
           </Select>
-        </Col1>
-        <Col1>
+        </ColSelect>
+        <ColMobile sm="3" md="3">
           <Title>Airbnb</Title>
-          <TextItems>About us</TextItems>
-          <TextItems>Careers</TextItems>
-          <TextItems>Press</TextItems>
-          <TextItems>Policies</TextItems>
-          <TextItems>Help</TextItems>
-          <TextItems>Diversity & Belonging</TextItems>
-        </Col1>
-        <Col1>
+          <TextMenuItems>About us</TextMenuItems>
+          <TextMenuItems>Careers</TextMenuItems>
+          <TextMenuItems>Press</TextMenuItems>
+          <TextMenuItems>Policies</TextMenuItems>
+          <TextMenuItems>Help</TextMenuItems>
+          <TextMenuItems>Diversity & Belonging</TextMenuItems>
+        </ColMobile>
+        <ColMobile sm="3" md="3">
           <Title>Discover</Title>
-          <TextItems>Trust & Safety</TextItems>
-          <TextItems>Travel Credit</TextItems>
-          <TextItems>Gift Cards</TextItems>
-          <TextItems>Airbnb Citizen</TextItems>
-          <TextItems>Business Travel</TextItems>
-          <TextItems>Guidebooks</TextItems>
-          <TextItems>Airbnb Mag</TextItems>
-        </Col1>
-        <Col1>
+          <TextMenuItems>Trust & Safety</TextMenuItems>
+          <TextMenuItems>Travel Credit</TextMenuItems>
+          <TextMenuItems>Gift Cards</TextMenuItems>
+          <TextMenuItems>Airbnb Citizen</TextMenuItems>
+          <TextMenuItems>Business Travel</TextMenuItems>
+          <TextMenuItems>Guidebooks</TextMenuItems>
+          <TextMenuItems>Airbnb Mag</TextMenuItems>
+        </ColMobile>
+        <ColMobile sm="2" md="2">
           <Title>Hosting</Title>
-          <TextItems>Why Host</TextItems>
-          <TextItems>Hospitality</TextItems>
-          <TextItems>Responsible Hosting</TextItems>
-          <TextItems>Community Center</TextItems>
-        </Col1>
+          <TextMenuItems>Why Host</TextMenuItems>
+          <TextMenuItems>Hospitality</TextMenuItems>
+          <TextMenuItems>Responsible Hosting</TextMenuItems>
+          <TextMenuItems>Community Center</TextMenuItems>
+        </ColMobile>
       </Row>
       <Border />
 
-      <Nav>
-        <DivLogo>
+      <RowMobile>
+        <FooterColLogo xs="5" sm="7" md="8">
           <img src={logo} alt="" />
-          <p> © Airbnb Inc. </p>
-        </DivLogo>
-        <DivMenu>
-          <p> Terms </p>
-          <p> Privacy </p>
-          <p> Site map</p>
-          <a href="#">
+          <CopyrightMenu> © Airbnb Inc. </CopyrightMenu>
+        </FooterColLogo>
+        <FooterColMenu xs="8" sm="5" md="4">
+          <FooterAMenu href="#"> Terms </FooterAMenu>
+          <FooterAMenu href="#"> Privacy </FooterAMenu>
+          <FooterAMenu href="#"> Site map</FooterAMenu>
+          <A href="#">
             <img src={fb} alt="" />
-          </a>
-          <a href="#">
+          </A>
+          <A href="#">
             <img src={tw} alt="" />
-          </a>
-          <a href="#">
+          </A>
+          <A href="#">
             <img src={instagram} alt="" />
-          </a>
-        </DivMenu>
-      </Nav>
-    </div>
+          </A>
+        </FooterColMenu>
+      </RowMobile>
+    </Footer>
   );
 }

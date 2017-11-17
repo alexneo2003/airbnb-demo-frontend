@@ -4,43 +4,27 @@ import homes1 from "./homes1.png";
 import homes2 from "./homes2.png";
 import homes3 from "./homes3.png";
 import Card from "./Card";
-import nextPage from "./next.svg";
+import { A, Row, Col, NextPage } from "../styled";
 
-const Row = styled.div`display: flex;`;
-const Col1 = styled.div`
-  padding-left: 8px;
-  padding-right: 8px;
-  flex-basis: 25%;
-  box-sizing: border-box;
-`;
 const HomesTitle = styled.div`
+  margin-top: 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 `;
 
-const Title = styled.h2`
-  color: rgba(56, 56, 56, 1);
-  margin-top: 50px;
-`;
-const SeeAll = styled.p`
-  align: right;
-  padding-top: 20px;
-  font-size: 14px;
-`;
-const NextPage = styled.img`
-  margin-left: -30px;
-  margin-top: -70px;
-`;
+const Title = styled.h2`color: rgba(56, 56, 56, 1);`;
+
+const HomesDiv = styled.div`position: relative;`;
 export default function() {
   return (
-    <div>
+    <HomesDiv>
       <HomesTitle>
         <Title>Homes</Title>
-        <SeeAll>See all ></SeeAll>
+        <A href="#">See all ></A>
       </HomesTitle>
       <Row>
-        <Col1>
+        <Col xs="8" sm="5" md="4">
           <Card
             imgSrc={homes1}
             price={80}
@@ -50,8 +34,8 @@ export default function() {
             reviewsCount={99}
             reviewsStatus={"Superhost"}
           />
-        </Col1>
-        <Col1>
+        </Col>
+        <Col xs="8" sm="5" md="4">
           <Card
             imgSrc={homes2}
             price={80}
@@ -61,8 +45,8 @@ export default function() {
             reviewsCount={99}
             reviewsStatus={"Superhost"}
           />
-        </Col1>
-        <Col1>
+        </Col>
+        <Col xs="8" sm="5" md="4">
           <Card
             imgSrc={homes3}
             price={200}
@@ -72,9 +56,9 @@ export default function() {
             reviewsCount={364}
             reviewsStatus={"Superhost"}
           />
-        </Col1>
-        <NextPage src={nextPage} alt="" />
+        </Col>
       </Row>
-    </div>
+      <NextPage />
+    </HomesDiv>
   );
 }
