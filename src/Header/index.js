@@ -9,14 +9,11 @@ const Header = styled.header`
   width: 100%;
   padding-top: 16px;
   padding-bottom: 16px;
-  padding-left: 8px;
-  padding-right: 8px;
   border-bottom: 1px solid rgba(72, 72, 72, 0.2);
 `;
-const HeaderElements = styled.div`
+const HeaderRow = styled(Row)`
   width: 100%;
   margin: 0 auto;
-  align-items: center;
   @media (min-width: 992px) {
     max-width: 976px;
   }
@@ -33,6 +30,7 @@ const Input = styled.input.attrs({
   padding-right: 14px;
   padding-bottom: 14px;
   padding-left: 35px;
+  margin-left: 8px;
   border-radius: 4px;
   border: 1px solid rgba(72, 72, 72, 0.2);
   box-shadow: 0 2px 4px rgba(72, 72, 72, 0.08);
@@ -50,9 +48,9 @@ const Input = styled.input.attrs({
   }
 `;
 
-const CenterLogo = styled.div`margin-top: 8px;`;
-
-const ImgLogo = styled.a`
+const ImgLogo = styled.div`
+  max-width: 32px;
+  margin-top: 8px;
   position: relative;
   &:after {
     visibility: visible;
@@ -61,8 +59,8 @@ const ImgLogo = styled.a`
     background: url(${dropdown}) no-repeat 5px;
     width: 20px;
     height: 15px;
-    bottom: 70%;
-    right: -20px;
+    bottom: 35%;
+    left: 32px;
   }
   @media (min-width: 992px) {
     &:after {
@@ -71,7 +69,7 @@ const ImgLogo = styled.a`
   }
 `;
 
-const HeaderCol4 = styled(Col)`
+const MenuColumn = styled(Col)`
   display: none;
   @media (min-width: 992px) {
     display: flex;
@@ -84,27 +82,23 @@ const HeaderCol4 = styled(Col)`
 export default function() {
   return (
     <Header>
-      <HeaderElements>
-        <Row>
-          <Col xs="2" sm="1" md="1">
-            <CenterLogo>
-              <ImgLogo>
-                <img src={logo} alt="logo" />
-              </ImgLogo>
-            </CenterLogo>
-          </Col>
-          <Col xs="10" sm="7" md="5">
-            <Input />
-          </Col>
-          <Col sm="2" md="2" />
-          <HeaderCol4 sm="4" md="4">
-            <A href="#">Become a host</A>
-            <A href="#">Help</A>
-            <A href="#">Sign Up</A>
-            <A href="#">Log In</A>
-          </HeaderCol4>
-        </Row>
-      </HeaderElements>
+      <HeaderRow>
+        <Col xs="2" md="1" lg="1">
+          <ImgLogo>
+            <img src={logo} alt="logo" />
+          </ImgLogo>
+        </Col>
+        <Col xs="10" md="7" lg="5">
+          <Input />
+        </Col>
+        <Col xs="0" md="2" lg="2" />
+        <MenuColumn md="4" lg="4">
+          <A href="#">Become a host</A>
+          <A href="#">Help</A>
+          <A href="#">Sign Up</A>
+          <A href="#">Log In</A>
+        </MenuColumn>
+      </HeaderRow>
     </Header>
   );
 }

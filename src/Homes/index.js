@@ -4,31 +4,35 @@ import homes1 from "./homes1.png";
 import homes2 from "./homes2.png";
 import homes3 from "./homes3.png";
 import Card from "./Card";
-import { A, Row, Col, NextPage } from "../styled";
+import { SeeAll, Row, Col, NextPage } from "../styled";
 
-const HomesTitle = styled.div`
+const TitleRow = styled.div`
+  margin-top: 38px;
+  margin-bottom: 24px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 `;
 
 const Title = styled.h2`
-  font-size: 32px;
-  margin-bottom: 24px;
-  margin-top: 38px;
+  font-size: 24px;
+  margin: 0px;
   font-family: CircularBold;
+  @media (min-width: 768px) {
+    font-size: 32px;
+  }
 `;
 
 const Homes = styled.div`position: relative;`;
 export default function() {
   return (
     <Homes>
-      <HomesTitle>
+      <TitleRow>
         <Title>Homes</Title>
-        <A href="#">See all ></A>
-      </HomesTitle>
+        <SeeAll>See all</SeeAll>
+      </TitleRow>
       <Row>
-        <Col xs="8" sm="5" md="4">
+        <Col xs="8" md="5" lg="4">
           <Card
             imgSrc={homes1}
             price={80}
@@ -39,7 +43,7 @@ export default function() {
             reviewsStatus={"Superhost"}
           />
         </Col>
-        <Col xs="8" sm="5" md="4">
+        <Col xs="8" md="5" lg="4">
           <Card
             imgSrc={homes2}
             price={80}
@@ -50,7 +54,7 @@ export default function() {
             reviewsStatus={"Superhost"}
           />
         </Col>
-        <Col xs="8" sm="5" md="4">
+        <Col xs="8" md="5" lg="4">
           <Card
             imgSrc={homes3}
             price={200}

@@ -4,8 +4,8 @@ import star from "../img/star.svg";
 
 import { Price, Reviews, ReviewStar, ReviewText } from "../styled";
 
-const Card = styled.div``;
-const CardTitleText = styled.div`
+const Card = styled.div`cursor: pointer;`;
+const TitleText = styled.div`
   display: block;
   white-space: pre-line;
   font-size: 13px;
@@ -17,14 +17,19 @@ const CardTitleText = styled.div`
   }
 `;
 
-const Img = styled.img`width: auto;`;
+const Img = styled.img`
+  height: 216px;
+  @media (min-width: 768px) {
+    height: 346px;
+  }
+`;
 export default function ExperiencesCard(props) {
   return (
     <Card>
       <Img src={props.imgSrc} alt="" />
-      <CardTitleText>
+      <TitleText>
         <Price>${props.price}</Price> {props.title}
-      </CardTitleText>
+      </TitleText>
       <Reviews>
         <ReviewStar src={star} alt="star" />
         <ReviewStar src={star} alt="star" />

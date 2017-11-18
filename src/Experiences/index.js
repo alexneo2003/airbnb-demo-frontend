@@ -5,30 +5,34 @@ import experience2 from "./experience2.png";
 import experience3 from "./experience3.png";
 import experience4 from "./experience4.png";
 import Card from "./Card";
-import { A, Row, Col, NextPage } from "../styled";
+import { SeeAll, Row, Col, NextPage } from "../styled";
 
-const Title = styled.h2`
-  font-size: 32px;
-  margin-bottom: 24px;
+const TitleRow = styled.div`
   margin-top: 38px;
-  font-family: CircularBold;
-`;
-const ExperienceTitle = styled.div`
+  margin-bottom: 24px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 `;
+const TitleText = styled.h2`
+  font-size: 24px;
+  margin: 0px;
+  font-family: CircularBold;
+  @media (min-width: 768px) {
+    font-size: 32px;
+  }
+`;
 
-const ExperiencesDiv = styled.div`position: relative;`;
+const Experiences = styled.div`position: relative;`;
 export default function() {
   return (
-    <ExperiencesDiv>
-      <ExperienceTitle>
-        <Title>Experiences</Title>
-        <A href="#">See all ></A>
-      </ExperienceTitle>
+    <Experiences>
+      <TitleRow>
+        <TitleText>Experiences</TitleText>
+        <SeeAll>See all</SeeAll>
+      </TitleRow>
       <Row>
-        <Col xs="6" sm="4" md="3">
+        <Col xs="6" md="4" lg="3">
           <Card
             imgSrc={experience1}
             price={29}
@@ -36,7 +40,7 @@ export default function() {
             reviewCount={44}
           />
         </Col>
-        <Col xs="6" sm="4" md="3">
+        <Col xs="6" md="4" lg="3">
           <Card
             imgSrc={experience2}
             price={69}
@@ -44,7 +48,7 @@ export default function() {
             reviewCount={46}
           />
         </Col>
-        <Col xs="6" sm="4" md="3">
+        <Col xs="6" md="4" lg="3">
           <Card
             imgSrc={experience3}
             price={69}
@@ -52,7 +56,7 @@ export default function() {
             reviewCount={44}
           />
         </Col>
-        <Col xs="6" sm="4" md="3">
+        <Col xs="6" md="4" lg="3">
           <Card
             imgSrc={experience4}
             price={50}
@@ -62,6 +66,6 @@ export default function() {
         </Col>
       </Row>
       <NextPage />
-    </ExperiencesDiv>
+    </Experiences>
   );
 }
