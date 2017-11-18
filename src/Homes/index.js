@@ -7,18 +7,22 @@ import Card from "./Card";
 import { A, Row, Col, NextPage } from "../styled";
 
 const HomesTitle = styled.div`
-  margin-top: 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 `;
 
-const Title = styled.h2`color: rgba(56, 56, 56, 1);`;
+const Title = styled.h2`
+  font-size: 32px;
+  margin-bottom: 24px;
+  margin-top: 38px;
+  font-family: CircularBold;
+`;
 
-const HomesDiv = styled.div`position: relative;`;
+const Homes = styled.div`position: relative;`;
 export default function() {
   return (
-    <HomesDiv>
+    <Homes>
       <HomesTitle>
         <Title>Homes</Title>
         <A href="#">See all ></A>
@@ -59,6 +63,6 @@ export default function() {
         </Col>
       </Row>
       <NextPage />
-    </HomesDiv>
+    </Homes>
   );
 }

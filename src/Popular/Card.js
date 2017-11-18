@@ -4,7 +4,7 @@ import styled from "styled-components";
 export const Card = styled.div`line-height: 0.8;`;
 const Type = styled.p`
   font-size: 8px;
-  color: #383838;
+  margin-top: 12px;
   font-family: CircularBold;
   @media (min-width: 576px) {
     font-size: 10px;
@@ -12,7 +12,6 @@ const Type = styled.p`
 `;
 const CardTitle = styled.div`
   font-size: 14px;
-  color: #383838;
   font-family: CircularBold;
   @media (min-width: 576px) {
     font-size: 18px;
@@ -22,7 +21,6 @@ const CardTitle = styled.div`
 const Price = styled.p`
   margin-top: 10px;
   font-size: 12px;
-  color: #383838;
   font-family: CircularLight;
   @media (min-width: 576px) {
     font-size: 18px;

@@ -12,15 +12,17 @@ import { Main } from "./styled";
 class App extends Component {
   render() {
     return (
-      <Main>
+      <div>
         <Header />
-        <Explore />
-        <Experiences />
-        <Homes />
-        <Popular />
-        <Featured />
+        <Main>
+          <Explore />
+          <Experiences />
+          <Homes />
+          <Popular />
+          <Featured />
+        </Main>
         <Footer />
-      </Main>
+      </div>
     );
   }
 }

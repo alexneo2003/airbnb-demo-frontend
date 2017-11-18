@@ -8,15 +8,17 @@ import featured5 from "./featured5.png";
 import featured6 from "./featured6.png";
 import { Row, Col, NextPage } from "../styled";
 
-const Title = styled.h2`color: rgba(56, 56, 56, 1);`;
-const FeaturedDiv = styled.div`
-  position: relative;
-  margin-top: 25px;
+const Title = styled.h2`
+  font-size: 32px;
+  margin-bottom: 24px;
+  margin-top: 38px;
+  font-family: CircularBold;
 `;
+const Featured = styled.div`position: relative;`;
 const Img = styled.img`width: auto;`;
 const City = styled.p`
   font-size: 12px;
-  color: #383838;
+  margin-top: 8px;
   font-family: CircularBold;
   @media (min-width: 576px) {
     font-size: 15px;
@@ -24,7 +26,7 @@ const City = styled.p`
 `;
 export default function() {
   return (
-    <FeaturedDiv>
+    <Featured>
       <Title>Featured destination</Title>
       <Row>
         <Col xs="4" sm="3" md="2">
@@ -53,6 +55,6 @@ export default function() {
         </Col>
       </Row>
       <NextPage />
-    </FeaturedDiv>
+    </Featured>
   );
 }

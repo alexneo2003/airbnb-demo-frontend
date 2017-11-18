@@ -7,6 +7,8 @@ import "../App.css";
 import { Row, Col } from "../styled";
 
 const Card = styled.button`
+  cursor: pointer;
+  overflow: hidden;
   background-color: transparent;
   width: 100%;
   display: flex;
@@ -22,9 +24,10 @@ const Card = styled.button`
     align-items: left;
   }
 `;
-const Title = styled.h2`
-  color: rgba(56, 56, 56, 1);
+const TitleText = styled.h2`
   margin-top: 50px;
+  font-size: 32px;
+  font-family: CircularBold;
 `;
 const Img = styled.div`
   background-image: url(${props => props.imgSrc});
@@ -43,7 +46,6 @@ const CardText = styled.p`
   padding-top: 10px;
   padding-left: 10px;
   font-size: 12px;
-  color: rgba(56, 56, 56, 1);
   @media (min-width: 576px) {
     margin-left: 0px;
     font-size: 17px;
@@ -56,7 +58,7 @@ const CardText = styled.p`
 export default function() {
   return (
     <div>
-      <Title>Explore Airbnb</Title>
+      <TitleText>Explore Airbnb</TitleText>
       <Row>
         <Col xs="6" sm="5" md="4">
           <Card>

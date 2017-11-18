@@ -7,22 +7,26 @@ import experience4 from "./experience4.png";
 import Card from "./Card";
 import { A, Row, Col, NextPage } from "../styled";
 
-const Title = styled.h2`color: rgba(56, 56, 56, 1);`;
-const ExpTitle = styled.div`
+const Title = styled.h2`
+  font-size: 32px;
+  margin-bottom: 24px;
+  margin-top: 38px;
+  font-family: CircularBold;
+`;
+const ExperienceTitle = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 20px;
 `;
 
 const ExperiencesDiv = styled.div`position: relative;`;
 export default function() {
   return (
     <ExperiencesDiv>
-      <ExpTitle>
+      <ExperienceTitle>
         <Title>Experiences</Title>
         <A href="#">See all ></A>
-      </ExpTitle>
+      </ExperienceTitle>
       <Row>
         <Col xs="6" sm="4" md="3">
           <Card

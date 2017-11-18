@@ -5,11 +5,13 @@ import star from "../img/star.svg";
 import { Price, Reviews, ReviewStar, ReviewText } from "../styled";
 
 const Card = styled.div``;
-const CardTitle = styled.div`
+const CardTitleText = styled.div`
   display: block;
   white-space: pre-line;
   font-size: 13px;
   color: #383838;
+  margin-top: 8px;
+  margin-bottom: 3px;
   @media (min-width: 576px) {
     font-size: 15px;
   }
@@ -20,9 +22,9 @@ export default function ExperiencesCard(props) {
   return (
     <Card>
       <Img src={props.imgSrc} alt="" />
-      <CardTitle>
+      <CardTitleText>
         <Price>${props.price}</Price> {props.title}
-      </CardTitle>
+      </CardTitleText>
       <Reviews>
         <ReviewStar src={star} alt="star" />
         <ReviewStar src={star} alt="star" />

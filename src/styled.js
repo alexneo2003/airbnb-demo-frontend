@@ -8,8 +8,9 @@ function getWidthString(span, row) {
   return `width: ${width}%;`;
 }
 
-export const Main = styled.div`
+export const Main = styled.main`
   font-family: "Circular", Helvetica Neue, Helvetica, Arial, sans-serif;
+  color: #383838;
   margin-left: auto;
   margin-right: auto;
   padding-left: 8px;
@@ -17,10 +18,10 @@ export const Main = styled.div`
   width: auto;
 
   @media (min-width: 768px) {
-    width: 752px;
+    width: 756px;
   }
   @media (min-width: 992px) {
-    width: 962px;
+    width: 976px;
   }
 `;
 
@@ -66,7 +67,7 @@ export const NextPage = styled.img.attrs({
   top: 50%;
   right: -16px;
   display: none;
-  @media (min-width: 996px) {
+  @media (min-width: 992px) {
     display: block;
   }
 `;

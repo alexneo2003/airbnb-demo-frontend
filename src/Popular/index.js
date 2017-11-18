@@ -12,15 +12,19 @@ const PopularTitle = styled.div`
   color: #383838;
   justify-content: space-between;
   align-items: center;
-  margin-top: 25px;
 `;
 
-const Title = styled.h2`color: rgba(56, 56, 56, 1);`;
+const Title = styled.h2`
+  font-size: 32px;
+  margin-bottom: 24px;
+  margin-top: 38px;
+  font-family: CircularBold;
+`;
 
-const PopularDiv = styled.div`position: relative;`;
+const Popular = styled.div`position: relative;`;
 export default function() {
   return (
-    <PopularDiv>
+    <Popular>
       <PopularTitle>
         <Title>Popular reservations around the world</Title>
         <A href="#">See all ></A>
@@ -60,6 +64,6 @@ export default function() {
         </Col>
       </Row>
       <NextPage />
-    </PopularDiv>
+    </Popular>
   );
 }

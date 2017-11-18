@@ -6,7 +6,8 @@ import { Price, Reviews, ReviewStar, ReviewText } from "../styled";
 export const Card = styled.div`align-items: center;`;
 const CardTitle = styled.div`
   display: flex;
-  margin: 0px;
+  margin-top: 6px;
+  margin-bottom: 3px;
   color: #383838;
   font-size: 13px;
 `;

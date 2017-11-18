@@ -7,7 +7,18 @@ import tw from "./twitter.svg";
 import arrow from "./arrow-down.svg";
 import { A, Row, Col } from "../styled";
 
-const Footer = styled.div`margin-top: 25px;`;
+const Footer = styled.footer`
+  margin-top: 48px;
+  padding-top: 32px;
+  width: 100%;
+  border-top: 1px solid rgba(72, 72, 72, 0.2);
+`;
+const FooterContainer = styled.div`
+  margin: 0 auto;
+  max-width: 976px;
+  padding-left: 8px;
+  padding-right: 8px;
+`;
 const Select = styled.select`
   background-image: url(${arrow});
   background-repeat: no-repeat;
@@ -18,11 +29,13 @@ const Select = styled.select`
     display: none;
   }
   margin-top: 15px;
-  padding: 15px;
+  margin-left: 8px;
+  margin-right: 8px;
+  padding: 14px;
   width: 100%;
   border-radius: 4px;
   font-size: 12px;
-  color: #383838;
+  font-family: CircularLight;
   @media (min-width: 576px) {
     font-size: 15px;
     width: 80%;
@@ -31,17 +44,19 @@ const Select = styled.select`
     font-size: 18px;
   }
 `;
-const Title = styled.p`
+const MenuTitle = styled.div`
   font-size: 12px;
-  color: #383838;
+  margin-top: 12px;
+  margin-bottom: 12px;
   font-family: CircularBold;
   @media (min-width: 992px) {
     font-size: 15px;
   }
 `;
-const TextMenuItems = styled.p`
+const MenuItems = styled.div`
+  margin-bottom: 8px;
   font-size: 12px;
-  color: #383838;
+  color: #636363;
   font-family: Circular;
   @media (min-width: 992px) {
     font-size: 15px;
@@ -62,9 +77,10 @@ const ColMobile = styled(Col)`
   }
 `;
 
-const Border = styled.footer`
-  border-bottom: 1px solid rgba(72, 72, 72, 0.2);
-  margin-top: 50px;
+const Border = styled.div`
+  border-top: 1px solid rgba(72, 72, 72, 0.2);
+  margin-top: 36px;
+  padding-bottom: 24px;
 `;
 
 const FooterColLogo = styled(Col)`
@@ -86,6 +102,7 @@ const RowMobile = styled(Row)`
 
 const CopyrightMenu = styled.p`
   font-size: 12px;
+  margin-left: 12px;
   color: #383838;
   font-family: Circular;
   @media (min-width: 992px) {
@@ -102,67 +119,68 @@ const FooterAMenu = styled(A)`
 export default function() {
   return (
     <Footer>
-      <Row>
-        <ColSelect xs="12" sm="4">
-          <Select>
-            <option>English</option>
-            <option>Russian</option>
-          </Select>
-          <Select>
-            <option>United States Dollar</option>
-            <option>Russian Ruble</option>
-            <option>Ukrainian Hryvna</option>
-          </Select>
-        </ColSelect>
-        <ColMobile sm="3" md="3">
-          <Title>Airbnb</Title>
-          <TextMenuItems>About us</TextMenuItems>
-          <TextMenuItems>Careers</TextMenuItems>
-          <TextMenuItems>Press</TextMenuItems>
-          <TextMenuItems>Policies</TextMenuItems>
-          <TextMenuItems>Help</TextMenuItems>
-          <TextMenuItems>Diversity & Belonging</TextMenuItems>
-        </ColMobile>
-        <ColMobile sm="3" md="3">
-          <Title>Discover</Title>
-          <TextMenuItems>Trust & Safety</TextMenuItems>
-          <TextMenuItems>Travel Credit</TextMenuItems>
-          <TextMenuItems>Gift Cards</TextMenuItems>
-          <TextMenuItems>Airbnb Citizen</TextMenuItems>
-          <TextMenuItems>Business Travel</TextMenuItems>
-          <TextMenuItems>Guidebooks</TextMenuItems>
-          <TextMenuItems>Airbnb Mag</TextMenuItems>
-        </ColMobile>
-        <ColMobile sm="2" md="2">
-          <Title>Hosting</Title>
-          <TextMenuItems>Why Host</TextMenuItems>
-          <TextMenuItems>Hospitality</TextMenuItems>
-          <TextMenuItems>Responsible Hosting</TextMenuItems>
-          <TextMenuItems>Community Center</TextMenuItems>
-        </ColMobile>
-      </Row>
-      <Border />
-
-      <RowMobile>
-        <FooterColLogo xs="5" sm="7" md="8">
-          <img src={logo} alt="" />
-          <CopyrightMenu> © Airbnb Inc. </CopyrightMenu>
-        </FooterColLogo>
-        <FooterColMenu xs="8" sm="5" md="4">
-          <FooterAMenu href="#"> Terms </FooterAMenu>
-          <FooterAMenu href="#"> Privacy </FooterAMenu>
-          <FooterAMenu href="#"> Site map</FooterAMenu>
-          <A href="#">
-            <img src={fb} alt="" />
-          </A>
-          <A href="#">
-            <img src={tw} alt="" />
-          </A>
-          <A href="#">
-            <img src={instagram} alt="" />
-          </A>
-        </FooterColMenu>
-      </RowMobile>
+      <FooterContainer>
+        <Row>
+          <ColSelect xs="12" sm="4">
+            <Select>
+              <option>English</option>
+              <option>Russian</option>
+            </Select>
+            <Select>
+              <option>United States Dollar</option>
+              <option>Russian Ruble</option>
+              <option>Ukrainian Hryvna</option>
+            </Select>
+          </ColSelect>
+          <ColMobile sm="3" md="3">
+            <MenuTitle>Airbnb</MenuTitle>
+            <MenuItems>About us</MenuItems>
+            <MenuItems>Careers</MenuItems>
+            <MenuItems>Press</MenuItems>
+            <MenuItems>Policies</MenuItems>
+            <MenuItems>Help</MenuItems>
+            <MenuItems>Diversity & Belonging</MenuItems>
+          </ColMobile>
+          <ColMobile sm="3" md="3">
+            <MenuTitle>Discover</MenuTitle>
+            <MenuItems>Trust & Safety</MenuItems>
+            <MenuItems>Travel Credit</MenuItems>
+            <MenuItems>Gift Cards</MenuItems>
+            <MenuItems>Airbnb Citizen</MenuItems>
+            <MenuItems>Business Travel</MenuItems>
+            <MenuItems>Guidebooks</MenuItems>
+            <MenuItems>Airbnb Mag</MenuItems>
+          </ColMobile>
+          <ColMobile sm="2" md="2">
+            <MenuTitle>Hosting</MenuTitle>
+            <MenuItems>Why Host</MenuItems>
+            <MenuItems>Hospitality</MenuItems>
+            <MenuItems>Responsible Hosting</MenuItems>
+            <MenuItems>Community Center</MenuItems>
+          </ColMobile>
+        </Row>
+        <Border />
+        <RowMobile>
+          <FooterColLogo xs="5" sm="7" md="8">
+            <img src={logo} alt="" />
+            <CopyrightMenu> © Airbnb Inc. </CopyrightMenu>
+          </FooterColLogo>
+          <FooterColMenu xs="8" sm="5" md="4">
+            <FooterAMenu href="#"> Terms </FooterAMenu>
+            <FooterAMenu href="#"> Privacy </FooterAMenu>
+            <FooterAMenu href="#"> Site map</FooterAMenu>
+            <A href="#">
+              <img src={fb} alt="" />
+            </A>
+            <A href="#">
+              <img src={tw} alt="" />
+            </A>
+            <A href="#">
+              <img src={instagram} alt="" />
+            </A>
+          </FooterColMenu>
+        </RowMobile>
+      </FooterContainer>
     </Footer>
   );
 }
