@@ -3,8 +3,11 @@ import styled from "styled-components";
 import star from "../img/star.svg";
 import { Price, Reviews, ReviewStar, ReviewText } from "../styled";
 
-export const Card = styled.div`align-items: center;`;
-const CardTitle = styled.div`
+export const Card = styled.div`
+  align-items: center;
+  cursor: pointer;
+`;
+const TitleText = styled.div`
   display: flex;
   margin-top: 6px;
   margin-bottom: 3px;
@@ -12,19 +15,27 @@ const CardTitle = styled.div`
   font-size: 13px;
 `;
 
-const Img = styled.img`width: auto;`;
+const Img = styled.img`
+  height: 135px;
+  @media (min-width: 768px) {
+    height: 152px;
+  }
+  @media (min-width: 576px) {
+    height: 204px;
+  }
+`;
 export default function HomesCard(props) {
   return (
     <Card>
       <Img src={props.imgSrc} alt="" />
-      <CardTitle>
+      <TitleText>
         <Price>
           ${props.price} {props.title}
         </Price>
-      </CardTitle>
-      <CardTitle>
+      </TitleText>
+      <TitleText>
         {props.type} · {props.beds} beds
-      </CardTitle>
+      </TitleText>
       <Reviews>
         <ReviewStar src={star} alt="star" />
         <ReviewStar src={star} alt="star" />
@@ -32,7 +43,7 @@ export default function HomesCard(props) {
         <ReviewStar src={star} alt="star" />
         <ReviewStar src={star} alt="star" />
         <ReviewText>
-          {props.reviewsCount} reviews · {props.reviewsStatus}
+          {props.reviewsCount} · {props.reviewsStatus}
         </ReviewText>
       </Reviews>
     </Card>

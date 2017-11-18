@@ -5,32 +5,35 @@ import popularReservations2 from "./popular-reservations2.png";
 import popularReservations3 from "./popular-reservations3.png";
 import popularReservations4 from "./popular-reservations4.png";
 import Card from "./Card";
-import { A, Row, Col, NextPage } from "../styled";
+import { SeeAll, Row, Col, NextPage } from "../styled";
 
-const PopularTitle = styled.div`
+const TitleRow = styled.div`
+  margin-top: 38px;
+  margin-bottom: 24px;
   display: flex;
-  color: #383838;
   justify-content: space-between;
   align-items: center;
 `;
 
 const Title = styled.h2`
-  font-size: 32px;
-  margin-bottom: 24px;
-  margin-top: 38px;
+  font-size: 24px;
+  margin: 0px;
   font-family: CircularBold;
+  @media (min-width: 768px) {
+    font-size: 32px;
+  }
 `;
 
 const Popular = styled.div`position: relative;`;
 export default function() {
   return (
     <Popular>
-      <PopularTitle>
+      <TitleRow>
         <Title>Popular reservations around the world</Title>
-        <A href="#">See all ></A>
-      </PopularTitle>
+        <SeeAll>See all</SeeAll>
+      </TitleRow>
       <Row>
-        <Col xs="6" sm="4" md="3">
+        <Col xs="6" md="4" lg="3">
           <Card
             imgSrc={popularReservations1}
             type={"SPEAKEASY"}
@@ -38,7 +41,7 @@ export default function() {
             price={60}
           />
         </Col>
-        <Col xs="6" sm="4" md="3">
+        <Col xs="6" md="4" lg="3">
           <Card
             imgSrc={popularReservations2}
             type={"KOREAN GASTROPUB"}
@@ -46,7 +49,7 @@ export default function() {
             price={50}
           />
         </Col>
-        <Col xs="6" sm="4" md="3">
+        <Col xs="6" md="4" lg="3">
           <Card
             imgSrc={popularReservations3}
             type={"GERMAN AMERICAN"}
@@ -54,7 +57,7 @@ export default function() {
             price={55}
           />
         </Col>
-        <Col xs="6" sm="4" md="3">
+        <Col xs="6" md="4" lg="3">
           <Card
             imgSrc={popularReservations4}
             type={"FINE SEAFOOD"}

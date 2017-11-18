@@ -8,10 +8,14 @@ import arrow from "./arrow-down.svg";
 import { A, Row, Col } from "../styled";
 
 const Footer = styled.footer`
-  margin-top: 48px;
-  padding-top: 32px;
+  margin-top: 32px;
+  padding-top: 0px;
   width: 100%;
   border-top: 1px solid rgba(72, 72, 72, 0.2);
+  @media (min-width: 576px) {
+    margin-top: 48px;
+    padding-top: 32px;
+  }
 `;
 const FooterContainer = styled.div`
   margin: 0 auto;
@@ -20,27 +24,33 @@ const FooterContainer = styled.div`
   padding-right: 8px;
 `;
 const Select = styled.select`
+  white-space: nowrap;
+  text-overflow: ellipsis;
   background-image: url(${arrow});
+  background-size: 12px 7px;
   background-repeat: no-repeat;
-  background-position: calc(100% - 15px) calc(1em + 2px),
-    calc(100% - 15px) calc(1em + 2px), 100% 0;
+  background-position: calc(100% - 8px) calc(1em),
+    calc(100% - 8px) calc(1em + 2px), 100% 0;
   appearance: none;
   &::-ms-expand {
     display: none;
   }
   margin-top: 15px;
-  margin-left: 8px;
-  margin-right: 8px;
-  padding: 14px;
+  padding: 8px 24px 8px 8px;
   width: 100%;
   border-radius: 4px;
   font-size: 12px;
   font-family: CircularLight;
+
   @media (min-width: 576px) {
-    font-size: 15px;
-    width: 80%;
+    padding: 8px 32px 8px 8px;
   }
   @media (min-width: 768px) {
+    background-size: 16px 7px;
+    font-size: 15px;
+  }
+  @media (min-width: 992px) {
+    padding: 12px;
     font-size: 18px;
   }
 `;
@@ -48,12 +58,13 @@ const MenuTitle = styled.div`
   font-size: 12px;
   margin-top: 12px;
   margin-bottom: 12px;
+  color: #383838;
   font-family: CircularBold;
   @media (min-width: 992px) {
     font-size: 15px;
   }
 `;
-const MenuItems = styled.div`
+const Menu = styled(A)`
   margin-bottom: 8px;
   font-size: 12px;
   color: #636363;
@@ -62,7 +73,7 @@ const MenuItems = styled.div`
     font-size: 15px;
   }
 `;
-const ColSelect = styled(Col)`
+const ColumnSelect = styled(Col)`
   width: 100%;
   display: flex;
   @media (min-width: 576px) {
@@ -70,37 +81,42 @@ const ColSelect = styled(Col)`
     display: inline;
   }
 `;
-const ColMobile = styled(Col)`
+const ColumnMenu = styled(Col)`
   display: none;
   @media (min-width: 576px) {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    margin-left: 50px;
+  }
+  @media (min-width: 992px) {
+    margin-left: 80px;
   }
 `;
 
-const Border = styled.div`
-  border-top: 1px solid rgba(72, 72, 72, 0.2);
-  margin-top: 36px;
-  padding-bottom: 24px;
-`;
-
-const FooterColLogo = styled(Col)`
+const LogoColumn = styled(Col)`
   display: flex;
   justify-content: flex-start;
 `;
 
-const FooterColMenu = styled(Col)`
+const Column = styled(Col)`
   display: flex;
   align-items: center;
   justify-content: space-between;
 `;
 const RowMobile = styled(Row)`
+  border-top: 1px solid rgba(72, 72, 72, 0.2);
+  margin-top: 20px;
+  padding-bottom: 24px;
   display: block;
+  padding-bottom: 4px;
   @media (min-width: 576px) {
+    margin-top: 36px;
     display: flex;
   }
 `;
 
-const CopyrightMenu = styled.p`
+const Copyright = styled.p`
   font-size: 12px;
   margin-left: 12px;
   color: #383838;
@@ -110,75 +126,88 @@ const CopyrightMenu = styled.p`
   }
 `;
 
-const FooterAMenu = styled(A)`
+const CopyrightMenu = styled(A)`
   font-size: 12px;
   @media (min-width: 992px) {
     font-size: 15px;
   }
 `;
+
+const Img = styled.img`
+  height: 16px;
+  weight: 16px;
+  @media (min-width: 576px) {
+    height: 24px;
+    weight: 24px;
+  }
+`;
+
 export default function() {
   return (
     <Footer>
       <FooterContainer>
         <Row>
-          <ColSelect xs="12" sm="4">
-            <Select>
-              <option>English</option>
-              <option>Russian</option>
-            </Select>
-            <Select>
-              <option>United States Dollar</option>
-              <option>Russian Ruble</option>
-              <option>Ukrainian Hryvna</option>
-            </Select>
-          </ColSelect>
-          <ColMobile sm="3" md="3">
+          <ColumnSelect md="3" lg="3">
+            <Col xs="6" sm="12">
+              <Select>
+                <option>English</option>
+                <option>Russian</option>
+              </Select>
+            </Col>
+            <Col xs="6" sm="12">
+              <Select>
+                <option>United States Dollar</option>
+                <option>Russian Ruble</option>
+                <option>Ukrainian Hryvnia</option>
+              </Select>
+            </Col>
+          </ColumnSelect>
+          <ColumnMenu md="2" lg="2">
             <MenuTitle>Airbnb</MenuTitle>
-            <MenuItems>About us</MenuItems>
-            <MenuItems>Careers</MenuItems>
-            <MenuItems>Press</MenuItems>
-            <MenuItems>Policies</MenuItems>
-            <MenuItems>Help</MenuItems>
-            <MenuItems>Diversity & Belonging</MenuItems>
-          </ColMobile>
-          <ColMobile sm="3" md="3">
+            <Menu href="#">About us</Menu>
+            <Menu href="#">Careers</Menu>
+            <Menu href="#">Press</Menu>
+            <Menu href="#">Policies</Menu>
+            <Menu href="#">Help</Menu>
+            <Menu href="#">Diversity & Belonging</Menu>
+          </ColumnMenu>
+          <ColumnMenu md="2" lg="2">
             <MenuTitle>Discover</MenuTitle>
-            <MenuItems>Trust & Safety</MenuItems>
-            <MenuItems>Travel Credit</MenuItems>
-            <MenuItems>Gift Cards</MenuItems>
-            <MenuItems>Airbnb Citizen</MenuItems>
-            <MenuItems>Business Travel</MenuItems>
-            <MenuItems>Guidebooks</MenuItems>
-            <MenuItems>Airbnb Mag</MenuItems>
-          </ColMobile>
-          <ColMobile sm="2" md="2">
-            <MenuTitle>Hosting</MenuTitle>
-            <MenuItems>Why Host</MenuItems>
-            <MenuItems>Hospitality</MenuItems>
-            <MenuItems>Responsible Hosting</MenuItems>
-            <MenuItems>Community Center</MenuItems>
-          </ColMobile>
+            <Menu href="#">Trust & Safety</Menu>
+            <Menu href="#">Travel Credit</Menu>
+            <Menu href="#">Gift Cards</Menu>
+            <Menu href="#">Airbnb Citizen</Menu>
+            <Menu href="#">Business Travel</Menu>
+            <Menu href="#">Guidebooks</Menu>
+            <Menu href="#">Airbnb Mag</Menu>
+          </ColumnMenu>
+          <ColumnMenu md="2" lg="2">
+            <MenuTitle href="#">Hosting</MenuTitle>
+            <Menu href="#">Why Host</Menu>
+            <Menu href="#">Hospitality</Menu>
+            <Menu href="#">Responsible Hosting</Menu>
+            <Menu href="#">Community Center</Menu>
+          </ColumnMenu>
         </Row>
-        <Border />
         <RowMobile>
-          <FooterColLogo xs="5" sm="7" md="8">
+          <LogoColumn xs="5" md="7" lg="8">
             <img src={logo} alt="" />
-            <CopyrightMenu> © Airbnb Inc. </CopyrightMenu>
-          </FooterColLogo>
-          <FooterColMenu xs="8" sm="5" md="4">
-            <FooterAMenu href="#"> Terms </FooterAMenu>
-            <FooterAMenu href="#"> Privacy </FooterAMenu>
-            <FooterAMenu href="#"> Site map</FooterAMenu>
+            <Copyright> © Airbnb Inc. </Copyright>
+          </LogoColumn>
+          <Column xs="8" md="5" lg="4">
+            <CopyrightMenu href="#"> Terms </CopyrightMenu>
+            <CopyrightMenu href="#"> Privacy </CopyrightMenu>
+            <CopyrightMenu href="#"> Site map</CopyrightMenu>
             <A href="#">
-              <img src={fb} alt="" />
+              <Img src={fb} alt="" />
             </A>
             <A href="#">
-              <img src={tw} alt="" />
+              <Img src={tw} alt="" />
             </A>
             <A href="#">
-              <img src={instagram} alt="" />
+              <Img src={instagram} alt="" />
             </A>
-          </FooterColMenu>
+          </Column>
         </RowMobile>
       </FooterContainer>
     </Footer>
