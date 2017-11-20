@@ -3,8 +3,6 @@ import nextPage from "./img/next.svg";
 import arrow from "./img/right-arrow.svg";
 
 function getWidthString(span) {
-  if (!span) return;
-
   let width = (span / 12 * 100).toFixed(4);
   return `flex-basis: ${width}%; max-width: ${width}%;`;
 }
