@@ -5,6 +5,7 @@ import Experiences from "../Experiences";
 import Homes from "../Homes";
 import Popular from "../Popular";
 import Featured from "../Featured";
+import Footer from "../Footer";
 import { Main } from "../styled";
 
 export default () => (
@@ -16,5 +17,6 @@ export default () => (
       <Popular />
       <Featured />
     </Main>
+    <Footer />
   </div>
 );

@@ -7,14 +7,26 @@ import homes3 from "./homes3.png";
 import homes4 from "./homes4.png";
 import homes5 from "./homes5.png";
 import homes6 from "./homes6.png";
-import Header from "../Header";
+import Filters from "./Filters";
+import Map from "./GoogleMap";
 import { Row, Col } from "../styled";
+
+const HomesRow = styled(Row)`flex-wrap: wrap;`;
+
+const GoogleMap = styled.div`
+  position: fixed;
+  width: 391px;
+  height: 100%;
+  top: 140px;
+  right: 0;
+  bottom: 0;
+`;
 
 export default function Homes() {
   return (
     <div>
-      <Header />
-      <Row>
+      <Filters />
+      <HomesRow>
         <Col xs="12" md="6" lg="4">
           <Card
             imgSrc={homes1}
@@ -81,7 +93,10 @@ export default function Homes() {
             reviewsStatus={"Superhost"}
           />
         </Col>
-      </Row>
+      </HomesRow>
+      <GoogleMap lg="3">
+        <Map />
+      </GoogleMap>
     </div>
   );
 }
