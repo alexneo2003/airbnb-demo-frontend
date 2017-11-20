@@ -4,7 +4,6 @@ import Landing from "./Landing";
 import Header from "./Header";
 import Footer from "./Footer";
 import Homes from "./Homes/Homes";
-import { Main } from "./styled";
 import { BrowserRouter, Route } from "react-router-dom";
 
 export default () => (
