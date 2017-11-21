@@ -6,6 +6,8 @@ import { Price, Reviews, ReviewStar, ReviewText } from "../styled";
 export const Card = styled.div`
   align-items: center;
   cursor: pointer;
+  width: 100%;
+  margin-bottom: ${props => props.marginBottom};
 `;
 const TitleText = styled.div`
   display: flex;
@@ -16,17 +18,18 @@ const TitleText = styled.div`
 `;
 
 const Img = styled.img`
-  height: 135px;
+  width: 100%;
+  /*height: 135px;
   @media (min-width: 768px) {
     height: 152px;
   }
   @media (min-width: 576px) {
     height: 204px;
-  }
+  }*/
 `;
 export default function HomesCard(props) {
   return (
-    <Card>
+    <Card marginBottom={props.marginBottom}>
       <Img src={props.imgSrc} alt="" />
       <TitleText>
         <Price>
