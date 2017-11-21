@@ -27,9 +27,9 @@ const Img = styled.img`
     height: 204px;
   }*/
 `;
-export default function HomesCard(props) {
+export default function HomesCard({ marginBottom, ...props }) {
   return (
-    <Card marginBottom={props.marginBottom}>
+    <Card marginBottom={marginBottom}>
       <Img src={props.imgSrc} alt="" />
       <TitleText>
         <Price>

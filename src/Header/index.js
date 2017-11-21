@@ -4,8 +4,14 @@ import search from "./search.svg";
 import dropdown from "./drop.svg";
 import styled from "styled-components";
 import { A, Row, Col } from "../styled";
+import { Link } from "react-router-dom";
 
 const Header = styled.header`
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 20;
+  background: #fff;
   width: 100%;
   padding-top: 16px;
   padding-bottom: 16px;
@@ -15,13 +21,10 @@ const HeaderRow = styled(Row)`
   width: 100%;
   margin: 0 auto;
   @media (min-width: 992px) {
-    max-width: 976px;
+    max-width: 992px;
   }
 `;
-const Input = styled.input.attrs({
-  placeholder: 'Try "Miami"',
-  type: "text"
-})`
+const Input = styled.input`
   background-image: url(${search});
   background-repeat: no-repeat;
   background-position: 16px;
@@ -79,17 +82,19 @@ const MenuColumn = styled(Col)`
   }
 `;
 
-export default function() {
+export default function({ placeholder, ...props }) {
   return (
     <Header>
       <HeaderRow>
         <Col xs="2" md="1" lg="1">
-          <ImgLogo>
-            <img src={logo} alt="logo" />
-          </ImgLogo>
+          <Link to="/">
+            <ImgLogo>
+              <img src={logo} alt="logo" />
+            </ImgLogo>
+          </Link>
         </Col>
         <Col xs="10" md="7" lg="5">
-          <Input />
+          <Input placeholder={placeholder} />
         </Col>
         <Col xs="0" md="2" lg="2" />
         <MenuColumn md="4" lg="4">

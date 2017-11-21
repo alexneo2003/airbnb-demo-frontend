@@ -1,16 +1,20 @@
 import React from "react";
 import styled from "styled-components";
 import { Row, Col } from "../styled";
+import arrow from "../img/pager-arrow.svg";
 
 const PaginationContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-bottom: 54px;
+  width: 100%;
+  @media (min-width: 992px) {
+    width: 66.6666%;
+  }
 `;
 
 const PaginationRow = styled(Row)`
-  margin-top: 48px;
+  margin-top: 20px;
   margin-bottom: 16px;
 `;
 
@@ -35,8 +39,6 @@ const PageNumber = styled.div`
 `;
 
 const PageNumberSelected = styled(PageNumber)`
-  width: 32px;
-  height: 32px;
   border-radius: 100px;
   color: #fff;
   background-color: #008489;
@@ -63,16 +65,18 @@ export default function Pagination() {
   return (
     <PaginationContainer>
       <PaginationRow>
-        <PaginationColumn xs="12" md="12" lg="8">
+        <PaginationColumn>
           <PageNumberSelected>1</PageNumberSelected>
           <PageNumber>2</PageNumber>
           <PageNumber>3</PageNumber>
           <PageNumber>...</PageNumber>
           <PageNumber>17</PageNumber>
-          <NextPage>></NextPage>
+          <NextPage>
+            <img src={arrow} alt="arrow" />
+          </NextPage>
         </PaginationColumn>
       </PaginationRow>
-      <Col xs="12" md="12" lg="8">
+      <Col>
         <PaginationSubtitle>1 – 18 of 300+ Rentals</PaginationSubtitle>
         <PaginationDescription>
           Enter dates to see full pricing. Additional fees apply. Taxes may be

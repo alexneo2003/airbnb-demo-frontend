@@ -9,18 +9,24 @@ import homes5 from "./homes5.png";
 import homes6 from "./homes6.png";
 import Filters from "./Filters";
 import Pagination from "./Pagination";
+import Header from "../Header";
 import GoogleMapReact from "./GoogleMap";
-import { Row, Col } from "../styled";
+import { Row, Col, LocationButton } from "../styled";
 
 const HomesContainer = styled.div`
-  height: auto;
   width: 100%;
+  max-width: 992px;
+  margin: 0 auto;
+  padding: 82px 16px 0 16px;
+  z-index: 0;
+`;
+
+const HomesRow = styled(Row)`
+  flex-wrap: wrap;
   @media (min-width: 992px) {
     width: 66.6666%;
   }
 `;
-
-const HomesRow = styled(Row)`flex-wrap: wrap;`;
 
 const GoogleMapContainer = styled.div`
   display: none;
@@ -28,17 +34,17 @@ const GoogleMapContainer = styled.div`
   @media (min-width: 992px) {
     display: block;
     position: fixed;
-    width: 391px;
-    height: calc(100%-140px);
     top: 140px;
-    right: 0;
     bottom: 0;
+    left: calc((100% - 992px) / 2 + (992px / 12 * 8));
+    right: 0px;
   }
 `;
 
 export default function Homes() {
   return (
     <div>
+      <Header placeholder="Anywhere · Homes" />
       <Filters />
       <GoogleMapContainer>
         <GoogleMapReact />
@@ -47,7 +53,7 @@ export default function Homes() {
         <HomesRow>
           <Col xs="12" md="6" lg="6">
             <Card
-              marginBottom={24}
+              marginBottom={"24px"}
               imgSrc={homes1}
               price={80}
               title={"La Salentina, see, nature & relax"}
@@ -59,6 +65,7 @@ export default function Homes() {
           </Col>
           <Col xs="12" md="6" lg="6">
             <Card
+              marginBottom={"24px"}
               imgSrc={homes2}
               price={80}
               title={"Your private 3 bedr. riad and exclusive"}
@@ -70,6 +77,7 @@ export default function Homes() {
           </Col>
           <Col xs="12" md="6" lg="6">
             <Card
+              marginBottom={"24px"}
               imgSrc={homes3}
               price={200}
               title={"Dreamy Tropical Tree House"}
@@ -81,6 +89,7 @@ export default function Homes() {
           </Col>
           <Col xs="12" md="6" lg="6">
             <Card
+              marginBottom={"24px"}
               imgSrc={homes4}
               price={200}
               title={"Best location old to"}
@@ -92,6 +101,7 @@ export default function Homes() {
           </Col>
           <Col xs="12" md="6" lg="6">
             <Card
+              marginBottom={"24px"}
               imgSrc={homes5}
               price={83}
               title={"Lussuoso. Vista inca"}
@@ -103,6 +113,43 @@ export default function Homes() {
           </Col>
           <Col xs="12" md="6" lg="6">
             <Card
+              marginBottom={"24px"}
+              imgSrc={homes6}
+              price={72}
+              title={"In the historical ce"}
+              type={"Entire house"}
+              beds={3}
+              reviewsCount={221}
+              reviewsStatus={"Superhost"}
+            />
+          </Col>{" "}
+          <Col xs="12" md="6" lg="6">
+            <Card
+              marginBottom={"24px"}
+              imgSrc={homes5}
+              price={83}
+              title={"Lussuoso. Vista inca"}
+              type={"Entire apartment"}
+              beds={6}
+              reviewsCount={105}
+              reviewsStatus={"Superhost"}
+            />
+          </Col>
+          <Col xs="12" md="6" lg="6">
+            <Card
+              marginBottom={"24px"}
+              imgSrc={homes6}
+              price={72}
+              title={"In the historical ce"}
+              type={"Entire house"}
+              beds={3}
+              reviewsCount={221}
+              reviewsStatus={"Superhost"}
+            />
+          </Col>{" "}
+          <Col xs="12" md="6" lg="6">
+            <Card
+              marginBottom={"24px"}
               imgSrc={homes6}
               price={72}
               title={"In the historical ce"}
@@ -113,8 +160,9 @@ export default function Homes() {
             />
           </Col>
         </HomesRow>
+        <Pagination />
       </HomesContainer>
-      <Pagination />
+      <LocationButton />
     </div>
   );
 }

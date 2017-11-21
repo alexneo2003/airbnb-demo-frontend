@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import nextPage from "./img/next.svg";
 import arrow from "./img/right-arrow.svg";
+import location from "./img/location.svg";
 
 function getWidthString(span) {
   let width = (span / 12 * 100).toFixed(4);
@@ -83,7 +84,7 @@ export const Reviews = styled.div`display: flex;`;
 export const ReviewStar = styled.img`margin: 2px;`;
 export const ReviewText = styled.p`
   font-size: 12px;
-  margin: 2px 0 0 2px;
+  margin: 3px 0 0 2px;
 `;
 export const A = styled.a`
   color: #383838;
@@ -91,7 +92,10 @@ export const A = styled.a`
   text-decoration: none;
   font-size: 14px;
 `;
-export const SeeAll = styled(A)`
+export const SeeAll = styled.div`
+  color: #383838;
+  font-family: Circular;
+  text-decoration: none;
   white-space: nowrap;
   cursor: pointer;
   position: relative;
@@ -105,5 +109,25 @@ export const SeeAll = styled(A)`
     width: 12px;
     height: 15px;
     top: -1px;
+  }
+`;
+
+export const LocationButton = styled.img.attrs({
+  src: location
+})`
+  cursor: pointer;
+  display: block;
+  position: fixed;
+  bottom: 24px;
+  right: 8px;
+  padding: 10px 11px;
+  border-radius: 100px;
+  background-color: #fff;
+  border: 1px solid rgba(72, 72, 72, 0.16);
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  box-shadow: 0px 2px 4px rgba(72, 72, 72, 0.16);
+  @media (min-width: 992px) {
+    display: none;
   }
 `;
