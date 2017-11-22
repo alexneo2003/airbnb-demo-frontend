@@ -92,6 +92,7 @@ export const A = styled.a`
   text-decoration: none;
   font-size: 14px;
 `;
+
 export const SeeAll = styled.div`
   color: #383838;
   font-family: Circular;

@@ -13,6 +13,7 @@
   src: url("./fonts/Circular_Air-Light.woff") format("woof"),
     url("./fonts/Circular_Air-Light.ttf") format("truetype");
 }
+
 body {
   padding-top: 80px;
   z-index: 1;

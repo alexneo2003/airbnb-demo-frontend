@@ -8,6 +8,7 @@ export const Card = styled.div`
   cursor: pointer;
   width: 100%;
   margin-bottom: ${props => props.marginBottom};
+
 `;
 const TitleText = styled.div`
   display: flex;
@@ -30,6 +31,7 @@ const Img = styled.img`
 export default function HomesCard({ marginBottom, ...props }) {
   return (
     <Card marginBottom={marginBottom}>
+
       <Img src={props.imgSrc} alt="" />
       <TitleText>
         <Price>

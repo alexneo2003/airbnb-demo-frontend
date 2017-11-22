@@ -25,6 +25,10 @@ const HeaderRow = styled(Row)`
   }
 `;
 const Input = styled.input`
+    max-width: 976px;
+  }
+`;
+const Input = styled.input`
   background-image: url(${search});
   background-repeat: no-repeat;
   background-position: 16px;
@@ -83,6 +87,7 @@ const MenuColumn = styled(Col)`
 `;
 
 export default function({ placeholder, ...props }) {
+
   return (
     <Header>
       <HeaderRow>
