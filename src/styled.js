@@ -2,6 +2,7 @@ import styled from "styled-components";
 import nextPage from "./img/next.svg";
 import arrow from "./img/right-arrow.svg";
 import location from "./img/location.svg";
+import { Link } from "react-router-dom";
 
 function getWidthString(span) {
   let width = (span / 12 * 100).toFixed(4);
@@ -68,14 +69,15 @@ export const NextPage = styled.img.attrs({
     display: block;
   }
 `;
-export const Price = styled.div`
+export const Price = styled.span`
+  display: inline-block;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   color: #383838;
   max-width: 200px;
   font-family: CircularBold;
-  @media (min-width: 576px) {
+  @media (min-width: 992px) {
     max-width: none;
   }
 `;
@@ -93,7 +95,7 @@ export const A = styled.a`
   font-size: 14px;
 `;
 
-export const SeeAll = styled.div`
+export const SeeAll = styled(Link)`
   color: #383838;
   font-family: Circular;
   text-decoration: none;

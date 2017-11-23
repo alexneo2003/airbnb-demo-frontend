@@ -8,14 +8,25 @@ export const Card = styled.div`
   cursor: pointer;
   width: 100%;
   margin-bottom: ${props => props.marginBottom};
-
 `;
 const TitleText = styled.div`
   display: flex;
+  font-family: CircularLight;
   margin-top: 6px;
   margin-bottom: 3px;
   color: #383838;
   font-size: 13px;
+  @media (min-width: 768px) {
+    font-size: 15px;
+  }
+`;
+
+const SubTitle = styled(TitleText)`
+  margin-top: 2px;
+  font-size: 12px;
+  @media (min-width: 768px) {
+    font-size: 15px;
+  }
 `;
 
 const Img = styled.img`
@@ -31,16 +42,15 @@ const Img = styled.img`
 export default function HomesCard({ marginBottom, ...props }) {
   return (
     <Card marginBottom={marginBottom}>
-
       <Img src={props.imgSrc} alt="" />
       <TitleText>
         <Price>
           ${props.price} {props.title}
         </Price>
       </TitleText>
-      <TitleText>
+      <SubTitle>
         {props.type} · {props.beds} beds
-      </TitleText>
+      </SubTitle>
       <Reviews>
         <ReviewStar src={star} alt="star" />
         <ReviewStar src={star} alt="star" />

@@ -7,6 +7,8 @@ import "../App.css";
 import { Row, Col } from "../styled";
 
 const Card = styled.div`
+  flex-direction: column;
+  display: flex;
   cursor: pointer;
   overflow: hidden;
   background-color: transparent;
@@ -20,7 +22,8 @@ const Card = styled.div`
   border-radius: 4px;
   @media (min-width: 576px) {
     display: flex;
-    align-items: left;
+    flex-direction: row;
+    align-items: center;
   }
 `;
 const TitleText = styled.h2`
@@ -50,16 +53,14 @@ const CardText = styled.div`
   vertical-align: middle;
   font-family: CircularBold;
   color: #383838;
-  padding-top: 12px;
+  padding-top: 10px;
   padding-left: 10px;
-  padding-bottom: 12px;
+  padding-bottom: 10px;
   font-size: 12px;
   @media (min-width: 576px) {
     margin-left: 0px;
     font-size: 17px;
-    padding-top: 24px;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 24px;
   }
 `;
 

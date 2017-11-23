@@ -8,26 +8,27 @@ import { Link } from "react-router-dom";
 
 const Header = styled.header`
   position: fixed;
+  display: flex;
   top: 0;
   left: 0;
   z-index: 20;
   background: #fff;
   width: 100%;
-  padding-top: 16px;
-  padding-bottom: 16px;
+  height: 80px;
+  align-items: center;
   border-bottom: 1px solid rgba(72, 72, 72, 0.2);
 `;
 const HeaderRow = styled(Row)`
+  display: flex;
+  align-items: center;
   width: 100%;
+  height: 100%;
   margin: 0 auto;
   @media (min-width: 992px) {
     max-width: 992px;
   }
 `;
-const Input = styled.input`
-    max-width: 976px;
-  }
-`;
+
 const Input = styled.input`
   background-image: url(${search});
   background-repeat: no-repeat;
@@ -87,7 +88,6 @@ const MenuColumn = styled(Col)`
 `;
 
 export default function({ placeholder, ...props }) {
-
   return (
     <Header>
       <HeaderRow>

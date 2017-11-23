@@ -29,7 +29,7 @@ export default function() {
     <Experiences>
       <TitleRow>
         <TitleText>Experiences</TitleText>
-        <SeeAll>See all</SeeAll>
+        <SeeAll to="/">See all</SeeAll>
       </TitleRow>
       <Row>
         <Col xs="6" md="4" lg="3">

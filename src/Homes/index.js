@@ -4,7 +4,6 @@ import homes1 from "./homes1.png";
 import homes2 from "./homes2.png";
 import homes3 from "./homes3.png";
 import Card from "./Card";
-import { Link } from "react-router-dom";
 import { SeeAll, Row, Col, NextPage } from "../styled";
 
 const TitleRow = styled.div`
@@ -30,9 +29,7 @@ export default function() {
     <Homes>
       <TitleRow>
         <Title>Homes</Title>
-        <Link to="/homes">
-          <SeeAll>See all</SeeAll>
-        </Link>
+        <SeeAll to="/homes">See all</SeeAll>
       </TitleRow>
       <Row>
         <Col xs="8" md="5" lg="4">

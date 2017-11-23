@@ -34,7 +34,7 @@ const GoogleMapContainer = styled.div`
   @media (min-width: 992px) {
     display: block;
     position: fixed;
-    top: 140px;
+    top: 138px;
     bottom: 0;
     left: calc((100% - 992px) / 2 + (992px / 12 * 8));
     right: 0px;
@@ -92,7 +92,7 @@ export default function Homes() {
               marginBottom={"24px"}
               imgSrc={homes4}
               price={200}
-              title={"Best location old to"}
+              title={"Best location old town luxury loft"}
               type={"Entire apartment"}
               beds={1}
               reviewsCount={369}
@@ -104,7 +104,7 @@ export default function Homes() {
               marginBottom={"24px"}
               imgSrc={homes5}
               price={83}
-              title={"Lussuoso. Vista inca"}
+              title={"Lussuoso. Vista incantevole"}
               type={"Entire apartment"}
               beds={6}
               reviewsCount={105}
@@ -116,7 +116,7 @@ export default function Homes() {
               marginBottom={"24px"}
               imgSrc={homes6}
               price={72}
-              title={"In the historical ce"}
+              title={"In the historical center of Lecce"}
               type={"Entire house"}
               beds={3}
               reviewsCount={221}
@@ -128,7 +128,7 @@ export default function Homes() {
               marginBottom={"24px"}
               imgSrc={homes5}
               price={83}
-              title={"Lussuoso. Vista inca"}
+              title={"Lussuoso. Vista incantevole"}
               type={"Entire apartment"}
               beds={6}
               reviewsCount={105}
@@ -140,7 +140,7 @@ export default function Homes() {
               marginBottom={"24px"}
               imgSrc={homes6}
               price={72}
-              title={"In the historical ce"}
+              title={"In the historical center of Lecce"}
               type={"Entire house"}
               beds={3}
               reviewsCount={221}
@@ -152,7 +152,7 @@ export default function Homes() {
               marginBottom={"24px"}
               imgSrc={homes6}
               price={72}
-              title={"In the historical ce"}
+              title={"In the historical center of Lecce"}
               type={"Entire house"}
               beds={3}
               reviewsCount={221}

@@ -36,6 +36,7 @@ const Select = styled.select`
     display: none;
   }
   margin-top: 15px;
+
   padding: 8px 24px 8px 8px;
   width: 100%;
   border-radius: 4px;
@@ -52,6 +53,8 @@ const Select = styled.select`
   @media (min-width: 992px) {
     padding: 12px;
     font-size: 18px;
+    margin-left: -8px;
+    margin-right: -8px;
   }
 `;
 const MenuTitle = styled.div`
@@ -76,27 +79,28 @@ const Menu = styled(A)`
 const ColumnSelect = styled(Col)`
   width: 100%;
   display: flex;
+  padding: 0px;
   @media (min-width: 576px) {
     width: auto;
     display: inline;
   }
 `;
 const ColumnMenu = styled(Col)`
+  padding: 0 16px 0 16px;
   display: none;
   @media (min-width: 576px) {
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
-    margin-left: 50px;
-  }
-  @media (min-width: 992px) {
-    margin-left: 80px;
   }
 `;
 
 const LogoColumn = styled(Col)`
   display: flex;
   justify-content: flex-start;
+  @media (min-width: 992px) {
+    margin-left: -8px;
+  }
 `;
 
 const Column = styled(Col)`
@@ -107,11 +111,11 @@ const Column = styled(Col)`
 const RowMobile = styled(Row)`
   border-top: 1px solid rgba(72, 72, 72, 0.2);
   margin-top: 20px;
-  padding-bottom: 24px;
   display: block;
+  padding-top: 20px;
   padding-bottom: 4px;
   @media (min-width: 576px) {
-    margin-top: 36px;
+    margin-top: 60px;
     display: flex;
   }
 `;
@@ -162,7 +166,8 @@ export default function() {
               </Select>
             </Col>
           </ColumnSelect>
-          <ColumnMenu md="2" lg="2">
+          <ColumnMenu md="1" lg="1" />
+          <ColumnMenu md="3" lg="3">
             <MenuTitle>Airbnb</MenuTitle>
             <Menu href="#">About us</Menu>
             <Menu href="#">Careers</Menu>
@@ -171,7 +176,7 @@ export default function() {
             <Menu href="#">Help</Menu>
             <Menu href="#">Diversity & Belonging</Menu>
           </ColumnMenu>
-          <ColumnMenu md="2" lg="2">
+          <ColumnMenu md="3" lg="3">
             <MenuTitle>Discover</MenuTitle>
             <Menu href="#">Trust & Safety</Menu>
             <Menu href="#">Travel Credit</Menu>

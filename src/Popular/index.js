@@ -30,7 +30,7 @@ export default function() {
     <Popular>
       <TitleRow>
         <Title>Popular reservations around the world</Title>
-        <SeeAll>See all</SeeAll>
+        <SeeAll to="/">See all</SeeAll>
       </TitleRow>
       <Row>
         <Col xs="6" md="4" lg="3">
