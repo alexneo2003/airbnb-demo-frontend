@@ -26,8 +26,11 @@ const FiltersBorder = styled.div`
   align-items: center;
 `;
 
-const FiltersRow = styled(Row)`
-  margin: 0 auto;
+const FiltersRow = styled.div`
+  display: flex;
+  padding: 0 8px;
+  margin-left: auto;
+  margin-right: auto;
   width: 100%;
   @media (min-width: 992px) {
     max-width: 992px;
@@ -45,13 +48,11 @@ export default class extends React.Component {
     return (
       <FiltersBorder>
         <FiltersRow>
-          <Col xs="12" md="12" lg="8">
-            <DatesFilter
-              closeDrop={() => this.setDrop(null)}
-              onApply={(startDate, endDate) =>
-                this.setState({ startDate, endDate })}
-            />
-          </Col>
+          <DatesFilter
+            closeDrop={() => this.setDrop(null)}
+            onApply={(startDate, endDate) =>
+              this.setState({ startDate, endDate })}
+          />
         </FiltersRow>
       </FiltersBorder>
     );

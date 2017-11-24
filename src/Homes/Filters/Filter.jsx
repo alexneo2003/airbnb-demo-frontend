@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import onClickOutside from "react-onclickoutside";
-import DatesFilter from "./DatesFilter";
 
 const Button = styled.button`
   font-family: Circular;
@@ -19,17 +18,21 @@ const Button = styled.button`
     margin-right: 0;
   }
   display: ${props => (props.none ? "none" : "inline-block")};
-  background-color: ${props => (props.selected ? "#008489" : "#fff")};
-  color: ${props => (props.selected ? "#fff" : "#383838")};
+  background-color: ${props => (props.clicked ? "#008489" : "#fff")};
+  color: ${props => (props.clicked ? "#fff" : "#383838")};
   border: ${props =>
-    props.selected ? "1px solid #008489" : "1px solid rgba(72, 72, 72, 0.2)"};
+    props.clicked ? "1px solid #008489" : "1px solid rgba(72, 72, 72, 0.2)"};
 
   @media (min-width: 992px) {
     display: inline-block;
   }
 `;
 
-const DropContainer = styled.div`position: relative;`;
+const DropContainer = styled.div`
+  position: relative;
+  width: auto;
+  height: auto;
+`;
 
 const DropContent = onClickOutside(styled.div`
   position: fixed;
@@ -46,12 +49,27 @@ const DropContent = onClickOutside(styled.div`
     top: 8px;
     border: 1px solid rgba(72, 72, 72, 0.2);
     box-shadow: 0px 2px 4px rgba(72, 72, 72, 0.08);
-    box-sizing: border-box;
     border-radius: 4px;
     background: #fff;
-    z-index: 10;
+    z-index: 20;
   }
 `);
+
+const Buttons = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+const CancelButton = styled.button`
+  background: transparent;
+  padding: 24px 32px;
+  color: #636363;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+`;
+
+const ApplyButton = styled(CancelButton)`color: #0f7276;`;
 
 export default class extends React.Component {
   state = {
@@ -97,7 +115,13 @@ export default class extends React.Component {
             <DropContent
               eventTypes="click"
               handleClickOutside={this.onClickOutside}
-            />
+            >
+              {this.props.children}
+              <Buttons>
+                <CancelButton onClick={this.onCancel}>Cancel</CancelButton>
+                <ApplyButton onClick={this.onApply}>Apply</ApplyButton>
+              </Buttons>
+            </DropContent>
           )}
         </DropContainer>
       </div>

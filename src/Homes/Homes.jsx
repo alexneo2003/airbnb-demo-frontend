@@ -17,8 +17,11 @@ const HomesContainer = styled.div`
   width: 100%;
   max-width: 992px;
   margin: 0 auto;
-  padding: 82px 16px 0 16px;
+  padding: 82px 8px 0 8px;
   z-index: 0;
+  @media (min-width: 992px) {
+    padding: 82px 16px 0 16px;
+  }
 `;
 
 const HomesRow = styled(Row)`

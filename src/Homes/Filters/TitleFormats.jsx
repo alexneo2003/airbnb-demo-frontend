@@ -5,7 +5,7 @@ export const formatCheckinTitle = state =>
 export const formatCheckoutTitle = state =>
   state.selectedEndDate ? state.selectedEndDate.format("MMM Do") : "Check out";
 export const formatDateTitle = state => {
-  if (state.selected) {
+  if (state.clicked) {
     return `${formatCheckinTitle(state)} — ${formatCheckoutTitle(state)} `;
   }
   return (
