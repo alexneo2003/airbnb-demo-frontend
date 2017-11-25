@@ -2,67 +2,113 @@ import React from "react";
 import styled from "styled-components";
 import Filter from "./Filter";
 import DateRangePicker from "./DateRangePicker";
+import { MobileOnly } from "../../Media";
+import arrow from "./arrow.svg";
 import {
   formatDateTitle,
   formatCheckinTitle,
   formatCheckoutTitle
 } from "./TitleFormats";
 
+const CheckedContainer = styled.div`
+  display: flex;
+  align-items: center;
+  margin-top: 24px;
+`;
+
+const CheckTitle = styled.div`
+  font-size: 18px;
+  margin: 8px;
+  color: ${props => (props.checked ? "#0F7276" : "#636363")};
+  border-bottom: 1px solid ${props => (props.checked ? "#008489" : "#fff")};
+`;
+
+const Arrow = styled.img``;
+
 export default class extends React.Component {
   state = {
-    clicked: false,
+    checked: false,
     startDate: null,
     endDate: null,
-    focusedInput: null,
-    selectedStartDate: null,
-    selectedEndDate: null
+    focusedInput: "startDate"
   };
 
-  onToggle = clicked => {
-    this.setState({ clicked });
+  onToggle = checked => {
+    this.setState({ checked });
   };
+
   onCancel = () => {
-    this.props.closeDrop();
+    this.props.closeDropDown();
     this.setState({
-      clicked: false,
-      selectedStartDate: this.state.startDate,
-      selectedEndDate: this.state.endDate
+      checked: false,
+      startDate: this.state.startDate,
+      endDate: this.state.endDate
     });
   };
+
   onApply = () => {
-    this.props.closeDrop();
+    this.props.closeDropDown();
     this.setState({
-      clicked: false,
-      startDate: this.state.selectedStartDate,
-      endDate: this.state.selectedEndDate
+      checked: false,
+      startDate: this.state.startDate,
+      endDate: this.state.sendDate
     });
-    this.props.onApply(
-      this.state.selectedStartDate,
-      this.state.selectedEndDate
-    );
+    this.props.onApply(this.state.startDate, this.state.endDate);
+  };
+
+  onDatesChange = ({ startDate, endDate }) => {
+    this.setState({ startDate, endDate });
+  };
+
+  onFocusChange = ({ focusedInput }) => {
+    this.setState({ focusedInput: focusedInput || "startDate" });
+  };
+
+  setTitle = ({ title }) => {
+    this.setState({ title: title });
+  };
+
+  onTitleChanged = () => {
+    if (this.state.checked) {
+      this.setTitle(this.props.title);
+    }
+    if (this.state.startDate) {
+      this.setTitle(
+        this.state.startDate
+          ? this.state.startDate.format("MMM Do")
+          : "Check in"
+      );
+    }
   };
 
   render() {
     return (
       <Filter
         className={this.props.className}
-        title={formatDateTitle(this.state)}
+        /*title={formatDateTitle(this.state)}*/
+        title={this.props.title}
+        checkedTitle={this.props.checkedTitle}
         onToggle={this.onToggle}
         onApply={this.onApply}
         onCancel={this.onCancel}
       >
+        <MobileOnly>
+          <CheckedContainer>
+            <CheckTitle checked={!this.state.startDate && !this.state.endDate}>
+              {formatCheckinTitle(this.state)}
+            </CheckTitle>
+            <Arrow src={arrow} />
+            <CheckTitle checked={this.state.startDate && !this.state.endDate}>
+              {formatCheckoutTitle(this.state)}
+            </CheckTitle>
+          </CheckedContainer>
+        </MobileOnly>
         <DateRangePicker
           focusedInput={this.state.focusedInput}
-          onFocusChange={focusedInput =>
-            this.setState({ focusedInput: focusedInput || "startDate" })}
-          startDate={this.state.selectedStartDate}
-          endDate={this.state.selectedEndDate}
-          onDatesChange={({ startDate, endDate }) => {
-            this.setState({
-              selectedStartDate: startDate,
-              selectedEndDate: endDate
-            });
-          }}
+          onFocusChange={this.onFocusChange}
+          startDate={this.state.startDate}
+          endDate={this.state.endDate}
+          onDatesChange={this.onDatesChange}
         />
       </Filter>
     );

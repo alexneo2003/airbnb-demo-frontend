@@ -1,18 +1,14 @@
 export const formatCheckinTitle = state =>
-  state.selectedStartDate
-    ? state.selectedStartDate.format("MMM Do")
-    : "Check in";
+  state.startDate ? state.startDate.format("MMM Do") : "Check in";
 export const formatCheckoutTitle = state =>
-  state.selectedEndDate ? state.selectedEndDate.format("MMM Do") : "Check out";
+  state.endDate ? state.endDate.format("MMM Do") : "Check out";
 export const formatDateTitle = state => {
-  if (state.clicked) {
+  if (state.checked) {
     return `${formatCheckinTitle(state)} — ${formatCheckoutTitle(state)} `;
   }
   return (
-    (state.selectedStartDate ? state.selectedStartDate.format("MMM Do") : "") +
-      (state.selectedEndDate
-        ? ` —  ${state.selectedEndDate.format("MMM Do")}`
-        : "") || "Dates"
+    (state.startDate ? state.startDate.format("MMM Do") : "") +
+      (state.endDate ? ` —  ${state.endDate.format("MMM Do")}` : "") || "Dates"
   );
 };
 

@@ -17,11 +17,12 @@ export const Main = styled.main`
   padding-left: 8px;
   padding-right: 8px;
   width: auto;
-  max-width: 992px;
+  max-width: 976px;
 `;
 
 export const Row = styled.div`
   display: flex;
+  width: 100%;
   flex-wrap: nowrap;
   margin-left: -8px;
   margin-right: -8px;
@@ -64,7 +65,7 @@ export const NextPage = styled.img.attrs({
   position: absolute;
   z-index: 1;
   top: 45%;
-  right: -12px;
+  right: -6px;
   @media (min-width: 992px) {
     display: block;
   }
@@ -102,16 +103,20 @@ export const SeeAll = styled(Link)`
   white-space: nowrap;
   cursor: pointer;
   position: relative;
-  margin-right: 8px;
   font-size: 12px;
+  margin-right: 16px;
   &:after {
-    font-size: 14px;
     position: absolute;
     content: "";
     background: url(${arrow}) no-repeat 5px;
     width: 12px;
     height: 15px;
     top: -1px;
+    margin-right: 22px;
+    margin-left: 2px;
+  }
+  @media (min-width: 576px) {
+    font-size: 14px;
   }
 `;
 

@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { Row, Col } from "../../styled";
 import DatesFilter from "./DatesFilter";
 
 const DatesFilterFixed = styled.div`
@@ -16,7 +15,7 @@ const FiltersBorder = styled.div`
   position: fixed;
   top: 79px;
   left: 0;
-  z-index: 15;
+  z-index: 12;
   display: flex;
   width: 100%;
   background: #fff;
@@ -39,19 +38,34 @@ const FiltersRow = styled.div`
 
 export default class extends React.Component {
   state = {
-    drop: null
+    droppedDownWindow: null
   };
-  setDrop = (drop, callback) => {
-    this.setState({ drop: this.state.drop === drop ? null : drop }, callback);
+
+  onApply = ({ startDate, endDate }) => {
+    this.setState({ startDate, endDate });
   };
+
+  setDropDown = (droppedDownWindow, callback) => {
+    this.setState(
+      {
+        droppedDownWindow:
+          this.state.droppedDownWindow === droppedDownWindow
+            ? null
+            : droppedDownWindow
+      },
+      callback
+    );
+  };
+
   render() {
     return (
       <FiltersBorder>
         <FiltersRow>
           <DatesFilter
-            closeDrop={() => this.setDrop(null)}
-            onApply={(startDate, endDate) =>
-              this.setState({ startDate, endDate })}
+            title="Dates"
+            checkedTitle="Check in — Check out"
+            closeDropDown={() => this.setDropDown(null)}
+            onApply={this.onApply}
           />
         </FiltersRow>
       </FiltersBorder>

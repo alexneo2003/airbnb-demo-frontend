@@ -5,27 +5,32 @@ import dropdown from "./drop.svg";
 import styled from "styled-components";
 import { A, Row, Col } from "../styled";
 import { Link } from "react-router-dom";
+import { DesktopOnly } from "../Media";
 
 const Header = styled.header`
   position: fixed;
   display: flex;
   top: 0;
   left: 0;
-  z-index: 20;
+  z-index: 13;
   background: #fff;
   width: 100%;
   height: 80px;
+  margin-left: auto;
+  margin-right: auto;
   align-items: center;
   border-bottom: 1px solid rgba(72, 72, 72, 0.2);
 `;
-const HeaderRow = styled(Row)`
+const HeaderContainer = styled.div`
   display: flex;
   align-items: center;
   width: 100%;
   height: 100%;
   margin: 0 auto;
+  padding-left: 8px;
+  padding-right: 8px;
   @media (min-width: 992px) {
-    max-width: 992px;
+    max-width: 976px;
   }
 `;
 
@@ -39,6 +44,8 @@ const Input = styled.input`
   padding-bottom: 14px;
   padding-left: 35px;
   margin-left: 8px;
+  margin-top: 8px;
+  margin-bottom: 8px;
   border-radius: 4px;
   border: 1px solid rgba(72, 72, 72, 0.2);
   box-shadow: 0 2px 4px rgba(72, 72, 72, 0.08);
@@ -56,9 +63,12 @@ const Input = styled.input`
   }
 `;
 
-const ImgLogo = styled.div`
-  max-width: 32px;
-  margin-top: 8px;
+const LogoContainer = styled.div`
+  display: flex;
+  align-items: center;
+  height: 100%;
+`;
+const Logo = styled.div`
   position: relative;
   &:after {
     visibility: visible;
@@ -77,38 +87,51 @@ const ImgLogo = styled.div`
   }
 `;
 
-const MenuColumn = styled(Col)`
-  display: none;
-  @media (min-width: 992px) {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-right: 16px;
-  }
+const MenuContainer = styled.div`
+  display: flex;
+  justify-content: space-around;
+  height: 100%;
+`;
+
+const MenuLink = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
 `;
 
 export default function({ placeholder, ...props }) {
   return (
     <Header>
-      <HeaderRow>
-        <Col xs="2" md="1" lg="1">
-          <Link to="/">
-            <ImgLogo>
-              <img src={logo} alt="logo" />
-            </ImgLogo>
-          </Link>
-        </Col>
-        <Col xs="10" md="7" lg="5">
-          <Input placeholder={placeholder} />
-        </Col>
-        <Col xs="0" md="2" lg="2" />
-        <MenuColumn md="4" lg="4">
-          <A href="#">Become a host</A>
-          <A href="#">Help</A>
-          <A href="#">Sign Up</A>
-          <A href="#">Log In</A>
-        </MenuColumn>
-      </HeaderRow>
+      <HeaderContainer>
+        <Row>
+          <Col xs="2" md="1" lg="1">
+            <LogoContainer>
+              <Logo>
+                <Link to="/">
+                  <img src={logo} alt="logo" />
+                </Link>
+              </Logo>
+            </LogoContainer>
+          </Col>
+          <Col xs="10" md="7" lg="5">
+            <Input placeholder={placeholder} />
+          </Col>
+          <Col xs="0" md="2" lg="2" />
+          <DesktopOnly>
+            <Col md="4" lg="4">
+              <MenuContainer>
+                <MenuLink>
+                  <A href="#">Become a host</A>
+                  <A href="#">Help</A>
+                  <A href="#">Sign Up</A>
+                  <A href="#">Log In</A>
+                </MenuLink>
+              </MenuContainer>
+            </Col>
+          </DesktopOnly>
+        </Row>
+      </HeaderContainer>
     </Header>
   );
 }

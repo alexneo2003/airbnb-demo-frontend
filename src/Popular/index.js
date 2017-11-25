@@ -11,6 +11,7 @@ const TitleRow = styled.div`
   margin-top: 38px;
   margin-bottom: 24px;
   display: flex;
+  padding-right: 16px;
   justify-content: space-between;
   align-items: center;
 `;

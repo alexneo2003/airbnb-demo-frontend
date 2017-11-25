@@ -1,8 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import onClickOutside from "react-onclickoutside";
+import Media from "../../Media";
 
-const Button = styled.button`
+const FilterButton = styled.button`
   font-family: Circular;
   cursor: pointer;
   font-size: 14px;
@@ -17,11 +18,10 @@ const Button = styled.button`
   &:last-child {
     margin-right: 0;
   }
-  display: ${props => (props.none ? "none" : "inline-block")};
-  background-color: ${props => (props.clicked ? "#008489" : "#fff")};
-  color: ${props => (props.clicked ? "#fff" : "#383838")};
+  background-color: ${props => (props.checked ? "#008489" : "#fff")};
+  color: ${props => (props.checked ? "#fff" : "#383838")};
   border: ${props =>
-    props.clicked ? "1px solid #008489" : "1px solid rgba(72, 72, 72, 0.2)"};
+    props.checked ? "1px solid #008489" : "1px solid rgba(72, 72, 72, 0.2)"};
 
   @media (min-width: 992px) {
     display: inline-block;
@@ -35,10 +35,9 @@ const DropContainer = styled.div`
 `;
 
 const DropContent = onClickOutside(styled.div`
+  z-index: 30;
   position: fixed;
   left: 0;
-  bottom: 0;
-  right: 0;
   top: 0;
   padding-top: 42px;
   border: none;
@@ -51,13 +50,14 @@ const DropContent = onClickOutside(styled.div`
     box-shadow: 0px 2px 4px rgba(72, 72, 72, 0.08);
     border-radius: 4px;
     background: #fff;
-    z-index: 20;
   }
 `);
 
 const Buttons = styled.div`
+  z-index: 35;
   display: flex;
   justify-content: space-between;
+  ${Media.md`display:none;`};
 `;
 
 const CancelButton = styled.button`
@@ -73,45 +73,47 @@ const ApplyButton = styled(CancelButton)`color: #0f7276;`;
 
 export default class extends React.Component {
   state = {
-    clicked: false
+    checked: false
   };
 
   onClick = () => {
-    if (!this.state.clicked) {
+    if (!this.state.checked) {
       this.props.onToggle(true);
     } else {
       this.onApply();
     }
-    this.setState({ clicked: !this.state.clicked });
+    this.setState({ checked: !this.state.checked });
   };
 
   onApply = () => {
     this.props.onApply();
-    this.setState({ clicked: false });
+    this.setState({ checked: false });
   };
 
   onCancel = () => {
     this.props.onCancel();
-    this.setState({ clicked: false });
+    this.setState({ checked: false });
   };
 
   onClickOutside = () => {
+    console.log("onClickOutside");
+
     this.props.onCancel();
-    this.setState({ clicked: false });
+    this.setState({ checked: false });
   };
 
   render() {
     return (
-      <div className={this.props.className}>
-        <Button
+      <div>
+        <FilterButton
           className={this.props.className}
           onClick={this.onClick}
-          clicked={this.state.clicked}
+          checked={this.state.checked}
         >
-          {this.props.title}
-        </Button>
+          {this.state.checked ? this.props.checkedTitle : this.props.title}
+        </FilterButton>
         <DropContainer>
-          {this.state.clicked && (
+          {this.state.checked && (
             <DropContent
               eventTypes="click"
               handleClickOutside={this.onClickOutside}
