@@ -30,7 +30,9 @@ export default class extends React.Component {
     checked: false,
     startDate: null,
     endDate: null,
-    focusedInput: "startDate"
+    focusedInput: "startDate",
+    checkedStartDate: null,
+    checkedEndDate: null
   };
 
   onToggle = checked => {
@@ -41,8 +43,8 @@ export default class extends React.Component {
     this.props.closeDropDown();
     this.setState({
       checked: false,
-      startDate: this.state.startDate,
-      endDate: this.state.endDate
+      checkedStartDate: this.state.startDate,
+      checkedEndDate: this.state.endDate
     });
   };
 
@@ -50,42 +52,24 @@ export default class extends React.Component {
     this.props.closeDropDown();
     this.setState({
       checked: false,
-      startDate: this.state.startDate,
-      endDate: this.state.sendDate
+      startDate: this.state.checkedStartDate,
+      endDate: this.state.checkedEndDate
     });
-    this.props.onApply(this.state.startDate, this.state.endDate);
+    this.props.onApply(this.state.checkedStartDate, this.state.checkedEndDate);
   };
 
   onDatesChange = ({ startDate, endDate }) => {
-    this.setState({ startDate, endDate });
+    this.setState({ checkedStartDate: startDate, checkedEndDate: endDate });
   };
 
   onFocusChange = ({ focusedInput }) => {
     this.setState({ focusedInput: focusedInput || "startDate" });
   };
 
-  setTitle = ({ title }) => {
-    this.setState({ title: title });
-  };
-
-  onTitleChanged = () => {
-    if (this.state.checked) {
-      this.setTitle(this.props.title);
-    }
-    if (this.state.startDate) {
-      this.setTitle(
-        this.state.startDate
-          ? this.state.startDate.format("MMM Do")
-          : "Check in"
-      );
-    }
-  };
-
   render() {
     return (
       <Filter
         className={this.props.className}
-        /*title={formatDateTitle(this.state)}*/
         title={this.props.title}
         checkedTitle={this.props.checkedTitle}
         onToggle={this.onToggle}
@@ -94,12 +78,20 @@ export default class extends React.Component {
       >
         <MobileOnly>
           <CheckedContainer>
-            <CheckTitle checked={!this.state.startDate && !this.state.endDate}>
-              {formatCheckinTitle(this.state)}
+            <CheckTitle
+              checked={
+                !this.state.checkedStartDate && !this.state.checkedEndDate
+              }
+            >
+              {"Check in"}
             </CheckTitle>
             <Arrow src={arrow} />
-            <CheckTitle checked={this.state.startDate && !this.state.endDate}>
-              {formatCheckoutTitle(this.state)}
+            <CheckTitle
+              checked={
+                this.state.checkedStartDate && !this.state.checkedEndDate
+              }
+            >
+              {"Check out"}
             </CheckTitle>
           </CheckedContainer>
         </MobileOnly>

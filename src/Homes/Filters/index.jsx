@@ -2,20 +2,11 @@ import React from "react";
 import styled from "styled-components";
 import DatesFilter from "./DatesFilter";
 
-const DatesFilterFixed = styled.div`
-  position: fixed;
-  top: 132px;
-  left: 8px;
-  @media (min-width: 1200px) {
-    left: 210px;
-  }
-`;
-
 const FiltersBorder = styled.div`
   position: fixed;
-  top: 79px;
+  top: 81px;
   left: 0;
-  z-index: 12;
+  z-index: 10;
   display: flex;
   width: 100%;
   background: #fff;
@@ -39,10 +30,6 @@ const FiltersRow = styled.div`
 export default class extends React.Component {
   state = {
     droppedDownWindow: null
-  };
-
-  onApply = ({ startDate, endDate }) => {
-    this.setState({ startDate, endDate });
   };
 
   setDropDown = (droppedDownWindow, callback) => {
