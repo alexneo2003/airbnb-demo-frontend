@@ -4,11 +4,6 @@ import Filter from "./Filter";
 import DateRangePicker from "./DateRangePicker";
 import { MobileOnly } from "../../Media";
 import arrow from "./arrow.svg";
-import {
-  formatDateTitle,
-  formatCheckinTitle,
-  formatCheckoutTitle
-} from "./TitleFormats";
 
 const CheckedContainer = styled.div`
   display: flex;

@@ -53,19 +53,6 @@ const DropDownContent = onClickOutside(styled.div`
   `};
 `);
 
-const Buttons = styled.div`
-  display: flex;
-  justify-content: space-between;
-  ${Media.mobile`
-    position: fixed;
-    background: white;
-    height: 48px;
-    top: 0;
-    left: 0;
-    right: 0;
-  `};
-`;
-
 const ButtonStyle = styled.button`
   padding: 16px;
   min-width: 16px;
@@ -189,7 +176,7 @@ export default class extends React.Component {
                 <Cancel onClick={this.onCancel}>
                   <TabletFrom>Cancel</TabletFrom>
                 </Cancel>
-                <ActionTitle>When</ActionTitle>
+                <ActionTitle>{this.props.title}</ActionTitle>
                 <Apply onClick={this.onApply}>
                   <TabletFrom>Apply</TabletFrom>
                   <MobileOnly>Reset</MobileOnly>

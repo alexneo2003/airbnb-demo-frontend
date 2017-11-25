@@ -3,6 +3,8 @@ import nextPage from "./img/next.svg";
 import arrow from "./img/right-arrow.svg";
 import location from "./img/location.svg";
 import { Link } from "react-router-dom";
+import plus from "./img/plus.svg";
+import minus from "./img/minus.svg";
 
 function getWidthString(span) {
   let width = (span / 12 * 100).toFixed(4);
@@ -138,4 +140,23 @@ export const LocationButton = styled.img.attrs({
   @media (min-width: 992px) {
     display: none;
   }
+`;
+
+export const Counter = styled.div`
+  width: 32px;
+  height: 32px;
+  border-radius: 50px;
+  cursor: pointer;
+`;
+
+export const CounterMinus = styled(Counter)`
+  background: url(${minus});
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+`;
+
+export const CounterPlus = styled(Counter)`
+  background: url(${plus});
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
 `;
