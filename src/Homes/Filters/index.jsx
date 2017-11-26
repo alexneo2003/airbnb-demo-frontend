@@ -91,6 +91,7 @@ export default class extends React.Component {
             checkedTitle="More filters"
             closeDropDown={() => this.setDropDown(null)}
             onApply={this.onApply}
+            moreFilters={true}
           />
         </FiltersRow>
       </FiltersBorder>

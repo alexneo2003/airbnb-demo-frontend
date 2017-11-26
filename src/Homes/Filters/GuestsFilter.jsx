@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import Filter from "./Filter";
-import { MobileOnly } from "../../Media";
 import { CounterMinus, CounterPlus } from "../../styled";
 
 const GuestsContainer = styled.div`
@@ -44,10 +43,7 @@ const CounterTitle = styled.div`
 
 export default class extends React.Component {
   state = {
-    checked: false,
-    adultsCounter: null,
-    childrenCounter: null,
-    infantsCounter: null
+    checked: false
   };
 
   onToggle = checked => {
@@ -57,20 +53,14 @@ export default class extends React.Component {
   onCancel = () => {
     this.props.closeDropDown();
     this.setState({
-      checked: false,
-      adultsCounter: this.state.adultsCounter,
-      childrenCounter: this.state.childrenCounter,
-      infantsCounter: this.state.childrenCounter
+      checked: false
     });
   };
 
   onApply = () => {
     this.props.closeDropDown();
     this.setState({
-      checked: false,
-      adultsCounter: this.state.adultsCounter,
-      childrenCounter: this.state.childrenCounter,
-      infantsCounter: this.state.childrenCounter
+      checked: false
     });
   };
 

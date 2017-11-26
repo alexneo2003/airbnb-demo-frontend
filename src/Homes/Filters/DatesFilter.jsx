@@ -4,6 +4,7 @@ import Filter from "./Filter";
 import DateRangePicker from "./DateRangePicker";
 import { MobileOnly } from "../../Media";
 import arrow from "./arrow.svg";
+import omit from "lodash/omit";
 
 const CheckedContainer = styled.div`
   display: flex;
@@ -20,45 +21,54 @@ const CheckTitle = styled.div`
 
 const Arrow = styled.img``;
 
-export default class extends React.Component {
+export default class DatesFilter extends React.Component {
   state = {
     checked: false,
     startDate: null,
     endDate: null,
-    focusedInput: "startDate",
-    checkedStartDate: null,
-    checkedEndDate: null
+    selectedStartDate: null,
+    selectedEndDate: null,
+    focusedInput: "startDate"
   };
 
   onToggle = checked => {
     this.setState({ checked });
   };
 
-  onCancel = () => {
-    this.props.closeDropDown();
+  onApply = () => {
+    this.props.closeDropdown();
     this.setState({
-      checked: false,
-      checkedStartDate: this.state.startDate,
-      checkedEndDate: this.state.endDate
+      selected: false,
+      startDate: this.state.selectedStartDate,
+      endDate: this.state.selectedEndDate
     });
+    this.props.onApply(
+      this.state.selectedStartDate,
+      this.state.selectedEndDate
+    );
   };
 
-  onApply = () => {
-    this.props.closeDropDown();
+  onCancel = () => {
+    this.props.closeDropdown();
     this.setState({
       checked: false,
-      startDate: this.state.checkedStartDate,
-      endDate: this.state.checkedEndDate
+      selectedStartDate: this.state.startDate,
+      selectedEndDate: this.state.endDate
     });
-    this.props.onApply(this.state.checkedStartDate, this.state.checkedEndDate);
+  };
+  onToggle = checked => {
+    this.setState({ checked });
+  };
+
+  focusedInput = focusedInput => {
+    this.setState({ focusedInput: focusedInput || "startDate" });
   };
 
   onDatesChange = ({ startDate, endDate }) => {
-    this.setState({ checkedStartDate: startDate, checkedEndDate: endDate });
-  };
-
-  onFocusChange = ({ focusedInput }) => {
-    this.setState({ focusedInput: focusedInput || "startDate" });
+    this.setState({
+      selectedStartDate: startDate,
+      selectedEndDate: endDate
+    });
   };
 
   render() {
@@ -92,9 +102,9 @@ export default class extends React.Component {
         </MobileOnly>
         <DateRangePicker
           focusedInput={this.state.focusedInput}
-          onFocusChange={this.onFocusChange}
-          startDate={this.state.startDate}
-          endDate={this.state.endDate}
+          onFocusChange={focusedInput => this.focusedInput(focusedInput)}
+          startDate={this.state.selectedStartDate}
+          endDate={this.state.selectedEndDate}
           onDatesChange={this.onDatesChange}
         />
       </Filter>

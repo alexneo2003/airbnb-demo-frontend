@@ -53,6 +53,36 @@ const DropDownContent = onClickOutside(styled.div`
   `};
 `);
 
+const MoreFiltersContent = onClickOutside(styled.div`
+  position: absolute;
+  border: 1px solid rgba(72, 72, 72, 0.2);
+  box-sizing: border-box;
+  box-shadow: 0px 2px 4px rgba(72, 72, 72, 0.08);
+  border-radius: 4px;
+  z-index: 11;
+  background: #fff;
+  ${Media.mobile`
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    padding-top: 48px;
+    border: none;
+    box-shadow: none;
+  `};
+  ${Media.md`
+    position: absolute;
+    top: 8px;
+    left: -165px;
+  `};
+  ${Media.lg`
+    position: absolute;
+    top: 8px;
+    left: -468px;
+  `};
+`);
+
 const ButtonStyle = styled.button`
   padding: 16px;
   min-width: 16px;
@@ -126,12 +156,14 @@ const DropdownContentBox = styled.div`
 
 export default class extends React.Component {
   state = {
-    checked: false
+    checked: false,
+    moreFilters: false
   };
 
   onClick = () => {
     if (!this.state.checked) {
       this.props.onToggle(true);
+      this.moreFilters(this.props.moreFilters);
     } else {
       this.onApply();
     }
@@ -153,6 +185,15 @@ export default class extends React.Component {
     this.setState({ checked: false });
   };
 
+  moreFilters = moreFilters => {
+    console.log(moreFilters);
+    if (moreFilters) {
+      this.setState({ moreFilters: true });
+    } else {
+      this.setState({ moreFilters: false });
+    }
+  };
+
   render() {
     return (
       <div>
@@ -160,31 +201,59 @@ export default class extends React.Component {
           className={this.props.className}
           onClick={this.onClick}
           checked={this.state.checked}
+          onApply={this.onApply}
+          moreFilters={this.props.moreFilters}
         >
           {this.state.checked ? this.props.checkedTitle : this.props.title}
         </FilterButton>
-        <DropDownContainer>
-          {this.state.checked && (
-            <DropDownContent
-              eventTypes="click"
-              handleClickOutside={this.onClickOutside}
-            >
-              <DropdownContentHolder>
-                <DropdownContentBox>{this.props.children}</DropdownContentBox>
-              </DropdownContentHolder>
-              <TitleContainer>
-                <Cancel onClick={this.onCancel}>
-                  <TabletFrom>Cancel</TabletFrom>
-                </Cancel>
-                <ActionTitle>{this.props.title}</ActionTitle>
-                <Apply onClick={this.onApply}>
-                  <TabletFrom>Apply</TabletFrom>
-                  <MobileOnly>Reset</MobileOnly>
-                </Apply>
-              </TitleContainer>
-            </DropDownContent>
-          )}
-        </DropDownContainer>
+        {this.state.moreFilters && (
+          <DropDownContainer>
+            {this.state.checked && (
+              <MoreFiltersContent
+                eventTypes="click"
+                handleClickOutside={this.onClickOutside}
+              >
+                <DropdownContentHolder>
+                  <DropdownContentBox>{this.props.children}</DropdownContentBox>
+                </DropdownContentHolder>
+                <TitleContainer>
+                  <Cancel onClick={this.onCancel}>
+                    <TabletFrom>Cancel</TabletFrom>
+                  </Cancel>
+                  <ActionTitle>{this.props.title}</ActionTitle>
+                  <Apply onClick={this.onApply}>
+                    <TabletFrom>Apply</TabletFrom>
+                    <MobileOnly>Reset</MobileOnly>
+                  </Apply>
+                </TitleContainer>
+              </MoreFiltersContent>
+            )}
+          </DropDownContainer>
+        )}
+        {!this.state.moreFilters && (
+          <DropDownContainer>
+            {this.state.checked && (
+              <DropDownContent
+                eventTypes="click"
+                handleClickOutside={this.onClickOutside}
+              >
+                <DropdownContentHolder>
+                  <DropdownContentBox>{this.props.children}</DropdownContentBox>
+                </DropdownContentHolder>
+                <TitleContainer>
+                  <Cancel onClick={this.onCancel}>
+                    <TabletFrom>Cancel</TabletFrom>
+                  </Cancel>
+                  <ActionTitle>{this.props.title}</ActionTitle>
+                  <Apply onClick={this.onApply}>
+                    <TabletFrom>Apply</TabletFrom>
+                    <MobileOnly>Reset</MobileOnly>
+                  </Apply>
+                </TitleContainer>
+              </DropDownContent>
+            )}
+          </DropDownContainer>
+        )}
       </div>
     );
   }
