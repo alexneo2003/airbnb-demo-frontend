@@ -92,8 +92,6 @@ const ButtonStyle = styled.button`
   border: none;
   cursor: pointer;
   ${Media.sm`
-    height: 64px;
-    width: 110px;
     padding:0;
   `};
 `;
@@ -104,6 +102,20 @@ const Cancel = styled(ButtonStyle)`
   background-repeat: no-repeat;
   background-position: 50% 50%;
   ${Media.sm`background: none;`};
+`;
+const SeeHomes = styled(ButtonStyle)`
+  white-space: nowrap;
+  background: #008489;
+  color: #fff;
+  border-radius: 4px;
+  padding: 6px 14px;
+`;
+
+const CancelHomes = styled(ButtonStyle)`
+  margin-right: 8px;
+  color: #636363;
+  background: #fff;
+  padding: 6px 14px;
 `;
 
 const Apply = styled(ButtonStyle)`
@@ -128,6 +140,28 @@ const TitleContainer = styled.div`
   `};
 `;
 
+const HomesButtonsContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  ${Media.mobile`
+    justify-content: center;  
+    position: fixed;
+    background: white;
+    height: 48px;
+    top: 0;
+    left: 0;
+    right: 0;
+  `};
+  ${Media.lg`
+    justify-content: flex-end;  
+    position: fixed;
+    background: white;
+    height: 48px;
+    top: 0;
+    left: 0;
+    right: 0;
+  `};
+`;
 const ActionTitle = styled.p`
   width: 100%;
   display: flex;
@@ -216,16 +250,16 @@ export default class extends React.Component {
                 <DropdownContentHolder>
                   <DropdownContentBox>{this.props.children}</DropdownContentBox>
                 </DropdownContentHolder>
-                <TitleContainer>
-                  <Cancel onClick={this.onCancel}>
+                <HomesButtonsContainer>
+                  <CancelHomes onClick={this.onCancel}>
                     <TabletFrom>Cancel</TabletFrom>
-                  </Cancel>
+                  </CancelHomes>
                   <ActionTitle>{this.props.title}</ActionTitle>
-                  <Apply onClick={this.onApply}>
-                    <TabletFrom>Apply</TabletFrom>
+                  <SeeHomes onClick={this.onApply}>
+                    <TabletFrom>See homes</TabletFrom>
                     <MobileOnly>Reset</MobileOnly>
-                  </Apply>
-                </TitleContainer>
+                  </SeeHomes>
+                </HomesButtonsContainer>
               </MoreFiltersContent>
             )}
           </DropDownContainer>

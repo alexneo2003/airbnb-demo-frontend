@@ -281,6 +281,58 @@ export default class Tablet extends React.Component {
               <Switch />
             </OptionsRow>
           </Section>
+          <Section>
+            <SectionTitle>Amenities</SectionTitle>
+            <OptionsRow>
+              <CheckboxColumn>
+                <CheckboxRow>
+                  <Checkbox />
+                  <CheckboxTitle>Heating</CheckboxTitle>
+                </CheckboxRow>
+                <CheckboxRow>
+                  <Checkbox />
+                  <CheckboxTitle>TV</CheckboxTitle>
+                </CheckboxRow>
+              </CheckboxColumn>
+              <CheckboxColumn>
+                <CheckboxRow>
+                  <Checkbox />
+                  <CheckboxTitle>Kitchen</CheckboxTitle>
+                </CheckboxRow>
+                <CheckboxRow>
+                  <Checkbox />
+                  <CheckboxTitle>Wireless Internet</CheckboxTitle>
+                </CheckboxRow>
+              </CheckboxColumn>
+            </OptionsRow>
+            <SeeAll>See all amenities</SeeAll>
+          </Section>
+          <Section>
+            <SectionTitle>Facilities</SectionTitle>
+            <OptionsRow>
+              <CheckboxColumn>
+                <CheckboxRow>
+                  <Checkbox />
+                  <CheckboxTitle>Elevator</CheckboxTitle>
+                </CheckboxRow>
+                <CheckboxRow>
+                  <Checkbox />
+                  <CheckboxTitle>Pool</CheckboxTitle>
+                </CheckboxRow>
+              </CheckboxColumn>
+              <CheckboxColumn>
+                <CheckboxRow>
+                  <Checkbox />
+                  <CheckboxTitle>Free parking on premises</CheckboxTitle>
+                </CheckboxRow>
+                <CheckboxRow>
+                  <Checkbox />
+                  <CheckboxTitle>Wheelchair accessible</CheckboxTitle>
+                </CheckboxRow>
+              </CheckboxColumn>
+            </OptionsRow>
+            <SeeAll>See all facilities</SeeAll>
+          </Section>
         </Container>
       </Filter>
     );

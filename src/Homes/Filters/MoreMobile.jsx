@@ -49,19 +49,30 @@ const OptionsRow = styled.div`
   `};
 `;
 
-const SectionTitle = styled.div`font-size: 20px;`;
+const SectionTitle = styled.div`
+  font-size: 20px;
+  ${Media.mobile`
+    font-size: 18px;
+  `};
+`;
 
 const OptionsContainer = styled.div``;
 
 const OptionsTitle = styled.div`
   font-size: 18px;
   font-family: CircularLight;
+  ${Media.mobile`
+    font-size: 16px;
+  `};
 `;
 
 const OptionsSubTitle = styled.div`
   font-size: 14px;
   font-family: CircularLight;
   margin-left: ${props => props.marginLeft};
+  ${Media.mobile`
+    font-size: 12px;
+  `};
 `;
 
 const MoreTitle = styled(OptionsSubTitle)`color: #0f7276;`;
@@ -150,6 +161,9 @@ const RheostatContent = styled.div`
   height: 100px;
   padding-left: 24px;
   padding-right: 24px;
+  ${Media.mobile`
+    width: 250px;
+  `};
 `;
 export default class Mobile extends React.Component {
   state = {
@@ -193,7 +207,6 @@ export default class Mobile extends React.Component {
                 <Checkbox />
                 <CheckboxTitle>Entire room</CheckboxTitle>
               </CheckboxRow>
-              <EntireRoomImg />
             </OptionsRow>
             <OptionsSubTitle marginLeft="36px">
               Have a place to your
@@ -203,7 +216,6 @@ export default class Mobile extends React.Component {
                 <Checkbox />
                 <CheckboxTitle>Private room</CheckboxTitle>
               </CheckboxRow>
-              <PrivateRoomImg />
             </OptionsRow>
             <OptionsSubTitle marginLeft="36px">
               Have your own room and share some common spaces
@@ -213,7 +225,6 @@ export default class Mobile extends React.Component {
                 <Checkbox />
                 <CheckboxTitle>Shared room</CheckboxTitle>
               </CheckboxRow>
-              <SharedRoomImg />
             </OptionsRow>
             <OptionsSubTitle marginLeft="36px">
               Stay in a shared space, like a common room
@@ -277,6 +288,18 @@ export default class Mobile extends React.Component {
                 <MoreTitle>Learn more</MoreTitle>
               </OptionsContainer>
               <Switch />
+            </OptionsRow>
+          </Section>
+          <Section>
+            <OptionsRow>
+              <SectionTitle>Amenities</SectionTitle>
+              <SeeAll>See all</SeeAll>
+            </OptionsRow>
+          </Section>
+          <Section>
+            <OptionsRow>
+              <SectionTitle>Amenities</SectionTitle>
+              <SeeAll>See all</SeeAll>
             </OptionsRow>
           </Section>
         </Container>
