@@ -1,5 +1,4 @@
 import React from "react";
-import MediaQuery from "react-responsive";
 import entireHome from "./entire-home.svg";
 import privateRoom from "./private-room.svg";
 import sharedRoom from "./shared-room.svg";
@@ -11,7 +10,7 @@ import Media from "../../Media";
 import Filter from "./Filter";
 import Rheostat from "rheostat";
 import "./slider.css";
-import { CounterMinus, CounterPlus } from "../../styled";
+import { Minus, Plus } from "../../styled";
 
 const Container = styled.div`
   padding: 24px;
@@ -32,13 +31,13 @@ const Container = styled.div`
 
 const Section = styled.div`
   padding-top: 12px;
-  padding-bottom: 12px;
+  padding-bottom: 32px;
   background: #ffffff;
   border-bottom: 0.5px solid rgba(72, 72, 72, 0.3);
 `;
 
-const OptionsRow = styled.div`
-  padding-top: 12px;
+const Row = styled.div`
+  padding-top: 8px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -49,7 +48,10 @@ const OptionsRow = styled.div`
   `};
 `;
 
-const SectionTitle = styled.div`font-size: 20px;`;
+const SectionTitle = styled.div`
+  padding-bottom: 8px;
+  font-size: 20px;
+`;
 
 const OptionsContainer = styled.div``;
 
@@ -58,15 +60,19 @@ const OptionsTitle = styled.div`
   font-family: CircularLight;
 `;
 
-const OptionsSubTitle = styled.div`
+const SubTitle = styled.div`
   font-size: 14px;
   font-family: CircularLight;
   margin-left: ${props => props.marginLeft};
 `;
 
-const MoreTitle = styled(OptionsSubTitle)`color: #0f7276;`;
+const MoreTitle = styled(SubTitle)`
+  color: #0f7276;
+`;
 
 const SeeAll = styled(MoreTitle)`
+  cursor: pointer;
+  padding-top: 24px;
   position: relative;
   color: #0f7276;
   font-family: Circular;
@@ -77,7 +83,7 @@ const SeeAll = styled(MoreTitle)`
     background: url(${dropdown}) no-repeat 5px;
     width: 22px;
     height: 7px;
-    top: 8px;
+    top: 32px;
     margin-left: 2px;
   }
 `;
@@ -86,6 +92,8 @@ const CounterContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding-bottom: 8px;
+  padding-top: 8px;
 `;
 
 const Switch = styled.div`
@@ -130,7 +138,10 @@ const CheckboxColumn = styled.div`
   width: 50%;
 `;
 
-const CheckboxRow = styled(OptionsRow)`justify-content: flex-start;`;
+const CheckboxRow = styled(Row)`
+  padding-top: 16px;
+  justify-content: flex-start;
+`;
 
 const Checkbox = styled.div`
   width: 24px;
@@ -148,6 +159,7 @@ const CheckboxTitle = styled(CounterTitle)`
 const RheostatContent = styled.div`
   width: 668px;
   height: 100px;
+  padding-top: 40px;
   padding-left: 24px;
   padding-right: 24px;
 `;
@@ -190,100 +202,94 @@ export default class Tablet extends React.Component {
         <Container>
           <Section>
             <SectionTitle>Room type</SectionTitle>
-            <OptionsRow>
+            <Row>
               <CheckboxRow>
                 <Checkbox />
                 <CheckboxTitle>Entire room</CheckboxTitle>
               </CheckboxRow>
               <EntireRoomImg />
-            </OptionsRow>
-            <OptionsSubTitle marginLeft="36px">
-              Have a place to your
-            </OptionsSubTitle>
-            <OptionsRow>
+            </Row>
+            <SubTitle marginLeft="36px">Have a place to your</SubTitle>
+            <Row>
               <CheckboxRow>
                 <Checkbox />
                 <CheckboxTitle>Private room</CheckboxTitle>
               </CheckboxRow>
               <PrivateRoomImg />
-            </OptionsRow>
-            <OptionsSubTitle marginLeft="36px">
+            </Row>
+            <SubTitle marginLeft="36px">
               Have your own room and share some common spaces
-            </OptionsSubTitle>
-            <OptionsRow>
+            </SubTitle>
+            <Row>
               <CheckboxRow>
                 <Checkbox />
                 <CheckboxTitle>Shared room</CheckboxTitle>
               </CheckboxRow>
               <SharedRoomImg />
-            </OptionsRow>
-            <OptionsSubTitle marginLeft="36px">
+            </Row>
+            <SubTitle marginLeft="36px">
               Stay in a shared space, like a common room
-            </OptionsSubTitle>
+            </SubTitle>
           </Section>
           <Section>
             <SectionTitle>Price range</SectionTitle>
-            <OptionsRow>
+            <Row>
               <OptionsTitle>$10 — $1000+</OptionsTitle>
-            </OptionsRow>
-            <OptionsSubTitle>The average nightly price is $75.</OptionsSubTitle>
+            </Row>
+            <SubTitle>The average nightly price is $75.</SubTitle>
             <RheostatContent>
               <Rheostat min={1} max={100} values={[1, 100]} />
             </RheostatContent>
           </Section>
           <Section>
             <SectionTitle>Rooms and beds</SectionTitle>
-            <OptionsRow marginRight="290px">
+            <Row marginRight="290px">
               <OptionsTitle>Bedrooms</OptionsTitle>
               <CounterContainer>
-                <CounterMinus />
+                <Minus />
                 <CounterTitle>0+</CounterTitle>
-                <CounterPlus />
+                <Plus />
               </CounterContainer>
-            </OptionsRow>
-            <OptionsRow marginRight="290px">
+            </Row>
+            <Row marginRight="290px">
               <OptionsTitle>Beds</OptionsTitle>
               <CounterContainer>
-                <CounterMinus />
+                <Minus />
                 <CounterTitle>0+</CounterTitle>
-                <CounterPlus />
+                <Plus />
               </CounterContainer>
-            </OptionsRow>
-            <OptionsRow marginRight="290px">
+            </Row>
+            <Row marginRight="290px">
               <OptionsTitle>Bathrooms</OptionsTitle>
               <CounterContainer>
-                <CounterMinus />
+                <Minus />
                 <CounterTitle>0+</CounterTitle>
-                <CounterPlus />
+                <Plus />
               </CounterContainer>
-            </OptionsRow>
+            </Row>
           </Section>
           <Section>
             <SectionTitle>More options</SectionTitle>
-            <OptionsRow marginRight="260px">
+            <Row marginRight="260px">
               <OptionsContainer>
                 <OptionsTitle>Instant Book</OptionsTitle>
-                <OptionsSubTitle>Secure a reservation</OptionsSubTitle>
+                <SubTitle>Secure a reservation</SubTitle>
                 <MoreTitle>Learn more</MoreTitle>
               </OptionsContainer>
               <Switch />
-            </OptionsRow>
-            <OptionsRow
-              marginRight="260px"
-              paddingTop="32px"
-              paddingBottom="24px"
-            >
+            </Row>
+            <Row marginRight="260px" paddingTop="24px" paddingBottom="24px">
               <OptionsContainer>
                 <OptionsTitle>Superhost</OptionsTitle>
-                <OptionsSubTitle>Stay with recognized hosts.</OptionsSubTitle>
+                <SubTitle>Stay with recognized hosts.</SubTitle>
                 <MoreTitle>Learn more</MoreTitle>
               </OptionsContainer>
               <Switch />
-            </OptionsRow>
+            </Row>
           </Section>
           <Section>
             <SectionTitle>Amenities</SectionTitle>
-            <OptionsRow>
+            <Row>
               <CheckboxColumn>
                 <CheckboxRow>
                   <Checkbox />
@@ -304,12 +310,12 @@ export default class Tablet extends React.Component {
                   <CheckboxTitle>Wireless Internet</CheckboxTitle>
                 </CheckboxRow>
               </CheckboxColumn>
-            </OptionsRow>
+            </Row>
             <SeeAll>See all amenities</SeeAll>
           </Section>
           <Section>
             <SectionTitle>Facilities</SectionTitle>
-            <OptionsRow>
+            <Row>
               <CheckboxColumn>
                 <CheckboxRow>
                   <Checkbox />
@@ -330,7 +336,7 @@ export default class Tablet extends React.Component {
                   <CheckboxTitle>Wheelchair accessible</CheckboxTitle>
                 </CheckboxRow>
               </CheckboxColumn>
-            </OptionsRow>
+            </Row>
             <SeeAll>See all facilities</SeeAll>
           </Section>
         </Container>

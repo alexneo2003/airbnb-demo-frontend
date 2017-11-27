@@ -85,8 +85,12 @@ export const Price = styled.span`
   }
 `;
 
-export const Reviews = styled.div`display: flex;`;
-export const ReviewStar = styled.img`margin: 2px;`;
+export const Reviews = styled.div`
+  display: flex;
+`;
+export const ReviewStar = styled.img`
+  margin: 2px;
+`;
 export const ReviewText = styled.p`
   font-size: 12px;
   margin: 3px 0 0 2px;
@@ -107,13 +111,13 @@ export const SeeAll = styled(Link)`
   position: relative;
   font-size: 12px;
   margin-right: 16px;
+  margin-top: 8px;
   &:after {
     position: absolute;
     content: "";
     background: url(${arrow}) no-repeat 5px;
     width: 12px;
     height: 15px;
-    top: -1px;
     margin-right: 22px;
     margin-left: 2px;
   }
@@ -149,13 +153,13 @@ export const Counter = styled.div`
   cursor: pointer;
 `;
 
-export const CounterMinus = styled(Counter)`
+export const Minus = styled(Counter)`
   background: url(${minus});
   background-repeat: no-repeat;
   background-position: 50% 50%;
 `;
 
-export const CounterPlus = styled(Counter)`
+export const Plus = styled(Counter)`
   background: url(${plus});
   background-repeat: no-repeat;
   background-position: 50% 50%;

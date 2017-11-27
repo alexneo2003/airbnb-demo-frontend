@@ -29,7 +29,22 @@ const FilterButton = styled.button`
   }
 `;
 
-const DropDownContainer = styled.div`position: relative;`;
+const ShadedContainer = styled.div`
+  opacity: 0.99;
+  position: fixed;
+  height: 100vh;
+  width: 100%;
+  top: 140px;
+  z-index: 1;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  background: rgba(255, 255, 255, 0.8);
+`;
+
+const DropDownContainer = styled.div`
+  position: relative;
+`;
 
 const DropDownContent = onClickOutside(styled.div`
   position: absolute;
@@ -84,16 +99,12 @@ const MoreFiltersContent = onClickOutside(styled.div`
 `);
 
 const ButtonStyle = styled.button`
-  padding: 16px;
-  min-width: 16px;
-  height: 48px;
+  padding: 24px 32px;
+  height: auto;
   font-size: 16px;
   background: transparent;
   border: none;
   cursor: pointer;
-  ${Media.sm`
-    padding:0;
-  `};
 `;
 
 const Cancel = styled(ButtonStyle)`
@@ -108,7 +119,7 @@ const SeeHomes = styled(ButtonStyle)`
   background: #008489;
   color: #fff;
   border-radius: 4px;
-  padding: 6px 14px;
+  padding: 6px 32px;
 `;
 
 const CancelHomes = styled(ButtonStyle)`
@@ -116,15 +127,14 @@ const CancelHomes = styled(ButtonStyle)`
   color: #636363;
   background: #fff;
   padding: 6px 14px;
+  background-image: url(${close});
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  ${Media.sm`background: none;`};
 `;
 
 const Apply = styled(ButtonStyle)`
   color: #0f7276;
-  margin-right: 16px;
-  ${Media.sm`
-    padding:0;
-    margin-right: 0px;
-  `};
 `;
 
 const TitleContainer = styled.div`
@@ -141,25 +151,23 @@ const TitleContainer = styled.div`
 `;
 
 const HomesButtonsContainer = styled.div`
+  padding: 8px 16px;
   display: flex;
   justify-content: center;
+  height: 48px;
+  background: white;
   ${Media.mobile`
     justify-content: center;  
     position: fixed;
-    background: white;
-    height: 48px;
     top: 0;
     left: 0;
     right: 0;
   `};
+  ${Media.md`
+    justify-content: center;
+  `};
   ${Media.lg`
     justify-content: flex-end;  
-    position: fixed;
-    background: white;
-    height: 48px;
-    top: 0;
-    left: 0;
-    right: 0;
   `};
 `;
 const ActionTitle = styled.p`
@@ -220,12 +228,9 @@ export default class extends React.Component {
   };
 
   moreFilters = moreFilters => {
-    console.log(moreFilters);
-    if (moreFilters) {
-      this.setState({ moreFilters: true });
-    } else {
-      this.setState({ moreFilters: false });
-    }
+    moreFilters
+      ? this.setState({ moreFilters: true })
+      : this.setState({ moreFilters: false });
   };
 
   render() {
@@ -240,6 +245,8 @@ export default class extends React.Component {
         >
           {this.state.checked ? this.props.checkedTitle : this.props.title}
         </FilterButton>
+
+        {this.state.checked && <ShadedContainer />}
         {this.state.moreFilters && (
           <DropDownContainer>
             {this.state.checked && (

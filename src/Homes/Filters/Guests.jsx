@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 import Filter from "./Filter";
-import { CounterMinus, CounterPlus } from "../../styled";
+import { Minus, Plus } from "../../styled";
 
 const GuestsContainer = styled.div`
-  padding: 24px;
-  width: 326px;
+  padding: 16px 24px;
+  width: 278px;
 `;
 
 const OptionsRow = styled.div`
@@ -16,7 +16,9 @@ const OptionsRow = styled.div`
   align-items: center;
 `;
 
-const OptionsTitleContainer = styled.div`font-size: 20px;`;
+const OptionsTitleContainer = styled.div`
+  font-size: 20px;
+`;
 
 const OptionsTitle = styled.div`
   font-size: 20px;
@@ -80,9 +82,9 @@ export default class extends React.Component {
               <OptionsTitle>Adults</OptionsTitle>
             </OptionsTitleContainer>
             <CounterContainer>
-              <CounterMinus />
+              <Minus />
               <CounterTitle>0</CounterTitle>
-              <CounterPlus />
+              <Plus />
             </CounterContainer>
           </OptionsRow>
           <OptionsRow>
@@ -91,9 +93,9 @@ export default class extends React.Component {
               <OptionsSubTitle>Ages 2 - 12</OptionsSubTitle>
             </OptionsTitleContainer>
             <CounterContainer>
-              <CounterMinus />
+              <Minus />
               <CounterTitle>0</CounterTitle>
-              <CounterPlus />
+              <Plus />
             </CounterContainer>
           </OptionsRow>
           <OptionsRow>
@@ -102,9 +104,9 @@ export default class extends React.Component {
               <OptionsSubTitle>Under 2</OptionsSubTitle>
             </OptionsTitleContainer>
             <CounterContainer>
-              <CounterMinus />
+              <Minus />
               <CounterTitle>0</CounterTitle>
-              <CounterPlus />
+              <Plus />
             </CounterContainer>
           </OptionsRow>
         </GuestsContainer>

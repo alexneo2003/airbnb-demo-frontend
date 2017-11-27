@@ -1,5 +1,4 @@
 import React from "react";
-import MediaQuery from "react-responsive";
 import entireHome from "./entire-home.svg";
 import privateRoom from "./private-room.svg";
 import sharedRoom from "./shared-room.svg";
@@ -11,7 +10,7 @@ import Media from "../../Media";
 import Filter from "./Filter";
 import Rheostat from "rheostat";
 import "./slider.css";
-import { CounterMinus, CounterPlus } from "../../styled";
+import { Minus, Plus } from "../../styled";
 
 const Container = styled.div`
   padding: 24px;
@@ -75,7 +74,9 @@ const OptionsSubTitle = styled.div`
   `};
 `;
 
-const MoreTitle = styled(OptionsSubTitle)`color: #0f7276;`;
+const MoreTitle = styled(OptionsSubTitle)`
+  color: #0f7276;
+`;
 
 const SeeAll = styled(MoreTitle)`
   position: relative;
@@ -141,7 +142,9 @@ const CheckboxColumn = styled.div`
   width: 50%;
 `;
 
-const CheckboxRow = styled(OptionsRow)`justify-content: flex-start;`;
+const CheckboxRow = styled(OptionsRow)`
+  justify-content: flex-start;
+`;
 
 const Checkbox = styled.div`
   width: 24px;
@@ -245,25 +248,25 @@ export default class Mobile extends React.Component {
             <OptionsRow marginRight="290px">
               <OptionsTitle>Bedrooms</OptionsTitle>
               <CounterContainer>
-                <CounterMinus />
+                <Minus />
                 <CounterTitle>0+</CounterTitle>
-                <CounterPlus />
+                <Plus />
               </CounterContainer>
             </OptionsRow>
             <OptionsRow marginRight="290px">
               <OptionsTitle>Beds</OptionsTitle>
               <CounterContainer>
-                <CounterMinus />
+                <Minus />
                 <CounterTitle>0+</CounterTitle>
-                <CounterPlus />
+                <Plus />
               </CounterContainer>
             </OptionsRow>
             <OptionsRow marginRight="290px">
               <OptionsTitle>Bathrooms</OptionsTitle>
               <CounterContainer>
-                <CounterMinus />
+                <Minus />
                 <CounterTitle>0+</CounterTitle>
-                <CounterPlus />
+                <Plus />
               </CounterContainer>
             </OptionsRow>
           </Section>

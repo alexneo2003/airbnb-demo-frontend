@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-import DatesFilter from "./DatesFilter";
-import GuestsFilter from "./GuestsFilter";
-import RoomTypeFilter from "./RoomTypeFilter";
-import PriceFilter from "./PriceFilter";
-import InstantBookFilter from "./InstantBookFilter";
+import Dates from "./Dates";
+import Guests from "./Guests";
+import RoomType from "./RoomType";
+import Price from "./Price";
+import InstantBook from "./InstantBook";
 import MoreFilters from "./MoreFilters";
 import { DesktopOnly } from "../../Media";
 
@@ -54,32 +54,32 @@ export default class extends React.Component {
     return (
       <FiltersBorder>
         <FiltersRow>
-          <DatesFilter
+          <Dates
             title="Dates"
             checkedTitle="Check in — Check out"
             closeDropDown={() => this.setDropDown(null)}
             onApply={this.onApply}
           />
-          <GuestsFilter
+          <Guests
             title="Guests"
             checkedTitle="Guests"
             closeDropDown={() => this.setDropDown(null)}
             onApply={this.onApply}
           />
           <DesktopOnly>
-            <RoomTypeFilter
+            <RoomType
               title="Room type"
               checkedTitle="Room type"
               closeDropDown={() => this.setDropDown(null)}
               onApply={this.onApply}
             />
-            <PriceFilter
+            <Price
               title="Price"
               checkedTitle="Price"
               closeDropDown={() => this.setDropDown(null)}
               onApply={this.onApply}
             />
-            <InstantBookFilter
+            <InstantBook
               title="Instant Book"
               checkedTitle="Instant Book"
               closeDropDown={() => this.setDropDown(null)}

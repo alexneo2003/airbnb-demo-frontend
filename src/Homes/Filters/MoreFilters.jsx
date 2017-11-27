@@ -1,39 +1,40 @@
 import React from "react";
-import MediaQuery from "react-responsive";
 import Desktop from "./MoreDesktop";
 import Mobile from "./MoreMobile";
 import Tablet from "./MoreTablet";
+
+import { MobileOnly, TabletOnly, DesktopOnly } from "../../Media";
 
 export default class extends React.Component {
   render() {
     return (
       <div>
-        <MediaQuery maxWidth={767}>
+        <MobileOnly>
           <Mobile
             className={this.props.className}
             title={this.props.title}
             checkedTitle={this.props.checkedTitle}
             moreFilters={this.props.moreFilters}
           />
-        </MediaQuery>
+        </MobileOnly>
 
-        <MediaQuery minWidth={768} maxWidth={991}>
+        <TabletOnly>
           <Tablet
             className={this.props.className}
             title={this.props.title}
             checkedTitle={this.props.checkedTitle}
             moreFilters={this.props.moreFilters}
           />
-        </MediaQuery>
+        </TabletOnly>
 
-        <MediaQuery minWidth={992}>
+        <DesktopOnly>
           <Desktop
             className={this.props.className}
             title={this.props.title}
             checkedTitle={this.props.checkedTitle}
             moreFilters={this.props.moreFilters}
           />
-        </MediaQuery>
+        </DesktopOnly>
       </div>
     );
   }

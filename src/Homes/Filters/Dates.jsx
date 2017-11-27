@@ -4,7 +4,6 @@ import Filter from "./Filter";
 import DateRangePicker from "./DateRangePicker";
 import { MobileOnly } from "../../Media";
 import arrow from "./arrow.svg";
-import omit from "lodash/omit";
 
 const CheckedContainer = styled.div`
   display: flex;
@@ -56,6 +55,7 @@ export default class DatesFilter extends React.Component {
       selectedEndDate: this.state.endDate
     });
   };
+
   onToggle = checked => {
     this.setState({ checked });
   };
