@@ -9,32 +9,12 @@ export default class extends React.Component {
   render() {
     return (
       <div>
-        <MobileOnly>
-          <Mobile
-            className={this.props.className}
-            title={this.props.title}
-            checkedTitle={this.props.checkedTitle}
-            moreFilters={this.props.moreFilters}
-          />
-        </MobileOnly>
-
-        <TabletOnly>
-          <Tablet
-            className={this.props.className}
-            title={this.props.title}
-            checkedTitle={this.props.checkedTitle}
-            moreFilters={this.props.moreFilters}
-          />
-        </TabletOnly>
-
-        <DesktopOnly>
-          <Desktop
-            className={this.props.className}
-            title={this.props.title}
-            checkedTitle={this.props.checkedTitle}
-            moreFilters={this.props.moreFilters}
-          />
-        </DesktopOnly>
+        <Desktop
+          className={this.props.className}
+          title={this.props.title}
+          checkedTitle={this.props.checkedTitle}
+          moreFilters={this.props.moreFilters}
+        />
       </div>
     );
   }

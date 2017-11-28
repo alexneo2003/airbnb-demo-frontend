@@ -9,7 +9,6 @@ import styled from "styled-components";
 import Media from "../../Media";
 import Filter from "./Filter";
 import Rheostat from "rheostat";
-import "./slider.css";
 import { Minus, Plus } from "../../styled";
 
 const Container = styled.div`
@@ -237,9 +236,6 @@ export default class Tablet extends React.Component {
               <OptionsTitle>$10 — $1000+</OptionsTitle>
             </Row>
             <SubTitle>The average nightly price is $75.</SubTitle>
-            <RheostatContent>
-              <Rheostat min={1} max={100} values={[1, 100]} />
-            </RheostatContent>
           </Section>
           <Section>
             <SectionTitle>Rooms and beds</SectionTitle>

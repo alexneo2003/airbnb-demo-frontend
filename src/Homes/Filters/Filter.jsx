@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import onClickOutside from "react-onclickoutside";
 import Media, { MobileOnly, TabletFrom } from "../../Media";
+import { Row, Col } from "../../styled";
 import close from "./close.svg";
 
 const FilterButton = styled.button`
@@ -114,12 +115,40 @@ const Cancel = styled(ButtonStyle)`
   background-position: 50% 50%;
   ${Media.sm`background: none;`};
 `;
+
 const SeeHomes = styled(ButtonStyle)`
   white-space: nowrap;
   background: #008489;
   color: #fff;
   border-radius: 4px;
   padding: 6px 32px;
+  ${Media.mobile`
+    background: none;
+    color: #008489;
+    padding: 6px 8px;
+  `};
+`;
+
+const BottomContainer = styled.div`
+  margin-top: 16px;
+  position: fixed;
+  background: #ffffff;
+  border-top: 0.5px solid rgba(72, 72, 72, 0.3);
+  left: 0;
+  right: 0;
+  bottom: 0;
+`;
+
+const SeeHomesApply = styled(ButtonStyle)`
+  font-family: CircularBold;
+  font-size: 18px;
+  white-space: nowrap;
+  background: #ff5a5f;
+  color: #fff;
+  border-radius: 4px;
+  padding: 12px 32px;
+  margin: 8px;
+  width: 100%;
 `;
 
 const CancelHomes = styled(ButtonStyle)`
@@ -170,6 +199,7 @@ const HomesButtonsContainer = styled.div`
     justify-content: flex-end;  
   `};
 `;
+
 const ActionTitle = styled.p`
   width: 100%;
   display: flex;
@@ -261,12 +291,17 @@ export default class extends React.Component {
                   <CancelHomes onClick={this.onCancel}>
                     <TabletFrom>Cancel</TabletFrom>
                   </CancelHomes>
-                  <ActionTitle>{this.props.title}</ActionTitle>
+                  <ActionTitle>All filters (0)</ActionTitle>
                   <SeeHomes onClick={this.onApply}>
                     <TabletFrom>See homes</TabletFrom>
-                    <MobileOnly>Reset</MobileOnly>
+                    <MobileOnly>Clear all</MobileOnly>
                   </SeeHomes>
                 </HomesButtonsContainer>
+                <MobileOnly>
+                  <BottomContainer>
+                    <SeeHomesApply>See homes </SeeHomesApply>
+                  </BottomContainer>
+                </MobileOnly>
               </MoreFiltersContent>
             )}
           </DropDownContainer>

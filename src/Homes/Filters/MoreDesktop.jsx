@@ -1,11 +1,16 @@
 import React from "react";
 import styled from "styled-components";
 import Filter from "./Filter";
-import Media from "../../Media";
+import Media, { MobileOnly, TabletOnly } from "../../Media";
 import switchBtn from "./switch-btn.svg";
 import checkbox from "./checkbox.svg";
 import dropdown from "./arrow-down.svg";
 import { Minus, Plus } from "../../styled";
+import { RoomsAndBeds } from "./Sections/RoomsAndBeds";
+import { MoreOptions } from "./Sections/MoreOptions";
+import { RoomType } from "./Sections/RoomType";
+import { Price } from "./Sections/Price";
+import { AmenitiesFacilities } from "./Sections/AmenitiesFacilities";
 
 const Container = styled.div`
   padding: 16px 24px;
@@ -215,96 +220,15 @@ export default class extends React.Component {
         moreFilters={this.props.moreFilters}
       >
         <Container>
-          <Section>
-            <SectionTitle>Rooms and beds</SectionTitle>
-            <Row marginRight="290px">
-              <OptionsTitle>Bedrooms</OptionsTitle>
-              <Counters>
-                <Minus />
-                <Title>0+</Title>
-                <Plus />
-              </Counters>
-            </Row>
-            <Row marginRight="290px">
-              <OptionsTitle>Beds</OptionsTitle>
-              <Counters>
-                <Minus />
-                <Title>0+</Title>
-                <Plus />
-              </Counters>
-            </Row>
-            <Row marginRight="290px">
-              <OptionsTitle>Bathrooms</OptionsTitle>
-              <Counters>
-                <Minus />
-                <Title>0+</Title>
-                <Plus />
-              </Counters>
-            </Row>
-          </Section>
-          <Section>
-            <SectionTitle>More options</SectionTitle>
-            <Row marginRight="260px">
-              <OptionsContainer>
-                <OptionsTitle>Superhost</OptionsTitle>
-                <OptionsSubTitle>Stay with recognized hosts.</OptionsSubTitle>
-                <MoreTitle>Learn more</MoreTitle>
-              </OptionsContainer>
-              <Switch />
-            </Row>
-          </Section>
-          <Section>
-            <SectionTitle>Amenities</SectionTitle>
-            <Row>
-              <CheckboxColumn>
-                <CheckboxRow>
-                  <Checkbox />
-                  <CheckboxTitle>Heating</CheckboxTitle>
-                </CheckboxRow>
-                <CheckboxRow>
-                  <Checkbox />
-                  <CheckboxTitle>TV</CheckboxTitle>
-                </CheckboxRow>
-              </CheckboxColumn>
-              <CheckboxColumn>
-                <CheckboxRow>
-                  <Checkbox />
-                  <CheckboxTitle>Kitchen</CheckboxTitle>
-                </CheckboxRow>
-                <CheckboxRow>
-                  <Checkbox />
-                  <CheckboxTitle>Wireless Internet</CheckboxTitle>
-                </CheckboxRow>
-              </CheckboxColumn>
-            </Row>
-            <SeeAll>See all amenities</SeeAll>
-          </Section>
-          <Section>
-            <SectionTitle>Facilities</SectionTitle>
-            <Row>
-              <CheckboxColumn>
-                <CheckboxRow>
-                  <Checkbox />
-                  <CheckboxTitle>Elevator</CheckboxTitle>
-                </CheckboxRow>
-                <CheckboxRow>
-                  <Checkbox />
-                  <CheckboxTitle>Pool</CheckboxTitle>
-                </CheckboxRow>
-              </CheckboxColumn>
-              <CheckboxColumn>
-                <CheckboxRow>
-                  <Checkbox />
-                  <CheckboxTitle>Free parking on premises</CheckboxTitle>
-                </CheckboxRow>
-                <CheckboxRow>
-                  <Checkbox />
-                  <CheckboxTitle>Wheelchair accessible</CheckboxTitle>
-                </CheckboxRow>
-              </CheckboxColumn>
-            </Row>
-            <SeeAll>See all facilities</SeeAll>
-          </Section>
+          <MobileOnly>
+            <RoomType /> <Price />
+          </MobileOnly>
+          <TabletOnly>
+            <RoomType /> <Price />
+          </TabletOnly>
+          <RoomsAndBeds />
+          <MoreOptions />
+          <AmenitiesFacilities />
         </Container>
       </Filter>
     );

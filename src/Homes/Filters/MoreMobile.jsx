@@ -9,7 +9,6 @@ import styled from "styled-components";
 import Media from "../../Media";
 import Filter from "./Filter";
 import Rheostat from "rheostat";
-import "./slider.css";
 import { Minus, Plus } from "../../styled";
 
 const Container = styled.div`
@@ -18,7 +17,7 @@ const Container = styled.div`
   height: calc(100vh - 264px);
   ${Media.mobile`
     height: calc(100vh - 48px);  
-    width: 310px;
+    width: 100%;
     padding: 8px;    
   `};
   ${Media.md`
@@ -30,10 +29,11 @@ const Container = styled.div`
 `;
 
 const Section = styled.div`
-  padding-top: 12px;
-  padding-bottom: 12px;
+  padding-top: 20px;
+  padding-bottom: 20px;
   background: #ffffff;
   border-bottom: 0.5px solid rgba(72, 72, 72, 0.3);
+  margin-bottom: ${props => props.marginBottom};
 `;
 
 const OptionsRow = styled.div`
@@ -41,11 +41,9 @@ const OptionsRow = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  ${Media.md`
-    margin-right: ${props => props.marginRight};
-    margin-top: ${props => props.paddingTop};
-    margin-bottom: ${props => props.paddingBottom};
-  `};
+  margin-right: ${props => props.marginRight};
+  margin-top: ${props => props.marginTop};
+  margin-bottom: ${props => props.marginBottom};
 `;
 
 const SectionTitle = styled.div`
@@ -69,6 +67,9 @@ const OptionsSubTitle = styled.div`
   font-size: 14px;
   font-family: CircularLight;
   margin-left: ${props => props.marginLeft};
+  margin-right: ${props => props.marginRight};
+  margin-top: ${props => props.marginTop};
+  margin-bottom: ${props => props.marginBottom};
   ${Media.mobile`
     font-size: 12px;
   `};
@@ -89,7 +90,7 @@ const SeeAll = styled(MoreTitle)`
     background: url(${dropdown}) no-repeat 5px;
     width: 22px;
     height: 7px;
-    top: 8px;
+    top: 4px;
     margin-left: 2px;
   }
 `;
@@ -239,13 +240,10 @@ export default class Mobile extends React.Component {
               <OptionsTitle>$10 — $1000+</OptionsTitle>
             </OptionsRow>
             <OptionsSubTitle>The average nightly price is $75.</OptionsSubTitle>
-            <RheostatContent>
-              <Rheostat min={1} max={100} values={[1, 100]} />
-            </RheostatContent>
           </Section>
           <Section>
             <SectionTitle>Rooms and beds</SectionTitle>
-            <OptionsRow marginRight="290px">
+            <OptionsRow>
               <OptionsTitle>Bedrooms</OptionsTitle>
               <CounterContainer>
                 <Minus />
@@ -253,7 +251,7 @@ export default class Mobile extends React.Component {
                 <Plus />
               </CounterContainer>
             </OptionsRow>
-            <OptionsRow marginRight="290px">
+            <OptionsRow>
               <OptionsTitle>Beds</OptionsTitle>
               <CounterContainer>
                 <Minus />
@@ -261,7 +259,7 @@ export default class Mobile extends React.Component {
                 <Plus />
               </CounterContainer>
             </OptionsRow>
-            <OptionsRow marginRight="290px">
+            <OptionsRow>
               <OptionsTitle>Bathrooms</OptionsTitle>
               <CounterContainer>
                 <Minus />
@@ -272,19 +270,17 @@ export default class Mobile extends React.Component {
           </Section>
           <Section>
             <SectionTitle>More options</SectionTitle>
-            <OptionsRow marginRight="260px">
+            <OptionsRow>
               <OptionsContainer>
                 <OptionsTitle>Instant Book</OptionsTitle>
-                <OptionsSubTitle>Secure a reservation</OptionsSubTitle>
+                <OptionsSubTitle marginTop="8px" marginBottom="8px">
+                  Secure a reservation
+                </OptionsSubTitle>
                 <MoreTitle>Learn more</MoreTitle>
               </OptionsContainer>
               <Switch />
             </OptionsRow>
-            <OptionsRow
-              marginRight="260px"
-              paddingTop="32px"
-              paddingBottom="24px"
-            >
+            <OptionsRow marginTop="24px" marginBottom="16px">
               <OptionsContainer>
                 <OptionsTitle>Superhost</OptionsTitle>
                 <OptionsSubTitle>Stay with recognized hosts.</OptionsSubTitle>
@@ -294,14 +290,14 @@ export default class Mobile extends React.Component {
             </OptionsRow>
           </Section>
           <Section>
-            <OptionsRow>
+            <OptionsRow marginRight="20px" marginBottom="16px">
               <SectionTitle>Amenities</SectionTitle>
               <SeeAll>See all</SeeAll>
             </OptionsRow>
           </Section>
-          <Section>
-            <OptionsRow>
-              <SectionTitle>Amenities</SectionTitle>
+          <Section marginBottom="64px">
+            <OptionsRow marginRight="20px" marginBottom="16px">
+              <SectionTitle>Facilities</SectionTitle>
               <SeeAll>See all</SeeAll>
             </OptionsRow>
           </Section>
