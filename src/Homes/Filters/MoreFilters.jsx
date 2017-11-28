@@ -1,21 +1,78 @@
 import React from "react";
-import Desktop from "./MoreDesktop";
-import Mobile from "./MoreMobile";
-import Tablet from "./MoreTablet";
+import styled from "styled-components";
+import Filter from "./Filter";
+import Media, { MobileOnly, TabletOnly } from "../../Media";
+import { RoomsAndBeds } from "./Sections/RoomsAndBeds";
+import { MoreOptions } from "./Sections/MoreOptions";
+import { RoomType } from "./Sections/RoomType";
+import { Price } from "./Sections/Price";
+import { AmenitiesFacilities } from "./Sections/AmenitiesFacilities";
 
-import { MobileOnly, TabletOnly, DesktopOnly } from "../../Media";
+const Container = styled.div`
+  padding: 16px 24px;
+  overflow-y: auto;
+  height: calc(100vh - 264px);
+  ${Media.mobile`
+    height: calc(100vh - 48px);  
+    width: 310px;
+    padding: 8px;    
+  `};
+  ${Media.md`
+    width: 710px;    
+  `};
+  ${Media.lg`
+    width: 630px;    
+  `};
+`;
 
 export default class extends React.Component {
+  state = {
+    isOpened: false,
+    moreFilters: false
+  };
+
+  onToggle = ({ isOpened, moreFilters }) => {
+    this.setState({ isOpened, moreFilters });
+  };
+
+  onCancel = () => {
+    this.props.closeDropDown();
+    this.setState({
+      isOpened: false
+    });
+  };
+
+  onApply = () => {
+    this.props.closeDropDown();
+    this.setState({
+      isOpened: false
+    });
+  };
+
   render() {
     return (
-      <div>
-        <Desktop
-          className={this.props.className}
-          title={this.props.title}
-          checkedTitle={this.props.checkedTitle}
-          moreFilters={this.props.moreFilters}
-        />
-      </div>
+      <Filter
+        className={this.props.className}
+        title={this.props.title}
+        checkedTitle={this.props.checkedTitle}
+        onToggle={this.onToggle}
+        onApply={this.onApply}
+        onCancel={this.onCancel}
+        id="more"
+        moreFilters={this.props.moreFilters}
+      >
+        <Container>
+          <MobileOnly>
+            <RoomType /> <Price />
+          </MobileOnly>
+          <TabletOnly>
+            <RoomType /> <Price />
+          </TabletOnly>
+          <RoomsAndBeds />
+          <MoreOptions />
+          <AmenitiesFacilities />
+        </Container>
+      </Filter>
     );
   }
 }

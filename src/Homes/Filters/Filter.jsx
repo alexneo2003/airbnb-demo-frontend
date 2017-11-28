@@ -20,10 +20,10 @@ const FilterButton = styled.button`
   &:last-child {
     margin-right: 0;
   }
-  background-color: ${props => (props.checked ? "#008489" : "#fff")};
-  color: ${props => (props.checked ? "#fff" : "#383838")};
+  background-color: ${props => (props.isOpened ? "#008489" : "#fff")};
+  color: ${props => (props.isOpened ? "#fff" : "#383838")};
   border: ${props =>
-    props.checked ? "1px solid #008489" : "1px solid rgba(72, 72, 72, 0.2)"};
+    props.isOpened ? "1px solid #008489" : "1px solid rgba(72, 72, 72, 0.2)"};
 
   @media (min-width: 992px) {
     display: inline-block;
@@ -228,33 +228,31 @@ const DropdownContentBox = styled.div`
 
 export default class extends React.Component {
   state = {
-    checked: false,
+    isOpened: false,
+    openedFilter: null,
     moreFilters: false
   };
 
   onClick = () => {
-    if (!this.state.checked) {
+    if (!this.state.isOpened) {
       this.props.onToggle(true);
       this.moreFilters(this.props.moreFilters);
     } else {
       this.onApply();
     }
-    this.setState({ checked: !this.state.checked });
+    this.setState({ isOpened: !this.state.isOpened });
   };
 
   onApply = () => {
-    this.props.onApply();
-    this.setState({ checked: false });
+    this.setState({ isOpened: false });
   };
 
   onCancel = () => {
-    this.props.onCancel();
-    this.setState({ checked: false });
+    this.setState({ isOpened: false });
   };
 
   onClickOutside = () => {
-    this.props.onCancel();
-    this.setState({ checked: false });
+    this.setState({ isOpened: false });
   };
 
   moreFilters = moreFilters => {
@@ -269,17 +267,17 @@ export default class extends React.Component {
         <FilterButton
           className={this.props.className}
           onClick={this.onClick}
-          checked={this.state.checked}
+          isOpened={this.state.isOpened}
           onApply={this.onApply}
           moreFilters={this.props.moreFilters}
         >
-          {this.state.checked ? this.props.checkedTitle : this.props.title}
+          {this.state.isOpened ? this.props.checkedTitle : this.props.title}
         </FilterButton>
 
-        {this.state.checked && <ShadedContainer />}
+        {this.state.isOpened && <ShadedContainer />}
         {this.state.moreFilters && (
           <DropDownContainer>
-            {this.state.checked && (
+            {this.state.isOpened && (
               <MoreFiltersContent
                 eventTypes="click"
                 handleClickOutside={this.onClickOutside}
@@ -299,7 +297,9 @@ export default class extends React.Component {
                 </HomesButtonsContainer>
                 <MobileOnly>
                   <BottomContainer>
-                    <SeeHomesApply>See homes </SeeHomesApply>
+                    <SeeHomesApply onClick={this.onApply}>
+                      See homes
+                    </SeeHomesApply>
                   </BottomContainer>
                 </MobileOnly>
               </MoreFiltersContent>
@@ -308,7 +308,7 @@ export default class extends React.Component {
         )}
         {!this.state.moreFilters && (
           <DropDownContainer>
-            {this.state.checked && (
+            {this.state.isOpened && (
               <DropDownContent
                 eventTypes="click"
                 handleClickOutside={this.onClickOutside}

@@ -148,17 +148,19 @@ export const LocationButton = styled.img.attrs({
   }
 `;
 
-export const Counter = styled.div`
-  width: 32px;
-  height: 32px;
+export const Counter = styled.button`
+  width: 34px;
+  height: 34px;
   border-radius: 50px;
+  border: none;
   cursor: pointer;
 `;
 
 export const Minus = styled(Counter)`
-  background: url(${minus});
+  background: url(${props => (props.isEnabled ? plus : minus)});
   background-repeat: no-repeat;
   background-position: 50% 50%;
+  enable: ${props => props.isEnabled};
 `;
 
 export const Plus = styled(Counter)`
@@ -255,4 +257,65 @@ input:checked + .slider:before {
 </body>
 </html> 
 
+*/
+/*
+
+const Label = styled.label`
+  position: relative;
+  display: inline-block;
+  width: 64px;
+  height: 40px;
+`;
+
+const Input = styled.input.attrs({
+  type: "checkbox"
+})`
+  display: none;
+  position: relative;
+  display: inline-block;
+  width: 64px;
+  height: 40px;
+  &:checked {
+    background-color: #008489;
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+  &focus {
+    box-shadow: 0 0 1px #008489;
+  }
+`;
+
+const Span = styled.span`
+  background-color: #008489;
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 1px solid rgba(72, 72, 72, 0.3);
+  background-color: #f9f9f9;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  &:before {
+    position: absolute;
+    content: "";
+    height: 38px;
+    width: 38px;
+    left: -2px;
+    bottom: -1px;
+    background-color: white;
+    border: 1px solid rgba(72, 72, 72, 0.3);
+    border-radius: 34px;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+    background-color: white;
+    background: url("https://cdn4.iconfinder.com/data/icons/wirecons-free-vector-icons/32/add-128.png");
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+
+  }
+`;
 */

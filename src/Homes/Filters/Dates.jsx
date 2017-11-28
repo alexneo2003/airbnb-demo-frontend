@@ -22,7 +22,7 @@ const Arrow = styled.img``;
 
 export default class DatesFilter extends React.Component {
   state = {
-    checked: false,
+    isOpened: false,
     startDate: null,
     endDate: null,
     selectedStartDate: null,
@@ -30,14 +30,13 @@ export default class DatesFilter extends React.Component {
     focusedInput: "startDate"
   };
 
-  onToggle = checked => {
-    this.setState({ checked });
+  onToggle = isOpened => {
+    this.setState({ isOpened });
   };
 
   onApply = () => {
-    this.props.closeDropdown();
     this.setState({
-      selected: false,
+      isOpened: false,
       startDate: this.state.selectedStartDate,
       endDate: this.state.selectedEndDate
     });
@@ -48,16 +47,15 @@ export default class DatesFilter extends React.Component {
   };
 
   onCancel = () => {
-    this.props.closeDropdown();
     this.setState({
-      checked: false,
+      isOpened: false,
       selectedStartDate: this.state.startDate,
       selectedEndDate: this.state.endDate
     });
   };
 
-  onToggle = checked => {
-    this.setState({ checked });
+  onToggle = isOpened => {
+    this.setState({ isOpened });
   };
 
   focusedInput = focusedInput => {
@@ -84,7 +82,7 @@ export default class DatesFilter extends React.Component {
         <MobileOnly>
           <CheckedContainer>
             <CheckTitle
-              checked={
+              isOpened={
                 !this.state.checkedStartDate && !this.state.checkedEndDate
               }
             >
@@ -92,7 +90,7 @@ export default class DatesFilter extends React.Component {
             </CheckTitle>
             <Arrow src={arrow} />
             <CheckTitle
-              checked={
+              isOpened={
                 this.state.checkedStartDate && !this.state.checkedEndDate
               }
             >

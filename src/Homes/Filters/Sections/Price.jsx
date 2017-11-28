@@ -7,7 +7,6 @@ import "./slider.css";
 const Section = styled.div`
   padding-top: 12px;
   padding-bottom: 32px;
-  background: #ffffff;
   border-bottom: 0.5px solid rgba(72, 72, 72, 0.3);
 `;
 
@@ -19,8 +18,20 @@ const Row = styled.div`
 `;
 
 const SectionTitle = styled.div`
-  padding-bottom: 8px;
+  padding-bottom: 16px;
   font-size: 20px;
+  ${Media.mobile`  
+    font-size: 18px;
+  `};
+`;
+
+const OptionsTitle = styled.div`
+  padding-bottom: 8px;
+  font-size: 18px;
+  font-family: CircularLight;
+  ${Media.mobile`  
+    font-size: 16px;
+  `};
 `;
 
 const SubTitle = styled.div`
@@ -29,17 +40,15 @@ const SubTitle = styled.div`
   margin-left: ${props => props.marginLeft};
 `;
 
-const OptionsTitle = styled.div`
-  font-size: 18px;
-  font-family: CircularLight;
-`;
-
 const RheostatContent = styled.div`
-  width: 668px;
+  width: 650px;
   height: 100px;
   padding-top: 40px;
   padding-left: 24px;
   padding-right: 24px;
+  ${Media.mobile`
+    width: 260px;
+  `};
 `;
 
 export class Price extends React.Component {

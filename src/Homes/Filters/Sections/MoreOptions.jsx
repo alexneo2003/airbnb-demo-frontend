@@ -1,21 +1,20 @@
 import React from "react";
 import styled from "styled-components";
-import Media, { MobileOnly } from "../../../Media";
+import Media, { MobileOnly, TabletOnly } from "../../../Media";
 import switchBtn from "./switch-btn.svg";
 
 const Section = styled.div`
-  padding-top: 12px;
-  padding-bottom: 12px;
-  background: #ffffff;
+  padding-top: 20px;
+  padding-bottom: 16px;
   border-bottom: 0.5px solid rgba(72, 72, 72, 0.3);
 `;
 
 const Row = styled.div`
-  padding-top: 12px;
+  padding-top: 24px;
   padding-bottom: 12px;
   display: flex;
   justify-content: space-between;
-  margin-right: 260px;
+  margin-right: 280px;
   align-items: center;
   ${Media.mobile`
     margin-right: 0px;
@@ -24,6 +23,9 @@ const Row = styled.div`
 
 const SectionTitle = styled.div`
   font-size: 20px;
+  ${Media.mobile`  
+    font-size: 18px;
+  `};
 `;
 
 const OptionsContainer = styled.div``;
@@ -31,6 +33,9 @@ const OptionsContainer = styled.div``;
 const OptionsTitle = styled.div`
   font-size: 18px;
   font-family: CircularLight;
+  ${Media.mobile`  
+    font-size: 16px;
+  `};
 `;
 
 const OptionsSubTitle = styled.div`
@@ -38,6 +43,9 @@ const OptionsSubTitle = styled.div`
   font-family: CircularLight;
   margin-top: 8px;
   margin-bottom: 8px;
+  ${Media.mobile`  
+    font-size: 14px;
+  `};
 `;
 
 const Switch = styled.div`
@@ -49,6 +57,7 @@ const Switch = styled.div`
 `;
 
 const MoreTitle = styled(OptionsSubTitle)`
+  cursor: pointer;
   color: #0f7276;
 `;
 
@@ -67,6 +76,16 @@ export class MoreOptions extends React.Component {
             <Switch />
           </Row>
         </MobileOnly>
+        <TabletOnly>
+          <Row>
+            <OptionsContainer>
+              <OptionsTitle>Instant Book</OptionsTitle>
+              <OptionsSubTitle>Secure a reservation</OptionsSubTitle>
+              <MoreTitle>Learn more</MoreTitle>
+            </OptionsContainer>
+            <Switch />
+          </Row>
+        </TabletOnly>
         <Row>
           <OptionsContainer>
             <OptionsTitle>Superhost</OptionsTitle>

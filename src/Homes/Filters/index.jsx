@@ -35,16 +35,24 @@ const FiltersRow = styled.div`
 
 export default class extends React.Component {
   state = {
-    droppedDownWindow: null
+    isOpened: false,
+    openedFilter: null,
+    dropDownWindow: null
   };
 
-  setDropDown = (droppedDownWindow, callback) => {
+  openFilter = key => {
+    this.setState({ openedFilter: key });
+  };
+
+  handleOpen = () => {
+    this.setState({ isOpened: !this.state.isOpened });
+  };
+
+  setDropDown = (dropDownWindow, callback) => {
     this.setState(
       {
         droppedDownWindow:
-          this.state.droppedDownWindow === droppedDownWindow
-            ? null
-            : droppedDownWindow
+          this.state.dropDownWindow === dropDownWindow ? null : dropDownWindow
       },
       callback
     );
@@ -59,12 +67,14 @@ export default class extends React.Component {
             checkedTitle="Check in — Check out"
             closeDropDown={() => this.setDropDown(null)}
             onApply={this.onApply}
+            id="dates"
           />
           <Guests
             title="Guests"
             checkedTitle="Guests"
             closeDropDown={() => this.setDropDown(null)}
             onApply={this.onApply}
+            id="guests"
           />
           <DesktopOnly>
             <RoomType

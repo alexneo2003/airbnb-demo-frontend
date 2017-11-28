@@ -4,18 +4,17 @@ import Media from "../../../Media";
 import { Minus, Plus } from "../../../styled";
 
 const Section = styled.div`
-  padding-top: 12px;
-  padding-bottom: 12px;
-  background: #ffffff;
+  padding-top: 20px;
+  padding-bottom: 24px;
   border-bottom: 0.5px solid rgba(72, 72, 72, 0.3);
 `;
 
 const Row = styled.div`
-  padding-top: 12px;
-  padding-bottom: 12px;
+  padding-top: 8px;
+  padding-bottom: 8px;
   display: flex;
   justify-content: space-between;
-  margin-right: 290px;
+  margin-right: 310px;
   align-items: center;
   ${Media.mobile`
     margin-right: 0px;
@@ -24,18 +23,18 @@ const Row = styled.div`
 
 const SectionTitle = styled.div`
   font-size: 20px;
+  padding-bottom: 16px;
+  ${Media.mobile`  
+    font-size: 18px;
+  `};
 `;
-
-const OptionsContainer = styled.div``;
 
 const OptionsTitle = styled.div`
   font-size: 18px;
   font-family: CircularLight;
-`;
-
-const OptionsSubTitle = styled.div`
-  font-size: 16px;
-  font-family: CircularLight;
+  ${Media.mobile`  
+    font-size: 16px;
+  `};
 `;
 
 const Counters = styled.div`
@@ -48,8 +47,8 @@ const Count = styled.div`
   white-space: nowrap;
   font-size: 18px;
   font-family: CircularLight;
-  margin-left: 20px;
-  margin-right: 20px;
+  margin-left: 16px;
+  margin-right: 16px;
 `;
 
 export class RoomsAndBeds extends React.Component {
