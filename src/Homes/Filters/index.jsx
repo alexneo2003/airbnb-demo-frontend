@@ -48,14 +48,11 @@ export default class extends React.Component {
     this.setState({ isOpened: !this.state.isOpened });
   };
 
-  setDropDown = (dropDownWindow, callback) => {
-    this.setState(
-      {
-        droppedDownWindow:
-          this.state.dropDownWindow === dropDownWindow ? null : dropDownWindow
-      },
-      callback
-    );
+  setDropDown = dropDownWindow => {
+    this.setState({
+      droppedDownWindow:
+        this.state.dropDownWindow === dropDownWindow ? null : dropDownWindow
+    });
   };
 
   render() {

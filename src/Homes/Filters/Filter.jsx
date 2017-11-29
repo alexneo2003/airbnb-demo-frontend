@@ -230,7 +230,12 @@ export default class extends React.Component {
   state = {
     isOpened: false,
     openedFilter: null,
-    moreFilters: false
+    moreFilters: false,
+    guests: {
+      adults: 0,
+      children: 0,
+      infants: 0
+    }
   };
 
   onClick = () => {
@@ -248,7 +253,15 @@ export default class extends React.Component {
   };
 
   onCancel = () => {
-    this.setState({ isOpened: false });
+    console.log("onCancel");
+    this.setState({
+      isOpened: false,
+      guests: {
+        adults: 0,
+        children: 0,
+        infants: 0
+      }
+    });
   };
 
   onClickOutside = () => {

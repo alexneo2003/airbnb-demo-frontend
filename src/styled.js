@@ -157,7 +157,7 @@ export const Counter = styled.button`
 `;
 
 export const Minus = styled(Counter)`
-  background: url(${props => (props.isEnabled ? plus : minus)});
+  background: url(${minus});
   background-repeat: no-repeat;
   background-position: 50% 50%;
   enable: ${props => props.isEnabled};

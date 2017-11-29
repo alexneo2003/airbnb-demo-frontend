@@ -31,6 +31,7 @@ const OptionsSubTitle = styled.div`
 `;
 
 const CounterContainer = styled.div`
+  width: 115px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -39,24 +40,16 @@ const CounterContainer = styled.div`
 const CounterTitle = styled.span`
   font-size: 18px;
   font-family: CircularLight;
-  padding-left: 20px;
-  padding-right: 20px;
 `;
 
 export default class extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isOpened: false,
-      isEnabled: false,
-      adults: 0,
-      children: 3,
-      infants: 0
-    };
-    this.onMinus = this.onMinus.bind(this);
-    this.onPlus = this.onPlus.bind(this);
-    this.handlingEnable = this.handlingEnable.bind(this);
-  }
+  state = {
+    isOpened: false,
+    isEnabled: false,
+    adults: 0,
+    children: 0,
+    infants: 0
+  };
 
   onToggle = isOpened => {
     this.setState({ isOpened });
@@ -65,7 +58,10 @@ export default class extends React.Component {
   onCancel = () => {
     this.props.closeDropDown();
     this.setState({
-      isOpened: false
+      isOpened: false,
+      adults: 0,
+      children: 0,
+      infants: 0
     });
   };
 
@@ -77,21 +73,13 @@ export default class extends React.Component {
   };
 
   onMinus = guestType => {
-    this.setState({ [guestType]: this.state[guestType] - 1 });
-    this.handlingEnable(guestType);
+    this.state[guestType] >= 1
+      ? this.setState({ [guestType]: this.state[guestType] - 1 })
+      : this.setState({ [guestType]: 0 });
   };
 
   onPlus = guestType => {
     this.setState({ [guestType]: this.state[guestType] + 1 });
-    this.handlingEnable(guestType);
-  };
-
-  handlingEnable = guestType => {
-    console.log(this.state[guestType]);
-    console.log(this.state.isEnabled);
-    return this.state[guestType] <= 0
-      ? this.setState({ isEnabled: false })
-      : this.setState({ isEnabled: true });
   };
 
   render() {
@@ -110,10 +98,7 @@ export default class extends React.Component {
               <OptionsTitle>Adults</OptionsTitle>
             </OptionsTitleContainer>
             <CounterContainer>
-              <Minus
-                isEnabled={this.state.isEnabled}
-                onClick={() => this.onMinus("adults")}
-              />
+              <Minus onClick={() => this.onMinus("adults")} />
               <CounterTitle>{this.state.adults}</CounterTitle>
               <Plus onClick={() => this.onPlus("adults")} />
             </CounterContainer>
@@ -124,10 +109,7 @@ export default class extends React.Component {
               <OptionsSubTitle>Ages 2 - 12</OptionsSubTitle>
             </OptionsTitleContainer>
             <CounterContainer>
-              <Minus
-                isEnabled={this.state.isEnabled}
-                onClick={() => this.onMinus("children")}
-              />
+              <Minus onClick={() => this.onMinus("children")} />
               <CounterTitle>{this.state.children}</CounterTitle>
               <Plus onClick={() => this.onPlus("children")} />
             </CounterContainer>
@@ -138,10 +120,7 @@ export default class extends React.Component {
               <OptionsSubTitle>Under 2</OptionsSubTitle>
             </OptionsTitleContainer>
             <CounterContainer>
-              <Minus
-                isEnabled={this.state.isEnabled}
-                onClick={() => this.onMinus("infants")}
-              />
+              <Minus onClick={() => this.onMinus("infants")} />
               <CounterTitle>{this.state.infants}</CounterTitle>
               <Plus onClick={() => this.onPlus("infants")} />
             </CounterContainer>
