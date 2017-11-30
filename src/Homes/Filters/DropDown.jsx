@@ -227,17 +227,6 @@ const DropdownContentBox = styled.div`
 `;
 
 export default class extends React.Component {
-  state = {
-    isOpened: false,
-    openedFilter: null,
-    moreFilters: false,
-    guests: {
-      adults: 0,
-      children: 0,
-      infants: 0
-    }
-  };
-
   onClick = () => {
     if (!this.state.isOpened) {
       this.props.onToggle(true);
@@ -246,22 +235,6 @@ export default class extends React.Component {
       this.onApply();
     }
     this.setState({ isOpened: !this.state.isOpened });
-  };
-
-  onApply = () => {
-    this.setState({ isOpened: false });
-  };
-
-  onCancel = () => {
-    console.log("onCancel");
-    this.setState({
-      isOpened: false,
-      guests: {
-        adults: 0,
-        children: 0,
-        infants: 0
-      }
-    });
   };
 
   onClickOutside = () => {
@@ -274,6 +247,43 @@ export default class extends React.Component {
       : this.setState({ moreFilters: false });
   };
 
+  state = {
+    moreFilters: false,
+    guests: {
+      adults: 0,
+      children: 0,
+      infants: 0
+    }
+  };
+
+  onCancel = () => {
+    this.setState(
+      {
+        isOpened: false,
+        guests: {
+          adults: 0,
+          children: 0,
+          infants: 0
+        }
+      },
+      this.passDataToParent
+    );
+    this.props.handleData(this.state.guests);
+  };
+
+  onApply = () => {
+    this.setState({ isOpened: false }, this.passDataToParent);
+    this.updateGuests(this.props.guests);
+  };
+
+  updateGuests = guests => {
+    this.setState({ guests: guests });
+  };
+
+  passDataToParent = () => {
+    this.handleData(this.state.guests);
+  };
+
   render() {
     return (
       <div>
@@ -282,7 +292,7 @@ export default class extends React.Component {
           onClick={this.onClick}
           isOpened={this.state.isOpened}
           onApply={this.onApply}
-          moreFilters={this.props.moreFilters}
+          onCancel={this.onCancel}
         >
           {this.state.isOpened ? this.props.checkedTitle : this.props.title}
         </FilterButton>

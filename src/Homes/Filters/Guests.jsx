@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Filter from "./Filter";
+import DropDown from "./DropDown";
 import { Minus, Plus } from "../../styled";
 
 const GuestsContainer = styled.div`
@@ -43,54 +43,55 @@ const CounterTitle = styled.span`
 `;
 
 export default class extends React.Component {
-  state = {
-    isOpened: false,
-    isEnabled: false,
-    adults: 0,
-    children: 0,
-    infants: 0
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      isOpened: false,
+      guests: {
+        adults: this.props.guests.adults,
+        children: this.props.guests.children,
+        infants: this.props.guests.infants
+      }
+    };
+    this.onPlus = this.onPlus.bind(this);
+    this.onMinus = this.onMinus.bind(this);
+  }
 
   onToggle = isOpened => {
     this.setState({ isOpened });
   };
 
-  onCancel = () => {
-    this.props.closeDropDown();
-    this.setState({
-      isOpened: false,
-      adults: 0,
-      children: 0,
-      infants: 0
-    });
-  };
-
-  onApply = () => {
-    this.props.closeDropDown();
-    this.setState({
-      isOpened: false
-    });
-  };
-
   onMinus = guestType => {
-    this.state[guestType] >= 1
-      ? this.setState({ [guestType]: this.state[guestType] - 1 })
-      : this.setState({ [guestType]: 0 });
+    this.state.guests[guestType] >= 1
+      ? this.setState({
+          guests: {
+            ...this.state.guests,
+            [guestType]: this.state.guests[guestType] - 1
+          }
+        })
+      : this.setState({ guests: { ...this.state.guests, [guestType]: 0 } });
   };
 
   onPlus = guestType => {
-    this.setState({ [guestType]: this.state[guestType] + 1 });
+    this.setState({
+      guests: {
+        ...this.state.guests,
+        [guestType]: this.state.guests[guestType] + 1
+      }
+    });
   };
 
   render() {
     return (
-      <Filter
+      <DropDown
         className={this.props.className}
         title={this.props.title}
         checkedTitle={this.props.checkedTitle}
         onToggle={this.onToggle}
         onApply={this.onApply}
         onCancel={this.onCancel}
+        guests={this.state.guests}
+        handleData={this.handleData}
       >
         <GuestsContainer>
           <OptionsRow>
@@ -99,7 +100,7 @@ export default class extends React.Component {
             </OptionsTitleContainer>
             <CounterContainer>
               <Minus onClick={() => this.onMinus("adults")} />
-              <CounterTitle>{this.state.adults}</CounterTitle>
+              <CounterTitle>{this.state.guests.adults}</CounterTitle>
               <Plus onClick={() => this.onPlus("adults")} />
             </CounterContainer>
           </OptionsRow>
@@ -110,7 +111,7 @@ export default class extends React.Component {
             </OptionsTitleContainer>
             <CounterContainer>
               <Minus onClick={() => this.onMinus("children")} />
-              <CounterTitle>{this.state.children}</CounterTitle>
+              <CounterTitle>{this.state.guests.children}</CounterTitle>
               <Plus onClick={() => this.onPlus("children")} />
             </CounterContainer>
           </OptionsRow>
@@ -121,12 +122,12 @@ export default class extends React.Component {
             </OptionsTitleContainer>
             <CounterContainer>
               <Minus onClick={() => this.onMinus("infants")} />
-              <CounterTitle>{this.state.infants}</CounterTitle>
+              <CounterTitle>{this.state.guests.infants}</CounterTitle>
               <Plus onClick={() => this.onPlus("infants")} />
             </CounterContainer>
           </OptionsRow>
         </GuestsContainer>
-      </Filter>
+      </DropDown>
     );
   }
 }

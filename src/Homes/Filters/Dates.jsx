@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Filter from "./Filter";
+import DropDown from "./DropDown";
 import DateRangePicker from "./DateRangePicker";
 import { MobileOnly } from "../../Media";
 import arrow from "./arrow.svg";
@@ -71,7 +71,7 @@ export default class DatesFilter extends React.Component {
 
   render() {
     return (
-      <Filter
+      <DropDown
         className={this.props.className}
         title={this.props.title}
         checkedTitle={this.props.checkedTitle}
@@ -105,7 +105,7 @@ export default class DatesFilter extends React.Component {
           endDate={this.state.selectedEndDate}
           onDatesChange={this.onDatesChange}
         />
-      </Filter>
+      </DropDown>
     );
   }
 }

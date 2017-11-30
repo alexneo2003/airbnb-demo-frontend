@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Filter from "./Filter";
+import DropDown from "./DropDown";
 
 const RoomsContainer = styled.div`
   padding: 24px;
@@ -32,7 +32,7 @@ export default class extends React.Component {
 
   render() {
     return (
-      <Filter
+      <DropDown
         className={this.props.className}
         title={this.props.title}
         checkedTitle={this.props.checkedTitle}
@@ -41,7 +41,7 @@ export default class extends React.Component {
         onCancel={this.onCancel}
       >
         <RoomsContainer>{this.props.title}</RoomsContainer>
-      </Filter>
+      </DropDown>
     );
   }
 }

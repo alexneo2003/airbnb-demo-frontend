@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Filter from "./Filter";
+import DropDown from "./DropDown";
 import Media, { MobileOnly, TabletOnly } from "../../Media";
 import { RoomsAndBeds } from "./Sections/RoomsAndBeds";
 import { MoreOptions } from "./Sections/MoreOptions";
@@ -27,12 +27,11 @@ const Container = styled.div`
 
 export default class extends React.Component {
   state = {
-    isOpened: false,
-    moreFilters: false
+    isOpened: false
   };
 
-  onToggle = ({ isOpened, moreFilters }) => {
-    this.setState({ isOpened, moreFilters });
+  onToggle = ({ isOpened }) => {
+    this.setState({ isOpened });
   };
 
   onCancel = () => {
@@ -51,14 +50,13 @@ export default class extends React.Component {
 
   render() {
     return (
-      <Filter
+      <DropDown
         className={this.props.className}
         title={this.props.title}
         checkedTitle={this.props.checkedTitle}
         onToggle={this.onToggle}
         onApply={this.onApply}
         onCancel={this.onCancel}
-        id="more"
         moreFilters={this.props.moreFilters}
       >
         <Container>
@@ -72,7 +70,7 @@ export default class extends React.Component {
           <MoreOptions />
           <AmenitiesFacilities />
         </Container>
-      </Filter>
+      </DropDown>
     );
   }
 }
