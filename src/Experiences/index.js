@@ -10,6 +10,7 @@ import { SeeAll, Row, Col, NextPage } from "../styled";
 const TitleRow = styled.div`
   margin-top: 38px;
   margin-bottom: 24px;
+  padding-right: 16px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -29,7 +30,7 @@ export default function() {
     <Experiences>
       <TitleRow>
         <TitleText>Experiences</TitleText>
-        <SeeAll>See all</SeeAll>
+        <SeeAll to="/">See all</SeeAll>
       </TitleRow>
       <Row>
         <Col xs="6" md="4" lg="3">

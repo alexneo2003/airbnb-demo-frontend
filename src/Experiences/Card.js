@@ -2,17 +2,33 @@ import React from "react";
 import styled from "styled-components";
 import star from "../img/star.svg";
 
-import { Price, Reviews, ReviewStar, ReviewText } from "../styled";
+import { Reviews, ReviewStar, ReviewText } from "../styled";
 
 const Card = styled.div`cursor: pointer;`;
 const TitleText = styled.div`
-  display: block;
-  white-space: pre-line;
+  font-family: CircularLight;
+  display: inline-block;
   font-size: 13px;
   color: #383838;
   margin-top: 8px;
   margin-bottom: 3px;
   @media (min-width: 576px) {
+    font-size: 15px;
+  }
+`;
+
+const Price = styled.span`
+  font-family: CircularBold;
+  font-size: 13px;
+  @media (min-width: 768px) {
+    font-size: 15px;
+  }
+`;
+
+const Title = styled.span`
+  margin-left: 0px;
+  font-size: 13px;
+  @media (min-width: 768px) {
     font-size: 15px;
   }
 `;
@@ -28,7 +44,7 @@ export default function ExperiencesCard(props) {
     <Card>
       <Img src={props.imgSrc} alt="" />
       <TitleText>
-        <Price>${props.price}</Price> {props.title}
+        <Price>${props.price}</Price> <Title>{props.title}</Title>
       </TitleText>
       <Reviews>
         <ReviewStar src={star} alt="star" />

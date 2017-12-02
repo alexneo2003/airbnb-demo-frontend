@@ -10,6 +10,7 @@ const TitleRow = styled.div`
   margin-top: 38px;
   margin-bottom: 24px;
   display: flex;
+  padding-right: 16px;
   justify-content: space-between;
   align-items: center;
 `;
@@ -29,7 +30,7 @@ export default function() {
     <Homes>
       <TitleRow>
         <Title>Homes</Title>
-        <SeeAll>See all</SeeAll>
+        <SeeAll to="/homes">See all</SeeAll>
       </TitleRow>
       <Row>
         <Col xs="8" md="5" lg="4">

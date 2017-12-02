@@ -11,6 +11,7 @@ const TitleRow = styled.div`
   margin-top: 38px;
   margin-bottom: 24px;
   display: flex;
+  padding-right: 16px;
   justify-content: space-between;
   align-items: center;
 `;
@@ -30,7 +31,7 @@ export default function() {
     <Popular>
       <TitleRow>
         <Title>Popular reservations around the world</Title>
-        <SeeAll>See all</SeeAll>
+        <SeeAll to="/">See all</SeeAll>
       </TitleRow>
       <Row>
         <Col xs="6" md="4" lg="3">

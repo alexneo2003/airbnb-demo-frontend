@@ -1,24 +1,15 @@
 import React from "react";
 import "./App.css";
-import Header from "./Header";
-import Explore from "./Explore";
-import Experiences from "./Experiences";
-import Homes from "./Homes";
-import Popular from "./Popular";
-import Featured from "./Featured";
-import Footer from "./Footer";
-import { Main } from "./styled";
+import Landing from "./Landing";
+import Homes from "./Homes/Homes";
+import { BrowserRouter, Route } from "react-router-dom";
 
 export default () => (
-  <div className="App">
-    <Header />
-    <Main>
-      <Explore />
-      <Experiences />
-      <Homes />
-      <Popular />
-      <Featured />
-    </Main>
-    <Footer />
-  </div>
+  <BrowserRouter>
+    <div className="App">
+      <Route path="/" exact component={Landing} />
+      <Route path="/homes" component={Homes} />
+    </div>
+  </BrowserRouter>
+
 );

@@ -1,0 +1,73 @@
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 64px;
+  height: 40px;
+}
+
+.switch input {
+  display: none;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 1px solid rgba(72, 72, 72, 0.3);
+  background-color: #f9f9f9;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 38px;
+  width: 38px;
+  left: -2px;
+  bottom: -1px;
+  background-color: white;
+  border: 1px solid rgba(72, 72, 72, 0.3);
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #008489;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #008489;
+}
+
+input:checked + .slider:before {
+  background-image: url("../../../img/switch-on.svg");
+  background-repeat: no-repeat;
+  background-position: 50%50%;
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  -webkit-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+  background-image: url("../../../img/switch-off.svg");
+  background-repeat: no-repeat;
+  background-position: 50%50%;
+  background-color: white;
+  border-radius: 50%;
+}
+
+/*
+transform: translate3d(16px, 0, 0) 
+*/
