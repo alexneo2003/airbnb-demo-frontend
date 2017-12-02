@@ -11,7 +11,7 @@ import { AmenitiesFacilities } from "./Sections/AmenitiesFacilities";
 const Container = styled.div`
   padding: 16px 24px;
   overflow-y: auto;
-  height: calc(100vh - 264px);
+  height: calc(100vh - 254px);
   ${Media.mobile`
     height: calc(100vh - 48px);  
     width: 310px;
@@ -35,14 +35,12 @@ export default class extends React.Component {
   };
 
   onCancel = () => {
-    this.props.closeDropDown();
     this.setState({
       isOpened: false
     });
   };
 
   onApply = () => {
-    this.props.closeDropDown();
     this.setState({
       isOpened: false
     });
@@ -61,10 +59,18 @@ export default class extends React.Component {
       >
         <Container>
           <MobileOnly>
-            <RoomType /> <Price />
+            <RoomType
+              rooms={this.props.rooms}
+              onChange={this.props.handleData}
+            />
+            <Price />
           </MobileOnly>
           <TabletOnly>
-            <RoomType /> <Price />
+            <RoomType
+              rooms={this.props.rooms}
+              onChange={this.props.handleData}
+            />
+            <Price />
           </TabletOnly>
           <RoomsAndBeds />
           <MoreOptions />

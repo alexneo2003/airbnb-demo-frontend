@@ -9,24 +9,22 @@ const RoomsContainer = styled.div`
 
 export default class extends React.Component {
   state = {
-    checked: false
+    isOpened: false
   };
 
-  onToggle = checked => {
-    this.setState({ checked });
+  onToggle = isOpened => {
+    this.setState({ isOpened });
   };
 
   onCancel = () => {
-    this.props.closeDropDown();
     this.setState({
-      checked: false
+      isOpened: false
     });
   };
 
   onApply = () => {
-    this.props.closeDropDown();
     this.setState({
-      checked: false
+      isOpened: false
     });
   };
 

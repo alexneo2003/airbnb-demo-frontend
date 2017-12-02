@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Media, { MobileOnly, TabletOnly } from "../../../Media";
-import switchBtn from "./switch-btn.svg";
+import { Switch } from "../switch";
 
 const Section = styled.div`
   padding-top: 20px;
@@ -47,7 +47,7 @@ const OptionsSubTitle = styled.div`
     font-size: 14px;
   `};
 `;
-
+/*
 const Switch = styled.div`
   width: 66px;
   height: 40px;
@@ -55,7 +55,7 @@ const Switch = styled.div`
   background-repeat: no-repeat;
   background-position: 50% 50%;
 `;
-
+*/
 const MoreTitle = styled(OptionsSubTitle)`
   cursor: pointer;
   color: #0f7276;

@@ -36,11 +36,19 @@ const FiltersRow = styled.div`
 export default class extends React.Component {
   state = {
     isOpened: false,
-    dropDownWindow: null,
+    startDate: null,
+    endDate: null,
     guests: {
-      adults: 0,
+      adults: 1,
       children: 0,
-      infants: 0
+      infants: 0,
+      total: 0
+    },
+    rooms: {
+      entire: false,
+      private: false,
+      shared: false,
+      total: 0
     }
   };
 
@@ -48,15 +56,17 @@ export default class extends React.Component {
     this.setState({ isOpened: !this.state.isOpened });
   };
 
-  setDropDown = dropDownWindow => {
-    this.setState({
-      dropDownWindow:
-        this.state.dropDownWindow === dropDownWindow ? null : dropDownWindow
-    });
+  updateGuests = guests => {
+    this.setState({ guests: guests });
   };
 
-  handleData = data => {
-    this.setState({ guests: data });
+  updateRoomsType = rooms => {
+    console.log(rooms);
+    this.setState({ rooms: rooms });
+  };
+
+  cancelDates = () => {
+    this.setState({ startDate: null, endDate: null });
   };
 
   render() {
@@ -66,43 +76,32 @@ export default class extends React.Component {
           <Dates
             title="Dates"
             checkedTitle="Check in — Check out"
-            closeDropDown={() => this.setDropDown(null)}
-            onApply={this.onApply}
+            onApply={(startDate, endDate) =>
+              this.setState({ startDate, endDate })
+            }
           />
           <Guests
             title="Guests"
             checkedTitle="Guests"
-            closeDropDown={() => this.setDropDown(null)}
-            onApply={this.onApply}
             guests={this.state.guests}
-            handleData={this.handleData}
+            handleData={this.updateGuests}
           />
           <DesktopOnly>
             <RoomType
               title="Room type"
               checkedTitle="Room type"
-              closeDropDown={() => this.setDropDown(null)}
-              onApply={this.onApply}
+              rooms={this.state.rooms}
+              handleData={this.updateRoomsType}
             />
-            <Price
-              title="Price"
-              checkedTitle="Price"
-              closeDropDown={() => this.setDropDown(null)}
-              onApply={this.onApply}
-            />
-            <InstantBook
-              title="Instant Book"
-              checkedTitle="Instant Book"
-              closeDropDown={() => this.setDropDown(null)}
-              onApply={this.onApply}
-            />
+            <Price title="Price" checkedTitle="Price" />
+            <InstantBook title="Instant Book" checkedTitle="Instant Book" />
           </DesktopOnly>
           <MoreFilters
             title="More filters"
             checkedTitle="More filters"
-            closeDropDown={() => this.setDropDown(null)}
-            onApply={this.onApply}
             moreFilters={true}
+            rooms={this.state.rooms}
+            handleData={this.updateRoomsType}
           />
         </FiltersRow>
       </FiltersBorder>

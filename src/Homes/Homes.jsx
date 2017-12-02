@@ -44,6 +44,90 @@ const GoogleMapContainer = styled.div`
   }
 `;
 
+const homes = [
+  {
+    imgSrc: homes1,
+    price: 80,
+    title: "La Salentina, see, nature & relax",
+    type: "Entire house",
+    beds: 9,
+    reviewsCount: 99,
+    reviewsStatus: "Superhost"
+  },
+  {
+    imgSrc: homes2,
+    price: 80,
+    title: "Your private 3 bedr. riad and exclusive",
+    type: "Entire house",
+    beds: 5,
+    reviewsCount: 99,
+    reviewsStatus: "Superhost"
+  },
+  {
+    imgSrc: homes3,
+    price: 200,
+    title: "Dreamy Tropical Tree House",
+    type: "Entire treehouse",
+    beds: 1,
+    reviewsCount: 364,
+    reviewsStatus: "Superhost"
+  },
+  {
+    imgSrc: homes4,
+    price: 200,
+    title: "Best location old town luxury loft",
+    type: "Entire apartment",
+    beds: 1,
+    reviewsCount: 969,
+    reviewsStatus: "Superhost"
+  },
+  {
+    imgSrc: homes5,
+    price: 83,
+    title: "Lussuoso. Vista incantevole",
+    type: "Entire apartment",
+    beds: 6,
+    reviewsCount: 105,
+    reviewsStatus: "Superhost"
+  },
+  {
+    imgSrc: homes6,
+    price: 72,
+    title: "In the historical center of Lecce",
+    type: "Entire house",
+    beds: 3,
+    reviewsCount: 221,
+    reviewsStatus: "Superhost"
+  },
+  {
+    imgSrc: homes1,
+    price: 80,
+    title: "La Salentina, see, nature & relax",
+    type: "Entire house",
+    beds: 9,
+    reviewsCount: 99,
+    reviewsStatus: "Superhost"
+  },
+  {
+    imgSrc: homes2,
+    price: 80,
+    title: "Your private 3 bedr. riad and exclusive",
+    type: "Entire house",
+    beds: 5,
+    reviewsCount: 99,
+    reviewsStatus: "Superhost"
+  },
+  {
+    imgSrc: homes3,
+    price: 200,
+    title: "Dreamy Tropical Tree House",
+    type: "Entire treehouse",
+    beds: 1,
+    reviewsCount: 364,
+    reviewsStatus: "Superhost"
+  }
+];
+
 export default function Homes() {
   return (
     <div>
@@ -54,114 +138,20 @@ export default function Homes() {
       </GoogleMapContainer>
       <HomesContainer>
         <HomesRow>
-          <Col xs="12" md="6" lg="6">
-            <Card
-              marginBottom={"24px"}
-              imgSrc={homes1}
-              price={80}
-              title={"La Salentina, see, nature & relax"}
-              type={"Entire house"}
-              beds={9}
-              reviewsCount={99}
-              reviewsStatus={"Superhost"}
-            />
-          </Col>
-          <Col xs="12" md="6" lg="6">
-            <Card
-              marginBottom={"24px"}
-              imgSrc={homes2}
-              price={80}
-              title={"Your private 3 bedr. riad and exclusive"}
-              type={"Entire house"}
-              beds={5}
-              reviewsCount={99}
-              reviewsStatus={"Superhost"}
-            />
-          </Col>
-          <Col xs="12" md="6" lg="6">
-            <Card
-              marginBottom={"24px"}
-              imgSrc={homes3}
-              price={200}
-              title={"Dreamy Tropical Tree House"}
-              type={"Entire treehouse"}
-              beds={1}
-              reviewsCount={364}
-              reviewsStatus={"Superhost"}
-            />
-          </Col>
-          <Col xs="12" md="6" lg="6">
-            <Card
-              marginBottom={"24px"}
-              imgSrc={homes4}
-              price={200}
-              title={"Best location old town luxury loft"}
-              type={"Entire apartment"}
-              beds={1}
-              reviewsCount={369}
-              reviewsStatus={"Superhost"}
-            />
-          </Col>
-          <Col xs="12" md="6" lg="6">
-            <Card
-              marginBottom={"24px"}
-              imgSrc={homes5}
-              price={83}
-              title={"Lussuoso. Vista incantevole"}
-              type={"Entire apartment"}
-              beds={6}
-              reviewsCount={105}
-              reviewsStatus={"Superhost"}
-            />
-          </Col>
-          <Col xs="12" md="6" lg="6">
-            <Card
-              marginBottom={"24px"}
-              imgSrc={homes6}
-              price={72}
-              title={"In the historical center of Lecce"}
-              type={"Entire house"}
-              beds={3}
-              reviewsCount={221}
-              reviewsStatus={"Superhost"}
-            />
-          </Col>{" "}
-          <Col xs="12" md="6" lg="6">
-            <Card
-              marginBottom={"24px"}
-              imgSrc={homes5}
-              price={83}
-              title={"Lussuoso. Vista incantevole"}
-              type={"Entire apartment"}
-              beds={6}
-              reviewsCount={105}
-              reviewsStatus={"Superhost"}
-            />
-          </Col>
-          <Col xs="12" md="6" lg="6">
-            <Card
-              marginBottom={"24px"}
-              imgSrc={homes6}
-              price={72}
-              title={"In the historical center of Lecce"}
-              type={"Entire house"}
-              beds={3}
-              reviewsCount={221}
-              reviewsStatus={"Superhost"}
-            />
-          </Col>{" "}
-          <Col xs="12" md="6" lg="6">
-            <Card
-              marginBottom={"24px"}
-              imgSrc={homes6}
-              price={72}
-              title={"In the historical center of Lecce"}
-              type={"Entire house"}
-              beds={3}
-              reviewsCount={221}
-              reviewsStatus={"Superhost"}
-            />
-          </Col>
+          {homes.map(home => (
+            <Col xs="12" md="6" lg="6">
+              <Card
+                marginBottom={"24px"}
+                imgSrc={home.imgSrc}
+                price={home.price}
+                title={home.title}
+                type={home.type}
+                beds={home.beds}
+                reviewsCount={home.reviewsCount}
+                reviewsStatus={home.reviewsStatus}
+              />
+            </Col>
+          ))}
         </HomesRow>
         <Pagination />
       </HomesContainer>

@@ -43,40 +43,83 @@ const CounterTitle = styled.span`
 `;
 
 export default class extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isOpened: false,
-      guests: {
-        adults: this.props.guests.adults,
-        children: this.props.guests.children,
-        infants: this.props.guests.infants
-      }
-    };
-    this.onPlus = this.onPlus.bind(this);
-    this.onMinus = this.onMinus.bind(this);
-  }
+  state = {
+    isOpened: false,
+    disabled: true,
+    guests: {
+      adults: 1,
+      children: 0,
+      infants: 0,
+      total: 0
+    }
+  };
 
   onToggle = isOpened => {
     this.setState({ isOpened });
   };
 
   onMinus = guestType => {
-    this.state.guests[guestType] >= 1
-      ? this.setState({
+    !this.state.disabled &&
+      this.setState(
+        {
           guests: {
             ...this.state.guests,
             [guestType]: this.state.guests[guestType] - 1
-          }
-        })
-      : this.setState({ guests: { ...this.state.guests, [guestType]: 0 } });
+          },
+          disabled: this.state.guests[guestType] <= 1 ? true : false
+        },
+        () => this.updateGuests(this.state.guests)
+      );
   };
 
   onPlus = guestType => {
+    this.setState(
+      {
+        disabled: false,
+        guests: {
+          ...this.state.guests,
+          [guestType]: this.state.guests[guestType] + 1
+        }
+      },
+      () => this.updateGuests(this.state.guests)
+    );
+  };
+
+  onCancel = () => {
+    this.setState(
+      {
+        isOpened: false,
+        disabled: true,
+        guests: {
+          adults: 1,
+          children: 0,
+          infants: 0,
+          total: 0
+        }
+      },
+      () => this.updateGuests(this.state.guests)
+    );
+  };
+
+  onApply = () => {
+    this.setState({ isOpened: false }, () =>
+      this.updateGuests(this.state.guests)
+    );
+  };
+
+  updateGuests = guests => {
+    this.updateTotal();
+    this.props.handleData(guests);
+  };
+
+  updateTotal = () => {
     this.setState({
       guests: {
         ...this.state.guests,
-        [guestType]: this.state.guests[guestType] + 1
+        total:
+          this.state.guests.adults +
+          this.state.guests.children +
+          this.state.guests.infants
       }
     });
   };
@@ -90,8 +133,8 @@ export default class extends React.Component {
         onToggle={this.onToggle}
         onApply={this.onApply}
         onCancel={this.onCancel}
-        guests={this.state.guests}
-        handleData={this.handleData}
+        total={this.state.guests.total}
+        onTotalChange={this.updateTotal}
       >
         <GuestsContainer>
           <OptionsRow>
@@ -99,8 +142,12 @@ export default class extends React.Component {
               <OptionsTitle>Adults</OptionsTitle>
             </OptionsTitleContainer>
             <CounterContainer>
-              <Minus onClick={() => this.onMinus("adults")} />
-              <CounterTitle>{this.state.guests.adults}</CounterTitle>
+              {this.state.disabled ? (
+                <Minus onClick={() => this.onMinus("adults")} disabled />
+              ) : (
+                <Minus onClick={() => this.onMinus("adults")} />
+              )}
+              <CounterTitle>{this.props.guests.adults}</CounterTitle>
               <Plus onClick={() => this.onPlus("adults")} />
             </CounterContainer>
           </OptionsRow>
@@ -110,8 +157,12 @@ export default class extends React.Component {
               <OptionsSubTitle>Ages 2 - 12</OptionsSubTitle>
             </OptionsTitleContainer>
             <CounterContainer>
-              <Minus onClick={() => this.onMinus("children")} />
-              <CounterTitle>{this.state.guests.children}</CounterTitle>
+              {this.state.disabled ? (
+                <Minus onClick={() => this.onMinus("children")} disabled />
+              ) : (
+                <Minus onClick={() => this.onMinus("children")} />
+              )}
+              <CounterTitle>{this.props.guests.children}</CounterTitle>
               <Plus onClick={() => this.onPlus("children")} />
             </CounterContainer>
           </OptionsRow>
@@ -121,8 +172,12 @@ export default class extends React.Component {
               <OptionsSubTitle>Under 2</OptionsSubTitle>
             </OptionsTitleContainer>
             <CounterContainer>
-              <Minus onClick={() => this.onMinus("infants")} />
-              <CounterTitle>{this.state.guests.infants}</CounterTitle>
+              {this.state.disabled ? (
+                <Minus onClick={() => this.onMinus("infants")} disabled />
+              ) : (
+                <Minus onClick={() => this.onMinus("infants")} />
+              )}
+              <CounterTitle>{this.props.guests.infants}</CounterTitle>
               <Plus onClick={() => this.onPlus("infants")} />
             </CounterContainer>
           </OptionsRow>

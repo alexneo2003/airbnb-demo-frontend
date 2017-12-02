@@ -2,31 +2,29 @@ import React from "react";
 import styled from "styled-components";
 import DropDown from "./DropDown";
 
-const RoomsContainer = styled.div`
+const Container = styled.div`
   padding: 24px;
   width: 326px;
 `;
 
 export default class extends React.Component {
   state = {
-    checked: false
+    isOpened: false
   };
 
-  onToggle = checked => {
-    this.setState({ checked });
+  onToggle = isOpened => {
+    this.setState({ isOpened });
   };
 
   onCancel = () => {
-    this.props.closeDropDown();
     this.setState({
-      checked: false
+      isOpened: false
     });
   };
 
   onApply = () => {
-    this.props.closeDropDown();
     this.setState({
-      checked: false
+      isOpened: false
     });
   };
 
@@ -40,7 +38,7 @@ export default class extends React.Component {
         onApply={this.onApply}
         onCancel={this.onCancel}
       >
-        <RoomsContainer>{this.props.title}</RoomsContainer>
+        <Container>{this.props.title}</Container>
       </DropDown>
     );
   }

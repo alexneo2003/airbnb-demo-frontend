@@ -1,33 +1,71 @@
 import React from "react";
 import styled from "styled-components";
 import DropDown from "./DropDown";
+import { RoomType } from "./Sections/RoomType";
 
-const RoomsContainer = styled.div`
-  padding: 24px;
+const Container = styled.div`
+  padding: 0px 24px;
   width: 326px;
 `;
 
 export default class extends React.Component {
   state = {
-    checked: false
+    isOpened: false,
+    rooms: {
+      entire: false,
+      private: false,
+      shared: false,
+      total: 0
+    }
   };
 
-  onToggle = checked => {
-    this.setState({ checked });
+  onToggle = isOpened => {
+    this.setState({ isOpened });
   };
 
   onCancel = () => {
-    this.props.closeDropDown();
-    this.setState({
-      checked: false
-    });
+    this.setState(
+      {
+        isOpened: false,
+        rooms: {
+          entire: false,
+          private: false,
+          shared: false,
+          total: 0
+        }
+      },
+      () => this.updateTotal()
+    );
   };
 
   onApply = () => {
-    this.props.closeDropDown();
-    this.setState({
-      checked: false
-    });
+    this.setState(
+      {
+        isOpened: false
+      },
+      () => this.updateTotal()
+    );
+  };
+
+  updateRooms = rooms => {
+    this.setState({ rooms: rooms }, this.updateTotal());
+  };
+
+  updateTotal = () => {
+    console.log("updateTotal");
+    const total =
+      this.state.rooms.entire +
+      this.state.rooms.private +
+      this.state.rooms.shared;
+    this.setState(
+      {
+        rooms: {
+          ...this.state.rooms,
+          total: [total]
+        }
+      },
+      this.props.handleData(this.state.rooms)
+    );
   };
 
   render() {
@@ -39,8 +77,15 @@ export default class extends React.Component {
         onToggle={this.onToggle}
         onApply={this.onApply}
         onCancel={this.onCancel}
+        total={this.props.rooms.total}
       >
-        <RoomsContainer>{this.props.title}</RoomsContainer>
+        <Container>
+          <RoomType
+            onChange={this.updateRooms}
+            rooms={this.props.rooms}
+            total={this.state.rooms.total}
+          />
+        </Container>
       </DropDown>
     );
   }

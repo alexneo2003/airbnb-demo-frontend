@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import onClickOutside from "react-onclickoutside";
 import Media, { MobileOnly, TabletFrom } from "../../Media";
-import { Row, Col } from "../../styled";
 import close from "./close.svg";
 
 const FilterButton = styled.button`
@@ -22,8 +21,8 @@ const FilterButton = styled.button`
   }
   background-color: ${props => (props.isOpened ? "#008489" : "#fff")};
   color: ${props => (props.isOpened ? "#fff" : "#383838")};
-  border: ${props =>
-    props.isOpened ? "1px solid #008489" : "1px solid rgba(72, 72, 72, 0.2)"};
+  border: 1px solid
+    ${props => (props.isOpened ? "#008489" : "rgba(72, 72, 72, 0.2)")};
 
   @media (min-width: 992px) {
     display: inline-block;
@@ -71,10 +70,7 @@ const DropDownContent = onClickOutside(styled.div`
 
 const MoreFiltersContent = onClickOutside(styled.div`
   position: absolute;
-  border: 1px solid rgba(72, 72, 72, 0.2);
   box-sizing: border-box;
-  box-shadow: 0px 2px 4px rgba(72, 72, 72, 0.08);
-  border-radius: 4px;
   z-index: 11;
   background: #fff;
   ${Media.mobile`
@@ -89,13 +85,13 @@ const MoreFiltersContent = onClickOutside(styled.div`
   `};
   ${Media.md`
     position: absolute;
-    top: 8px;
-    left: -165px;
+    top: 12px;
+    left: -167px;
   `};
   ${Media.lg`
     position: absolute;
-    top: 8px;
-    left: -468px;
+    top: 12px;
+    left: -470px;
   `};
 `);
 
@@ -194,6 +190,9 @@ const HomesButtonsContainer = styled.div`
   `};
   ${Media.md`
     justify-content: center;
+    bottom: 0;
+    left: 0;
+    right: 0;
   `};
   ${Media.lg`
     justify-content: flex-end;  
@@ -227,6 +226,11 @@ const DropdownContentBox = styled.div`
 `;
 
 export default class extends React.Component {
+  state = {
+    isOpened: false,
+    moreFilters: false
+  };
+
   onClick = () => {
     if (!this.state.isOpened) {
       this.props.onToggle(true);
@@ -247,42 +251,21 @@ export default class extends React.Component {
       : this.setState({ moreFilters: false });
   };
 
-  state = {
-    moreFilters: false,
-    guests: {
-      adults: 0,
-      children: 0,
-      infants: 0
-    }
-  };
-
   onCancel = () => {
-    this.setState(
-      {
-        isOpened: false,
-        guests: {
-          adults: 0,
-          children: 0,
-          infants: 0
-        }
-      },
-      this.passDataToParent
-    );
-    this.props.handleData(this.state.guests);
+    this.setState({
+      isOpened: false
+    });
+    this.props.onCancel();
   };
 
   onApply = () => {
-    this.setState({ isOpened: false }, this.passDataToParent);
-    this.updateGuests(this.props.guests);
+    this.setState({ isOpened: false });
+    this.props.onApply();
   };
 
-  updateGuests = guests => {
-    this.setState({ guests: guests });
-  };
-
-  passDataToParent = () => {
-    this.handleData(this.state.guests);
-  };
+  setTitle() {
+    return this.props.title + " \u2022 " + this.props.total;
+  }
 
   render() {
     return (
@@ -294,7 +277,7 @@ export default class extends React.Component {
           onApply={this.onApply}
           onCancel={this.onCancel}
         >
-          {this.state.isOpened ? this.props.checkedTitle : this.props.title}
+          {this.props.total >= 1 ? this.setTitle() : this.props.title}
         </FilterButton>
 
         {this.state.isOpened && <ShadedContainer />}

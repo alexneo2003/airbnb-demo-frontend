@@ -5,6 +5,7 @@ import location from "./img/location.svg";
 import { Link } from "react-router-dom";
 import plus from "./img/plus.svg";
 import minus from "./img/minus.svg";
+import minusOn from "./img/minus-on.svg";
 import switch_off from "./img/switch-off.svg";
 import switch_on from "./img/switch-on.svg";
 
@@ -156,11 +157,13 @@ export const Counter = styled.button`
   cursor: pointer;
 `;
 
-export const Minus = styled(Counter)`
+export const Minus = styled(Counter).attrs({
+  disabled: props => (props.disabled ? "disabled" : "")
+})`
   background: url(${minus});
   background-repeat: no-repeat;
   background-position: 50% 50%;
-  enable: ${props => props.isEnabled};
+  opacity: ${props => (props.disabled ? 0.5 : 1)};
 `;
 
 export const Plus = styled(Counter)`

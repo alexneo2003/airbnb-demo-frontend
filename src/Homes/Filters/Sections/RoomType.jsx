@@ -5,6 +5,7 @@ import sharedRoom from "./shared-room.svg";
 import checkbox from "./checkbox.svg";
 import styled from "styled-components";
 import Media, { TabletFrom } from "../../../Media";
+import { Checkbox } from "../checkbox";
 
 const Section = styled.div`
   padding-top: 20px;
@@ -31,6 +32,7 @@ const SubTitle = styled.div`
   font-size: 14px;
   font-family: CircularLight;
   margin-left: 36px;
+  padding-top: 4px;
   ${Media.mobile`  
     font-size: 12px;
   `};
@@ -39,6 +41,7 @@ const SubTitle = styled.div`
 const EntireRoomImg = styled.div`
   width: 32px;
   height: 32px;
+  justify-content: flex-end;
   background: url(${entireHome});
   background-repeat: no-repeat;
   background-position: 50% 50%;
@@ -68,58 +71,89 @@ const CounterTitle = styled.div`
 `;
 
 const CheckboxRow = styled(Row)`
-  padding-top: 16px;
   justify-content: flex-start;
 `;
 
-const Checkbox = styled.div`
-  width: 24px;
-  height: 24px;
-  background: url(${checkbox});
-  background-repeat: no-repeat;
-  background-position: 50% 50%;
-`;
-
 const CheckboxTitle = styled(CounterTitle)`
-  margin-left: 12px;
+  margin-left: 6px;
   margin-right: 0px;
 `;
 
+export const Col = styled.div`
+  box-sizing: border-box;
+`;
+
 export class RoomType extends React.Component {
+  state = {
+    rooms: {
+      entire: false,
+      private: false,
+      shared: false,
+      total: 0
+    }
+  };
+
+  onCheckboxChange = (e, id) => {
+    const checked = e.target.checked;
+    this.setState({ rooms: { ...this.state.rooms, [id]: checked } }, () =>
+      this.props.onChange(this.state.rooms)
+    );
+  };
+
   render() {
     return (
       <Section>
         <SectionTitle>Room type</SectionTitle>
         <Row>
-          <CheckboxRow>
-            <Checkbox />
-            <CheckboxTitle>Entire room</CheckboxTitle>
-          </CheckboxRow>
+          <Col>
+            <CheckboxRow>
+              <Checkbox
+                id="entire"
+                isChecked={this.props.rooms.entire}
+                onChange={this.onCheckboxChange}
+              />
+              <CheckboxTitle>Entire room</CheckboxTitle>
+            </CheckboxRow>
+            <SubTitle>Have a place to your</SubTitle>
+          </Col>
           <TabletFrom>
             <EntireRoomImg />
           </TabletFrom>
         </Row>
-        <SubTitle>Have a place to your</SubTitle>
         <Row>
-          <CheckboxRow>
-            <Checkbox />
-            <CheckboxTitle>Private room</CheckboxTitle>
-          </CheckboxRow>
+          <Col>
+            <CheckboxRow>
+              <Checkbox
+                id="private"
+                isChecked={this.props.rooms.private}
+                onChange={this.onCheckboxChange}
+                handleCheck={this.checkedBox}
+              />
+              <CheckboxTitle>Private room</CheckboxTitle>
+            </CheckboxRow>
+            <SubTitle>Have your own room and share some common spaces</SubTitle>
+          </Col>
           <TabletFrom>
             <PrivateRoomImg />
           </TabletFrom>
         </Row>
-        <SubTitle>Have your own room and share some common spaces</SubTitle>
         <Row>
-          <CheckboxRow>
-            <Checkbox />
-            <CheckboxTitle>Shared room</CheckboxTitle>
-          </CheckboxRow>
+          <Col>
+            <CheckboxRow>
+              <Checkbox
+                id="shared"
+                isChecked={this.props.rooms.shared}
+                onChange={this.onCheckboxChange}
+                handleCheck={this.checkedBox}
+              />
+              <CheckboxTitle>Shared room</CheckboxTitle>
+            </CheckboxRow>
+            <SubTitle>Stay in a shared space, like a common room</SubTitle>
+          </Col>
           <TabletFrom>
             <SharedRoomImg />
           </TabletFrom>
         </Row>
-        <SubTitle>Stay in a shared space, like a common room</SubTitle>
       </Section>
     );
   }
