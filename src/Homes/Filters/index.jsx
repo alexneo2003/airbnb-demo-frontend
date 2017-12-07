@@ -35,38 +35,83 @@ const FiltersRow = styled.div`
 
 export default class extends React.Component {
   state = {
+    openedFilter: null,
     isOpened: false,
-    startDate: null,
-    endDate: null,
+    dates: {
+      startDate: null,
+      endDate: null
+    },
     guests: {
       adults: 1,
       children: 0,
       infants: 0,
       total: 0
     },
-    rooms: {
+    roomType: {
       entire: false,
       private: false,
       shared: false,
       total: 0
+    },
+    price: { startPrice: 0, endPrice: 0 },
+    more: {
+      instant: false,
+      superhost: false
+    },
+    roomsAndBeds: {
+      bedrooms: 0,
+      beds: 0,
+      bathrooms: 0,
+      total: 0
+    },
+    amenities: {
+      heating: false,
+      tv: false,
+      kitchen: false,
+      wireless: false
+    },
+    facilities: {
+      elevator: false,
+      pool: false,
+      parking: false,
+      wheelchair: false
     }
+  };
+
+  openFilter = id => {
+    this.setState({ openedFilter: id });
   };
 
   handleOpen = () => {
     this.setState({ isOpened: !this.state.isOpened });
   };
 
-  updateGuests = guests => {
-    this.setState({ guests: guests });
-  };
-
-  updateRoomsType = rooms => {
-    console.log(rooms);
-    this.setState({ rooms: rooms });
+  updateData = (key, data) => {
+    console.log(key, data);
+    this.setState({ [key]: data }, console.log(this.state[key]));
   };
 
   cancelDates = () => {
     this.setState({ startDate: null, endDate: null });
+  };
+
+  datesOnApply = (startDate, endDate) => {
+    console.log("datesOnApply");
+    console.log(startDate, endDate);
+    this.setState({ dates: { startDate, endDate } });
+  };
+
+  updateGuests = guests => {
+    console.log(guests);
+    this.setState({ guests: guests });
+  };
+
+  updateRoomsType = rooms => {
+    this.setState({ rooms: rooms });
+  };
+
+  updatePrice = price => {
+    this.setState({ price: price });
   };
 
   render() {
@@ -74,34 +119,53 @@ export default class extends React.Component {
       <FiltersBorder>
         <FiltersRow>
           <Dates
+            id="dates"
             title="Dates"
-            checkedTitle="Check in — Check out"
-            onApply={(startDate, endDate) =>
-              this.setState({ startDate, endDate })
-            }
+            confirmedTitle="Check in — Check out"
+            dates={this.state.dates}
+            onApply={this.updateData}
+            handleData={this.updateData}
+            handleOpen={this.openFilter}
           />
           <Guests
+            id="guests"
             title="Guests"
-            checkedTitle="Guests"
+            confirmedTitle="Guests"
             guests={this.state.guests}
-            handleData={this.updateGuests}
+            handleData={this.updateData}
+            handleOpen={this.openFilter}
           />
           <DesktopOnly>
             <RoomType
+              id="roomType"
               title="Room type"
-              checkedTitle="Room type"
-              rooms={this.state.rooms}
-              handleData={this.updateRoomsType}
+              confirmedTitle="Room type"
+              roomType={this.state.roomType}
+              handleData={this.updateData}
+              handleOpen={this.openFilter}
             />
-            <Price title="Price" checkedTitle="Price" />
-            <InstantBook title="Instant Book" checkedTitle="Instant Book" />
+            <Price
+              id="price"
+              title="Price"
+              confirmedTitle="Price"
+              handleOpen={this.openFilter}
+            />
+            <InstantBook
+              id="instant"
+              title="Instant Book"
+              confirmedTitle="Instant Book"
+              handleOpen={this.openFilter}
+            />
           </DesktopOnly>
           <MoreFilters
+            id="moreFilters"
             title="More filters"
-            checkedTitle="More filters"
+            confirmedTitle="More filters"
             moreFilters={true}
-            rooms={this.state.rooms}
-            handleData={this.updateRoomsType}
+            roomType={this.state.roomType}
+            roomsAndBeds={this.state.roomsAndBeds}
+            handleData={this.updateData}
+            handleOpen={this.openFilter}
           />
         </FiltersRow>
       </FiltersBorder>

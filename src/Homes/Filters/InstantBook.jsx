@@ -1,13 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 import DropDown from "./DropDown";
+import Instant from "./Sections/InstantBook";
 
-const RoomsContainer = styled.div`
+const Container = styled.div`
   padding: 24px;
   width: 326px;
 `;
 
-export default class extends React.Component {
+export default class InstantBook extends React.Component {
   state = {
     isOpened: false
   };
@@ -31,14 +32,18 @@ export default class extends React.Component {
   render() {
     return (
       <DropDown
+        id={this.props.id}
         className={this.props.className}
         title={this.props.title}
-        checkedTitle={this.props.checkedTitle}
+        confirmedTitle={this.props.confirmedTitle}
         onToggle={this.onToggle}
         onApply={this.onApply}
         onCancel={this.onCancel}
+        handleOpen={this.props.handleOpen}
       >
-        <RoomsContainer>{this.props.title}</RoomsContainer>
+        <Container>
+          <Instant />
+        </Container>
       </DropDown>
     );
   }

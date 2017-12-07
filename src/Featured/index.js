@@ -38,35 +38,27 @@ const City = styled.p`
     font-size: 15px;
   }
 `;
+
+const featuredItems = [
+  { src: featured1, city: "Paris" },
+  { src: featured2, city: "Miami" },
+  { src: featured3, city: "Tokio" },
+  { src: featured4, city: "Cape town" },
+  { src: featured5, city: "Seoul" },
+  { src: featured6, city: "Los Angeles" }
+];
+
 export default function() {
   return (
     <Featured>
       <Title>Featured destination</Title>
       <Row>
-        <Col xs="4" md="3" lg="2">
-          <Img src={featured1} alt="" />
-          <City>Paris</City>
-        </Col>
-        <Col xs="4" md="3" lg="2">
-          <Img src={featured2} alt="" />
-          <City>Miami</City>
-        </Col>
-        <Col xs="4" md="3" lg="2">
-          <Img src={featured3} alt="" />
-          <City>Tokio</City>
-        </Col>
-        <Col xs="4" md="3" lg="2">
-          <Img src={featured4} alt="" />
-          <City>Cape town</City>
-        </Col>
-        <Col xs="4" md="3" lg="2">
-          <Img src={featured5} alt="" />
-          <City>Seoul</City>
-        </Col>
-        <Col xs="4" md="3" lg="2">
-          <Img src={featured6} alt="" />
-          <City>Los Angeles</City>
-        </Col>
+        {featuredItems.map((item, index) => (
+          <Col key={index} xs="4" md="3" lg="2">
+            <Img src={item.src} alt="" />
+            <City>{item.city}</City>
+          </Col>
+        ))}
       </Row>
       <NextPage />
     </Featured>

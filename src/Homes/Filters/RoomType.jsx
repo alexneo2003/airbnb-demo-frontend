@@ -11,7 +11,7 @@ const Container = styled.div`
 export default class extends React.Component {
   state = {
     isOpened: false,
-    rooms: {
+    roomType: {
       entire: false,
       private: false,
       shared: false,
@@ -27,14 +27,14 @@ export default class extends React.Component {
     this.setState(
       {
         isOpened: false,
-        rooms: {
+        roomType: {
           entire: false,
           private: false,
           shared: false,
           total: 0
         }
       },
-      () => this.updateTotal()
+      () => this.props.handleData(this.props.id, this.state.roomType)
     );
   };
 
@@ -43,28 +43,29 @@ export default class extends React.Component {
       {
         isOpened: false
       },
+      () => this.props.handleData(this.props.id, this.state.roomType)
+    );
+  };
+
+  updateRoomType = (e, id) => {
+    this.setState(
+      { roomType: { ...this.state.roomType, [id]: e.target.checked } },
       () => this.updateTotal()
     );
   };
 
-  updateRooms = rooms => {
-    this.setState({ rooms: rooms }, this.updateTotal());
-  };
-
   updateTotal = () => {
-    console.log("updateTotal");
-    const total =
-      this.state.rooms.entire +
-      this.state.rooms.private +
-      this.state.rooms.shared;
     this.setState(
       {
-        rooms: {
-          ...this.state.rooms,
-          total: [total]
+        roomType: {
+          ...this.state.roomType,
+          total:
+            this.state.roomType.entire +
+            this.state.roomType.private +
+            this.state.roomType.shared
         }
       },
-      this.props.handleData(this.state.rooms)
+      () => this.props.handleData(this.props.id, this.state.roomType)
     );
   };
 
@@ -73,17 +74,18 @@ export default class extends React.Component {
       <DropDown
         className={this.props.className}
         title={this.props.title}
-        checkedTitle={this.props.checkedTitle}
+        confirmedTitle={this.props.confirmedTitle}
         onToggle={this.onToggle}
         onApply={this.onApply}
         onCancel={this.onCancel}
-        total={this.props.rooms.total}
+        total={this.props.roomType.total}
+        handleOpen={this.props.handleOpen}
       >
         <Container>
           <RoomType
-            onChange={this.updateRooms}
-            rooms={this.props.rooms}
-            total={this.state.rooms.total}
+            onChange={this.updateRoomType}
+            roomType={this.props.roomType}
+            total={this.props.roomType.total}
           />
         </Container>
       </DropDown>

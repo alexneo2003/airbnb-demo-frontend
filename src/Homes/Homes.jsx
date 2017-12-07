@@ -138,10 +138,9 @@ export default function Homes() {
       </GoogleMapContainer>
       <HomesContainer>
         <HomesRow>
-          {homes.map(home => (
-            <Col xs="12" md="6" lg="6">
+          {homes.map((home, index) => (
+            <Col key={index} xs="12" md="6" lg="6">
               <Card
-                marginBottom={"24px"}
                 imgSrc={home.imgSrc}
                 price={home.price}
                 title={home.title}

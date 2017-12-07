@@ -5,6 +5,14 @@ import explore2 from "./explore2.png";
 import explore3 from "./explore3.png";
 import "../App.css";
 import { Row, Col } from "../styled";
+import { Link } from "react-router-dom";
+
+const LinkRoute = styled(Link)`
+  text-decoration: none;
+  &:visited {
+    color: #383838;
+  }
+`;
 
 const Card = styled.div`
   flex-direction: column;
@@ -26,6 +34,7 @@ const Card = styled.div`
     align-items: center;
   }
 `;
+
 const TitleText = styled.h2`
   margin-top: 50px;
   margin-bottom: 24px;
@@ -49,7 +58,7 @@ const Img = styled.img`
     height: 72px;
   }
 `;
-const CardText = styled.div`
+const CardText = styled.span`
   vertical-align: middle;
   font-family: CircularBold;
   color: #383838;
@@ -58,6 +67,7 @@ const CardText = styled.div`
   padding-bottom: 10px;
   font-size: 12px;
   @media (min-width: 576px) {
+    text-decoration: none;
     margin-left: 0px;
     font-size: 17px;
     padding-left: 24px;
@@ -70,10 +80,12 @@ export default function() {
       <TitleText>Explore Airbnb</TitleText>
       <Row>
         <Col xs="6" md="5" lg="4">
-          <Card>
-            <Img imgSrc={explore1} alt="" />
-            <CardText>Homes</CardText>
-          </Card>
+          <LinkRoute to="/homes">
+            <Card>
+              <Img imgSrc={explore1} alt="" />
+              <CardText>Homes</CardText>
+            </Card>
+          </LinkRoute>
         </Col>
         <Col xs="6" md="5" lg="4">
           <Card>

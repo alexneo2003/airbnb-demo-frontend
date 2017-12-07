@@ -19,6 +19,9 @@ const Row = styled.div`
   ${Media.mobile`
     margin-right: 0px;
   `};
+  ${Media.md`
+    margin-right: 0px;
+  `};
 `;
 
 const SectionTitle = styled.div`
@@ -56,12 +59,12 @@ const Switch = styled.div`
   background-position: 50% 50%;
 `;
 */
-const MoreTitle = styled(OptionsSubTitle)`
+const Title = styled(OptionsSubTitle)`
   cursor: pointer;
   color: #0f7276;
 `;
 
-export class MoreOptions extends React.Component {
+export default class extends React.Component {
   render() {
     return (
       <Section>
@@ -71,7 +74,7 @@ export class MoreOptions extends React.Component {
             <OptionsContainer>
               <OptionsTitle>Instant Book</OptionsTitle>
               <OptionsSubTitle>Secure a reservation</OptionsSubTitle>
-              <MoreTitle>Learn more</MoreTitle>
+              <Title>Learn more</Title>
             </OptionsContainer>
             <Switch />
           </Row>
@@ -81,7 +84,7 @@ export class MoreOptions extends React.Component {
             <OptionsContainer>
               <OptionsTitle>Instant Book</OptionsTitle>
               <OptionsSubTitle>Secure a reservation</OptionsSubTitle>
-              <MoreTitle>Learn more</MoreTitle>
+              <Title>Learn more</Title>
             </OptionsContainer>
             <Switch />
           </Row>
@@ -90,7 +93,7 @@ export class MoreOptions extends React.Component {
           <OptionsContainer>
             <OptionsTitle>Superhost</OptionsTitle>
             <OptionsSubTitle>Stay with recognized hosts.</OptionsSubTitle>
-            <MoreTitle>Learn more</MoreTitle>
+            <Title>Learn more</Title>
           </OptionsContainer>
           <Switch />
         </Row>

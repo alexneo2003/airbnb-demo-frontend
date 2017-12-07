@@ -25,7 +25,35 @@ const Title = styled.h2`
   }
 `;
 
-const Popular = styled.div`position: relative;`;
+const popularItems = [
+  {
+    imgSrc: popularReservations1,
+    type: "SPEAKEASY",
+    price: 60,
+    title: "Chumley's"
+  },
+  {
+    imgSrc: popularReservations2,
+    type: "KOREAN GASTROPUB",
+    price: 50,
+    title: "Hanjan"
+  },
+  {
+    imgSrc: popularReservations3,
+    type: "GERMAN AMERICAN",
+    price: 55,
+    title: "Prime meats"
+  },
+  {
+    imgSrc: popularReservations4,
+    type: "FINE SEAFOOD",
+    price: 70,
+    title: "Seaprice"
+  }
+];
+const Popular = styled.div`
+  position: relative;
+`;
 export default function() {
   return (
     <Popular>
@@ -34,38 +62,16 @@ export default function() {
         <SeeAll to="/">See all</SeeAll>
       </TitleRow>
       <Row>
-        <Col xs="6" md="4" lg="3">
-          <Card
-            imgSrc={popularReservations1}
-            type={"SPEAKEASY"}
-            title={"Chumley's"}
-            price={60}
-          />
-        </Col>
-        <Col xs="6" md="4" lg="3">
-          <Card
-            imgSrc={popularReservations2}
-            type={"KOREAN GASTROPUB"}
-            title={"Hanjan"}
-            price={50}
-          />
-        </Col>
-        <Col xs="6" md="4" lg="3">
-          <Card
-            imgSrc={popularReservations3}
-            type={"GERMAN AMERICAN"}
-            title={"Prime meats"}
-            price={55}
-          />
-        </Col>
-        <Col xs="6" md="4" lg="3">
-          <Card
-            imgSrc={popularReservations4}
-            type={"FINE SEAFOOD"}
-            title={"Seaprice"}
-            price={70}
-          />
-        </Col>
+        {popularItems.map((item, index) => (
+          <Col key={index} xs="6" md="4" lg="3">
+            <Card
+              imgSrc={item.imgSrc}
+              type={item.type}
+              title={item.title}
+              price={item.price}
+            />
+          </Col>
+        ))}
       </Row>
       <NextPage />
     </Popular>

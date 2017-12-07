@@ -33,10 +33,11 @@ export default class extends React.Component {
       <DropDown
         className={this.props.className}
         title={this.props.title}
-        checkedTitle={this.props.checkedTitle}
+        confirmedTitle={this.props.confirmedTitle}
         onToggle={this.onToggle}
         onApply={this.onApply}
         onCancel={this.onCancel}
+        handleOpen={this.props.handleOpen}
       >
         <Container>{this.props.title}</Container>
       </DropDown>

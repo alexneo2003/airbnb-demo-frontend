@@ -23,10 +23,10 @@ const Arrow = styled.img``;
 export default class DatesFilter extends React.Component {
   state = {
     isOpened: false,
-    startDate: null,
-    endDate: null,
-    selectedStartDate: null,
-    selectedEndDate: null,
+    dates: {
+      startDate: null,
+      endDate: null
+    },
     focusedInput: "startDate"
   };
 
@@ -35,27 +35,29 @@ export default class DatesFilter extends React.Component {
   };
 
   onApply = () => {
-    this.setState({
-      isOpened: false,
-      startDate: this.state.selectedStartDate,
-      endDate: this.state.selectedEndDate
-    });
-    this.props.onApply(
-      this.state.selectedStartDate,
-      this.state.selectedEndDate
+    this.setState(
+      {
+        isOpened: false,
+        dates: {
+          startDate: this.state.startDate,
+          endDate: this.state.endDate
+        }
+      },
+      () => this.updateDates(this.props.id, this.state.dates)
     );
   };
 
   onCancel = () => {
-    this.setState({
-      isOpened: false,
-      selectedStartDate: this.state.startDate,
-      selectedEndDate: this.state.endDate
-    });
-  };
-
-  onToggle = isOpened => {
-    this.setState({ isOpened });
+    this.setState(
+      {
+        isOpened: false,
+        dates: {
+          startDate: null,
+          endDate: null
+        }
+      },
+      () => this.updateDates(this.props.id, this.state.dates)
+    );
   };
 
   focusedInput = focusedInput => {
@@ -63,27 +65,45 @@ export default class DatesFilter extends React.Component {
   };
 
   onDatesChange = ({ startDate, endDate }) => {
-    this.setState({
-      selectedStartDate: startDate,
-      selectedEndDate: endDate
-    });
+    console.log("onDatesChange");
+    console.log({ startDate: startDate, endDate: endDate });
+    this.setState(
+      {
+        dates: {
+          ...this.state.dates,
+          startDate: startDate,
+          endDate: endDate
+        }
+      },
+      () => this.updateDates(this.props.id, this.state.dates)
+    );
+  };
+
+  updateDates = (id, dates) => {
+    console.log("updateDates");
+    console.log(id, dates);
+    this.props.handleData(id, dates);
   };
 
   render() {
     return (
       <DropDown
+        id={this.props.id}
         className={this.props.className}
         title={this.props.title}
-        checkedTitle={this.props.checkedTitle}
+        confirmedTitle={this.props.confirmedTitle}
         onToggle={this.onToggle}
         onApply={this.onApply}
         onCancel={this.onCancel}
+        dates={this.props.dates}
+        handleOpen={this.props.handleOpen}
+        isOpen={this.state.isOpened && this.props.id === "dates"}
       >
         <MobileOnly>
           <CheckedContainer>
             <CheckTitle
               isOpened={
-                !this.state.checkedStartDate && !this.state.checkedEndDate
+                !this.state.selectedStartDate && !this.state.selectedEndDate
               }
             >
               {"Check in"}
@@ -91,7 +111,7 @@ export default class DatesFilter extends React.Component {
             <Arrow src={arrow} />
             <CheckTitle
               isOpened={
-                this.state.checkedStartDate && !this.state.checkedEndDate
+                this.state.selectedStartDate && !this.state.selectedEndDate
               }
             >
               {"Check out"}
@@ -101,8 +121,8 @@ export default class DatesFilter extends React.Component {
         <DateRangePicker
           focusedInput={this.state.focusedInput}
           onFocusChange={focusedInput => this.focusedInput(focusedInput)}
-          startDate={this.state.selectedStartDate}
-          endDate={this.state.selectedEndDate}
+          startDate={this.state.startDate}
+          endDate={this.state.endDate}
           onDatesChange={this.onDatesChange}
         />
       </DropDown>

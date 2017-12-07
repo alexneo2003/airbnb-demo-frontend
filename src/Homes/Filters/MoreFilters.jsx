@@ -3,7 +3,7 @@ import styled from "styled-components";
 import DropDown from "./DropDown";
 import Media, { MobileOnly, TabletOnly } from "../../Media";
 import { RoomsAndBeds } from "./Sections/RoomsAndBeds";
-import { MoreOptions } from "./Sections/MoreOptions";
+import InstantBook from "./Sections/InstantBook";
 import { RoomType } from "./Sections/RoomType";
 import { Price } from "./Sections/Price";
 import { AmenitiesFacilities } from "./Sections/AmenitiesFacilities";
@@ -49,31 +49,37 @@ export default class extends React.Component {
   render() {
     return (
       <DropDown
+        id={this.props.id}
         className={this.props.className}
         title={this.props.title}
-        checkedTitle={this.props.checkedTitle}
+        confirmedTitle={this.props.confirmedTitle}
         onToggle={this.onToggle}
         onApply={this.onApply}
         onCancel={this.onCancel}
         moreFilters={this.props.moreFilters}
+        handleOpen={this.props.handleOpen}
       >
         <Container>
           <MobileOnly>
             <RoomType
-              rooms={this.props.rooms}
-              onChange={this.props.handleData}
+              roomType={this.props.roomType}
+              handleData={this.props.handleData}
             />
             <Price />
           </MobileOnly>
           <TabletOnly>
             <RoomType
-              rooms={this.props.rooms}
-              onChange={this.props.handleData}
+              roomType={this.props.roomType}
+              handleData={this.props.handleData}
             />
             <Price />
           </TabletOnly>
-          <RoomsAndBeds />
-          <MoreOptions />
+          <RoomsAndBeds
+            id="roomsAndBeds"
+            roomsAndBeds={this.props.roomsAndBeds}
+            handleData={this.props.handleData}
+          />
+          <InstantBook />
           <AmenitiesFacilities />
         </Container>
       </DropDown>

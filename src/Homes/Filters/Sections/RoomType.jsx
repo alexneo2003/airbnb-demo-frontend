@@ -2,7 +2,6 @@ import React from "react";
 import entireHome from "./entire-home.svg";
 import privateRoom from "./private-room.svg";
 import sharedRoom from "./shared-room.svg";
-import checkbox from "./checkbox.svg";
 import styled from "styled-components";
 import Media, { TabletFrom } from "../../../Media";
 import { Checkbox } from "../checkbox";
@@ -84,20 +83,9 @@ export const Col = styled.div`
 `;
 
 export class RoomType extends React.Component {
-  state = {
-    rooms: {
-      entire: false,
-      private: false,
-      shared: false,
-      total: 0
-    }
-  };
 
   onCheckboxChange = (e, id) => {
-    const checked = e.target.checked;
-    this.setState({ rooms: { ...this.state.rooms, [id]: checked } }, () =>
-      this.props.onChange(this.state.rooms)
-    );
+    this.props.onChange(e, id);
   };
 
   render() {
@@ -109,7 +97,7 @@ export class RoomType extends React.Component {
             <CheckboxRow>
               <Checkbox
                 id="entire"
-                isChecked={this.props.rooms.entire}
+                isChecked={this.props.roomType.entire}
                 onChange={this.onCheckboxChange}
               />
               <CheckboxTitle>Entire room</CheckboxTitle>
@@ -125,7 +113,7 @@ export class RoomType extends React.Component {
             <CheckboxRow>
               <Checkbox
                 id="private"
-                isChecked={this.props.rooms.private}
+                isChecked={this.props.roomType.private}
                 onChange={this.onCheckboxChange}
                 handleCheck={this.checkedBox}
               />
@@ -142,7 +130,7 @@ export class RoomType extends React.Component {
             <CheckboxRow>
               <Checkbox
                 id="shared"
-                isChecked={this.props.rooms.shared}
+                isChecked={this.props.roomType.shared}
                 onChange={this.onCheckboxChange}
                 handleCheck={this.checkedBox}
               />

@@ -24,7 +24,39 @@ const Title = styled.h2`
   }
 `;
 
-const Homes = styled.div`position: relative;`;
+const homesItems = [
+  {
+    imgSrc: homes1,
+    price: 80,
+    title: "La Salentina, see, nature & relax",
+    type: "Entire house",
+    beds: 9,
+    reviewsCount: 99,
+    reviewsStatus: "Superhost"
+  },
+  {
+    imgSrc: homes2,
+    price: 80,
+    title: "Your private 3 bedr. riad and exclusive",
+    type: "Entire house",
+    beds: 5,
+    reviewsCount: 99,
+    reviewsStatus: "Superhost"
+  },
+  {
+    imgSrc: homes3,
+    price: 200,
+    title: "Dreamy Tropical Tree House",
+    type: "Entire treehouse",
+    beds: 1,
+    reviewsCount: 364,
+    reviewsStatus: "Superhost"
+  }
+];
+
+const Homes = styled.div`
+  position: relative;
+`;
 export default function() {
   return (
     <Homes>
@@ -33,39 +65,19 @@ export default function() {
         <SeeAll to="/homes">See all</SeeAll>
       </TitleRow>
       <Row>
-        <Col xs="8" md="5" lg="4">
-          <Card
-            imgSrc={homes1}
-            price={80}
-            title={"La Salentina, see, nature & relax"}
-            type={"Entire house"}
-            beds={9}
-            reviewsCount={99}
-            reviewsStatus={"Superhost"}
-          />
-        </Col>
-        <Col xs="8" md="5" lg="4">
-          <Card
-            imgSrc={homes2}
-            price={80}
-            title={"Your private 3 bedr. riad and exclusive"}
-            type={"Entire house"}
-            beds={5}
-            reviewsCount={99}
-            reviewsStatus={"Superhost"}
-          />
-        </Col>
-        <Col xs="8" md="5" lg="4">
-          <Card
-            imgSrc={homes3}
-            price={200}
-            title={"Dreamy Tropical Tree House"}
-            type={"Entire treehouse"}
-            beds={1}
-            reviewsCount={364}
-            reviewsStatus={"Superhost"}
-          />
-        </Col>
+        {homesItems.map((home, index) => (
+          <Col key={index} xs="8" md="5" lg="4">
+            <Card
+              imgSrc={home.imgSrc}
+              price={home.price}
+              title={home.title}
+              type={home.type}
+              beds={home.beds}
+              reviewsCount={home.reviewsCount}
+              reviewsStatus={home.reviewsStatus}
+            />
+          </Col>
+        ))}
       </Row>
       <NextPage />
     </Homes>

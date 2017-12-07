@@ -38,6 +38,7 @@ const OptionsTitle = styled.div`
 `;
 
 const Counters = styled.div`
+  width: 115px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -47,11 +48,82 @@ const Count = styled.div`
   white-space: nowrap;
   font-size: 18px;
   font-family: CircularLight;
-  margin-left: 16px;
-  margin-right: 16px;
 `;
 
 export class RoomsAndBeds extends React.Component {
+  state = {
+    isOpened: false,
+    roomsAndBeds: {
+      bedrooms: 0,
+      beds: 0,
+      bathrooms: 0,
+      total: 0
+    }
+  };
+  onMinus = rooms => {
+    this.setState(
+      {
+        roomsAndBeds: {
+          ...this.state.roomsAndBeds,
+          [rooms]: this.state.roomsAndBeds[rooms] - 1
+        }
+      },
+      () => this.updateRoomsAndBeds(this.state.roomsAndBeds)
+    );
+  };
+
+  onPlus = rooms => {
+    this.setState(
+      {
+        roomsAndBeds: {
+          ...this.state.roomsAndBeds,
+          [rooms]: this.state.roomsAndBeds[rooms] + 1
+        }
+      },
+      () => this.updateRoomsAndBeds(this.state.roomsAndBeds)
+    );
+  };
+
+  onCancel = () => {
+    this.setState(
+      {
+        isOpened: false,
+        roomsAndBeds: {
+          bedrooms: 0,
+          beds: 0,
+          bathrooms: 0,
+          total: 0
+        }
+      },
+      () => this.updateRoomsAndBeds(this.state.roomsAndBeds)
+    );
+  };
+
+  onApply = () => {
+    this.setState({ isOpened: false }, () =>
+      this.updateRoomsAndBeds(this.state.roomsAndBeds)
+    );
+  };
+
+  updateRoomsAndBeds = roomsAndBeds => {
+    console.log("updateRoomsAndBeds");
+    this.updateTotal();
+    this.props.handleData(this.props.id, roomsAndBeds);
+  };
+
+  updateTotal = () => {
+    console.log("updateTotal");
+    this.setState({
+      roomsAndBeds: {
+        ...this.state.roomsAndBeds,
+        total:
+          this.state.roomsAndBeds.bedrooms +
+          this.state.roomsAndBeds.beds +
+          this.state.roomsAndBeds.bathrooms
+      }
+    });
+  };
+
   render() {
     return (
       <Section>
@@ -59,25 +131,34 @@ export class RoomsAndBeds extends React.Component {
         <Row>
           <OptionsTitle>Bedrooms</OptionsTitle>
           <Counters>
-            <Minus />
-            <Count>0+</Count>
-            <Plus />
+            <Minus
+              onClick={() => this.onMinus("bedrooms")}
+              disabled={this.props.roomsAndBeds.bedrooms <= 0}
+            />
+            <Count>{this.props.roomsAndBeds.bedrooms}</Count>
+            <Plus onClick={() => this.onPlus("bedrooms")} />
           </Counters>
         </Row>
         <Row>
           <OptionsTitle>Beds</OptionsTitle>
           <Counters>
-            <Minus />
-            <Count>0+</Count>
-            <Plus />
+            <Minus
+              onClick={() => this.onMinus("beds")}
+              disabled={this.props.roomsAndBeds.beds <= 0}
+            />
+            <Count>{this.props.roomsAndBeds.beds}</Count>
+            <Plus onClick={() => this.onPlus("beds")} />
           </Counters>
         </Row>
         <Row>
           <OptionsTitle>Bathrooms</OptionsTitle>
           <Counters>
-            <Minus />
-            <Count>0+</Count>
-            <Plus />
+            <Minus
+              onClick={() => this.onMinus("bathrooms")}
+              disabled={this.props.roomsAndBeds.bathrooms <= 0}
+            />
+            <Count>{this.props.roomsAndBeds.bathrooms}</Count>
+            <Plus onClick={() => this.onPlus("bathrooms")} />
           </Counters>
         </Row>
       </Section>

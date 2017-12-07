@@ -19,10 +19,10 @@ const FilterButton = styled.button`
   &:last-child {
     margin-right: 0;
   }
-  background-color: ${props => (props.isOpened ? "#008489" : "#fff")};
-  color: ${props => (props.isOpened ? "#fff" : "#383838")};
+  background-color: ${props => (props.primary ? "#008489" : "#fff")};
+  color: ${props => (props.primary ? "#fff" : "#383838")};
   border: 1px solid
-    ${props => (props.isOpened ? "#008489" : "rgba(72, 72, 72, 0.2)")};
+    ${props => (props.primary ? "#008489" : "rgba(72, 72, 72, 0.2)")};
 
   @media (min-width: 992px) {
     display: inline-block;
@@ -69,7 +69,7 @@ const DropDownContent = onClickOutside(styled.div`
 `);
 
 const MoreFiltersContent = onClickOutside(styled.div`
-  position: absolute;
+  position: fixed;
   box-sizing: border-box;
   z-index: 11;
   background: #fff;
@@ -84,14 +84,14 @@ const MoreFiltersContent = onClickOutside(styled.div`
     box-shadow: none;
   `};
   ${Media.md`
-    position: absolute;
-    top: 12px;
-    left: -167px;
+    position: fixed;
+    top: 140px;
+    left: 8px;
   `};
   ${Media.lg`
-    position: absolute;
-    top: 12px;
-    left: -470px;
+    position: fixed;
+    top: 140px;
+    left:calc((100vw - 992px)/2);
   `};
 `);
 
@@ -232,6 +232,8 @@ export default class extends React.Component {
   };
 
   onClick = () => {
+    console.log("onClick");
+    console.log(this.state.isOpened);
     if (!this.state.isOpened) {
       this.props.onToggle(true);
       this.moreFilters(this.props.moreFilters);
@@ -239,6 +241,7 @@ export default class extends React.Component {
       this.onApply();
     }
     this.setState({ isOpened: !this.state.isOpened });
+    this.openFilter();
   };
 
   onClickOutside = () => {
@@ -263,9 +266,29 @@ export default class extends React.Component {
     this.props.onApply();
   };
 
-  setTitle() {
-    return this.props.title + " \u2022 " + this.props.total;
-  }
+  setTitle = function() {
+    console.log("setTitle", this.props.id);
+    if (this.props.id === "dates") {
+      return (
+        (this.props.dates.startDate
+          ? this.props.dates.startDate.format("MMM do")
+          : "Check in") +
+        " - " +
+        (this.props.dates.endDate
+          ? this.props.dates.endDate.format("MMM do")
+          : "Check out")
+      );
+    } else {
+      console.log(this.props.total);
+      return this.props.total >= 1
+        ? this.props.title + " \u2022 " + this.props.total
+        : this.props.title;
+    }
+  };
+
+  openFilter = function() {
+    return this.props.handleOpen(this.props.id);
+  };
 
   render() {
     return (
@@ -273,11 +296,15 @@ export default class extends React.Component {
         <FilterButton
           className={this.props.className}
           onClick={this.onClick}
-          isOpened={this.state.isOpened}
+          primary={this.state.isOpened}
           onApply={this.onApply}
           onCancel={this.onCancel}
         >
-          {this.props.total >= 1 ? this.setTitle() : this.props.title}
+          {this.state.isOpened ||
+          this.props.id === "dates" ||
+          this.props.total >= 1
+            ? this.setTitle()
+            : this.props.title}
         </FilterButton>
 
         {this.state.isOpened && <ShadedContainer />}

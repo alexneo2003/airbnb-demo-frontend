@@ -30,14 +30,14 @@ const OptionsSubTitle = styled.div`
   font-size: 16px;
 `;
 
-const CounterContainer = styled.div`
+const Counters = styled.div`
   width: 115px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 `;
 
-const CounterTitle = styled.span`
+const Count = styled.span`
   font-size: 18px;
   font-family: CircularLight;
 `;
@@ -45,7 +45,6 @@ const CounterTitle = styled.span`
 export default class extends React.Component {
   state = {
     isOpened: false,
-    disabled: true,
     guests: {
       adults: 1,
       children: 0,
@@ -59,23 +58,20 @@ export default class extends React.Component {
   };
 
   onMinus = guestType => {
-    !this.state.disabled &&
-      this.setState(
-        {
-          guests: {
-            ...this.state.guests,
-            [guestType]: this.state.guests[guestType] - 1
-          },
-          disabled: this.state.guests[guestType] <= 1 ? true : false
-        },
-        () => this.updateGuests(this.state.guests)
-      );
+    this.setState(
+      {
+        guests: {
+          ...this.state.guests,
+          [guestType]: this.state.guests[guestType] - 1
+        }
+      },
+      () => this.updateGuests(this.state.guests)
+    );
   };
 
   onPlus = guestType => {
     this.setState(
       {
-        disabled: false,
         guests: {
           ...this.state.guests,
           [guestType]: this.state.guests[guestType] + 1
@@ -89,7 +85,6 @@ export default class extends React.Component {
     this.setState(
       {
         isOpened: false,
-        disabled: true,
         guests: {
           adults: 1,
           children: 0,
@@ -109,7 +104,7 @@ export default class extends React.Component {
 
   updateGuests = guests => {
     this.updateTotal();
-    this.props.handleData(guests);
+    this.props.handleData(this.props.id, guests);
   };
 
   updateTotal = () => {
@@ -127,59 +122,58 @@ export default class extends React.Component {
   render() {
     return (
       <DropDown
+        id={this.props.id}
         className={this.props.className}
         title={this.props.title}
-        checkedTitle={this.props.checkedTitle}
+        confirmedTitle={this.props.confirmedTitle}
         onToggle={this.onToggle}
         onApply={this.onApply}
         onCancel={this.onCancel}
         total={this.state.guests.total}
         onTotalChange={this.updateTotal}
+        handleOpen={this.props.handleOpen}
       >
         <GuestsContainer>
           <OptionsRow>
             <OptionsTitleContainer>
               <OptionsTitle>Adults</OptionsTitle>
             </OptionsTitleContainer>
-            <CounterContainer>
-              {this.state.disabled ? (
-                <Minus onClick={() => this.onMinus("adults")} disabled />
-              ) : (
-                <Minus onClick={() => this.onMinus("adults")} />
-              )}
-              <CounterTitle>{this.props.guests.adults}</CounterTitle>
+            <Counters>
+              <Minus
+                onClick={() => this.onMinus("adults")}
+                disabled={this.props.guests.adults <= 1}
+              />
+              <Count>{this.props.guests.adults}</Count>
               <Plus onClick={() => this.onPlus("adults")} />
-            </CounterContainer>
+            </Counters>
           </OptionsRow>
           <OptionsRow>
             <OptionsTitleContainer>
               <OptionsTitle>Children</OptionsTitle>
               <OptionsSubTitle>Ages 2 - 12</OptionsSubTitle>
             </OptionsTitleContainer>
-            <CounterContainer>
-              {this.state.disabled ? (
-                <Minus onClick={() => this.onMinus("children")} disabled />
-              ) : (
-                <Minus onClick={() => this.onMinus("children")} />
-              )}
-              <CounterTitle>{this.props.guests.children}</CounterTitle>
+            <Counters>
+              <Minus
+                onClick={() => this.onMinus("children")}
+                disabled={this.props.guests.children === 0}
+              />
+              <Count>{this.props.guests.children}</Count>
               <Plus onClick={() => this.onPlus("children")} />
-            </CounterContainer>
+            </Counters>
           </OptionsRow>
           <OptionsRow>
             <OptionsTitleContainer>
               <OptionsTitle>Infants</OptionsTitle>
               <OptionsSubTitle>Under 2</OptionsSubTitle>
             </OptionsTitleContainer>
-            <CounterContainer>
-              {this.state.disabled ? (
-                <Minus onClick={() => this.onMinus("infants")} disabled />
-              ) : (
-                <Minus onClick={() => this.onMinus("infants")} />
-              )}
-              <CounterTitle>{this.props.guests.infants}</CounterTitle>
+            <Counters>
+              <Minus
+                onClick={() => this.onMinus("infants")}
+                disabled={this.props.guests.infants === 0}
+              />
+              <Count>{this.props.guests.infants}</Count>
               <Plus onClick={() => this.onPlus("infants")} />
-            </CounterContainer>
+            </Counters>
           </OptionsRow>
         </GuestsContainer>
       </DropDown>
