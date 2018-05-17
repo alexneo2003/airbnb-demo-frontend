@@ -2,7 +2,7 @@ import React from "react";
 import moment from "moment";
 import styled from "styled-components";
 import { MobileOnly, DesktopOnly, TabletOnly } from "./../../Media";
-import { DayPickerRangeController } from "react-dates";
+import { DayPickerRangeController } from "react-dates/initialize";
 
 const Box = styled.div`
   height: calc(100% - 64px);
